@@ -1,0 +1,59 @@
+---
+// Aucune logique particulière, juste du markup
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 glass transition-all duration-300" id="navbar">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="#" class="text-2xl font-serif font-bold text-creme tracking-wide">
+      FoodHouse
+    </a>
+    
+    <!-- Liens Desktop -->
+    <ul class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-creme/80">
+      <li><a href="#experience" class="hover:text-vin transition-colors">À propos</a></li>
+      <li><a href="#menu" class="hover:text-vin transition-colors">Menu</a></li>
+      <li><a href="#galerie" class="hover:text-vin transition-colors">Galerie</a></li>
+      <li><a href="#contact" class="hover:text-vin transition-colors">Contact</a></li>
+    </ul>
+
+    <!-- Bouton Réserver desktop -->
+    <a href="#reservation" class="hidden md:inline-block bg-vin hover:bg-vin/90 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-250 hover:scale-105 shadow-lg">
+      Réserver
+    </a>
+
+    <!-- Menu burger mobile -->
+    <button class="md:hidden text-creme" id="menu-toggle" aria-label="Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+  </div>
+  
+  <!-- Menu mobile (caché par défaut) -->
+  <div id="mobile-menu" class="hidden md:hidden bg-noir/95 px-6 pb-6 space-y-4">
+    <a href="#experience" class="block text-creme/80 hover:text-vin transition-colors uppercase tracking-widest text-sm">À propos</a>
+    <a href="#menu" class="block text-creme/80 hover:text-vin transition-colors uppercase tracking-widest text-sm">Menu</a>
+    <a href="#galerie" class="block text-creme/80 hover:text-vin transition-colors uppercase tracking-widest text-sm">Galerie</a>
+    <a href="#contact" class="block text-creme/80 hover:text-vin transition-colors uppercase tracking-widest text-sm">Contact</a>
+    <a href="#reservation" class="inline-block bg-vin text-white px-5 py-2 rounded-full text-sm font-semibold">Réserver</a>
+  </div>
+</nav>
+
+<script>
+  // Toggle menu mobile
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+  
+  // Effet navbar au scroll : plus opaque + ombre
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 20) {
+      nav?.classList.add('shadow-lg', 'bg-noir/90');
+      nav?.classList.remove('bg-noir/70');
+    } else {
+      nav?.classList.remove('shadow-lg', 'bg-noir/90');
+      nav?.classList.add('bg-noir/70');
+    }
+  });
+</script>

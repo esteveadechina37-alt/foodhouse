@@ -1,1 +1,42 @@
+/* Import des polices Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap');
+
+/* Tailwind v4 : import des layers */
 @import "tailwindcss";
+
+/* Personnalisation du thème (couleurs, polices, animations) */
+@theme {
+  --color-noir: #0A0A0A;
+  --color-creme: #F5F2EB;
+  --color-vin: #7A1C2B;
+
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+  --animate-pulse-soft: pulse 5s ease-in-out infinite;
+}
+
+/* Définition des keyframes pour les animations personnalisées */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Classes utilitaires réutilisables */
+.stagger-item {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.glass {
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}

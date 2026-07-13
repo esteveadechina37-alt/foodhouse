@@ -1,0 +1,150 @@
+---
+// Version finale : Rotation horaire (1->2, 2->3, 3->1) avec images droites
+---
+
+<section class="relative min-h-screen flex items-end md:items-center overflow-hidden bg-noir">
+
+  <!-- Image de fond -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+      alt="Ambiance FoodHouse"
+      class="w-full h-full object-cover animate-kenburns"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-noir via-noir/60 to-noir/10"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-noir/95 via-noir/50 to-transparent"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
+    <div class="grid md:grid-cols-2 items-center gap-12">
+
+      <!-- Texte -->
+      <div class="max-w-xl">
+        <div class="flex items-center gap-4 mb-6 stagger-item" style="animation-delay: 0.1s;">
+          <span class="h-px w-12 bg-vin"></span>
+          <span class="uppercase tracking-[0.3em] text-xs text-creme/70 font-medium">Cuisine africaine d'exception</span>
+        </div>
+        <h1 class="font-serif text-5xl md:text-7xl text-creme mb-6 stagger-item" style="animation-delay: 0.25s;">
+          Food<span class="text-vin">House</span>
+        </h1>
+        <p class="text-creme/70 text-lg mb-10 stagger-item" style="animation-delay: 0.4s;">
+          Là où les épices d'Afrique rencontrent l'art de la table.
+        </p>
+        <div class="flex flex-wrap gap-4 stagger-item" style="animation-delay: 0.55s;">
+          <a href="#" class="bg-vin text-white font-semibold py-3 px-8 rounded-full">Réserver</a>
+          <a href="#" class="border border-creme/25 text-creme font-semibold py-3 px-8 rounded-full">Menu</a>
+        </div>
+      </div>
+
+      <!-- Carrousel (ROUE ) -->
+      <div class="relative hidden md:flex justify-center items-center" style="height: 500px;">
+        
+        <!-- Halo central -->
+        <div class="absolute w-52 h-52 rounded-full bg-noir/40 backdrop-blur-md border border-creme/10 z-0"></div>
+
+        <!-- La roue (Animation Horaire) -->
+        <div class="wheel absolute w-full h-full">
+          
+          <div class="dish-slot dish-slot-1">
+            <img src="/images/plats/plat-1.png" alt="Plat 1" class="dish-img w-[180px] h-[180px] object-contain" />
+          </div>
+          
+          <div class="dish-slot dish-slot-2">
+            <img src="/images/plats/plat-2.png" alt="Plat 2" class="dish-img w-[180px] h-[180px] object-contain" />
+          </div>
+          
+          <div class="dish-slot dish-slot-3">
+            <img src="/images/plats/plat-3.png" alt="Plat 3" class="dish-img w-[180px] h-[180px] object-contain" />
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<style is:global>
+  :root { --noir: #0a0a0a; --vin: #800020; --creme: #f5f5dc; }
+  .bg-noir { background-color: var(--noir); }
+  .bg-vin { background-color: var(--vin); }
+  .text-vin { color: var(--vin); }
+  .text-creme { color: var(--creme); }
+
+  /* Animation de la roue : Sens Horaire (0 -> 120 -> 240 -> 360) */
+  .wheel {
+    animation: wheelRotateClockwise 20s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+    transform-origin: center center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @keyframes wheelRotateClockwise {
+    0%, 25%   { transform: rotate(0deg); }
+    33%, 58%  { transform: rotate(120deg); }
+    66%, 91%  { transform: rotate(240deg); }
+    100%      { transform: rotate(360deg); }
+  }
+
+  .dish-slot {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Positionnement initial des 3 slots */
+  .dish-slot-1 { transform: rotate(0deg) translateY(-200px); }
+  .dish-slot-2 { transform: rotate(120deg) translateY(-200px); }
+  .dish-slot-3 { transform: rotate(240deg) translateY(-200px); }
+
+  /* Contre-rotation pour garder les images droites (Sens Anti-Horaire) */
+  .dish-img { transform-origin: center center; }
+
+  /* Image 1 : Compense la roue (0 -> -120 -> -240 -> -360) */
+  .dish-slot-1 .dish-img {
+    animation: counter1 20s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+  }
+  @keyframes counter1 {
+    0%, 25%   { transform: rotate(0deg); }
+    33%, 58%  { transform: rotate(-120deg); }
+    66%, 91%  { transform: rotate(-240deg); }
+    100%      { transform: rotate(-360deg); }
+  }
+
+  /* Image 2 : Offset initial de -120deg puis suit le mouvement */
+  .dish-slot-2 .dish-img {
+    animation: counter2 20s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+  }
+  @keyframes counter2 {
+    0%, 25%   { transform: rotate(-120deg); }
+    33%, 58%  { transform: rotate(-240deg); }
+    66%, 91%  { transform: rotate(-360deg); }
+    100%      { transform: rotate(-480deg); }
+  }
+
+  /* Image 3 : Offset initial de -240deg puis suit le mouvement */
+  .dish-slot-3 .dish-img {
+    animation: counter3 20s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+  }
+  @keyframes counter3 {
+    0%, 25%   { transform: rotate(-240deg); }
+    33%, 58%  { transform: rotate(-360deg); }
+    66%, 91%  { transform: rotate(-480deg); }
+    100%      { transform: rotate(-600deg); }
+  }
+
+  /* Animations standards */
+  .animate-kenburns { animation: kenburns 24s ease-out forwards; }
+  @keyframes kenburns { 0% { transform: scale(1.1); } 100% { transform: scale(1); } }
+  .stagger-item { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+
