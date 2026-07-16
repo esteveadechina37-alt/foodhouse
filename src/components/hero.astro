@@ -1,60 +1,69 @@
 ---
-// Version finale : Rotation horaire (1->2, 2->3, 3->1) avec images droites
+// Version finale : Carrousel 3D horizontal avec flou d'arrière-plan activé UNIQUEMENT sur Desktop
 ---
 
-<section class="relative min-h-screen flex items-end md:items-center overflow-hidden bg-noir">
+<section class="relative min-h-screen flex items-center overflow-hidden bg-noir premium-grain" id="hero-scene">
 
-  <!-- Image de fond -->
-  <div class="absolute inset-0 z-0">
+  <!-- Image de fond avec effet parallaxe discret -->
+  <div class="absolute inset-0 z-0 scale-110" id="parallax-bg">
     <img
       src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
       alt="Ambiance FoodHouse"
-      class="w-full h-full object-cover animate-kenburns"
+      class="w-full h-full object-cover animate-kenburns select-none pointer-events-none"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-noir via-noir/60 to-noir/10"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-noir/95 via-noir/50 to-transparent"></div>
+    <!-- MODIFICATION : md:backdrop-blur-md applique le flou uniquement sur écran d'ordinateur (>= 768px) -->
+    <div class="absolute inset-0 bg-noir/20 md:bg-noir/40 md:backdrop-blur-md z-1"></div>
+    <div class="absolute inset-0 bg-linear-to-t from-noir via-noir/70 to-noir/20 z-2"></div>
+    <div class="absolute inset-0 bg-linear-to-r from-noir/95 via-noir/40 to-transparent z-2"></div>
   </div>
 
+  <!-- Le contenu passe en z-10 pour rester net au-dessus du flou d'arrière-plan -->
   <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
-    <div class="grid md:grid-cols-2 items-center gap-12">
+    <div class="grid md:grid-cols-2 items-center gap-16">
 
-      <!-- Texte -->
-      <div class="max-w-xl">
-        <div class="flex items-center gap-4 mb-6 stagger-item" style="animation-delay: 0.1s;">
-          <span class="h-px w-12 bg-vin"></span>
-          <span class="uppercase tracking-[0.3em] text-xs text-creme/70 font-medium">Cuisine africaine d'exception</span>
+      <!-- Colonne 1 : Le Texte (Reste 100% protégé et intact) -->
+      <div class="max-w-xl z-10">
+        <div class="flex items-center gap-4 mb-6 stagger-item opacity-0" style="animation-delay: 0.15s;">
+          <span class="h-[1px] w-8 bg-vin"></span>
+          <span class="uppercase tracking-[0.4em] text-[10px] text-creme/60 font-semibold">Cuisine africaine d'exception</span>
         </div>
-        <h1 class="font-serif text-5xl md:text-7xl text-creme mb-6 stagger-item" style="animation-delay: 0.25s;">
-          Food<span class="text-vin">House</span>
+        
+        <h1 class="font-serif text-5xl md:text-7xl text-creme mb-6 tracking-wide stagger-item opacity-0 leading-none" style="animation-delay: 0.3s;">
+          Food<span class="text-vin font-light italic tracking-tight">House</span>
         </h1>
-        <p class="text-creme/70 text-lg mb-10 stagger-item" style="animation-delay: 0.4s;">
-          Là où les épices d'Afrique rencontrent l'art de la table.
+        
+        <p class="text-creme/60 text-base md:text-lg mb-10 max-w-md font-light leading-relaxed stagger-item opacity-0" style="animation-delay: 0.45s;">
+          Là où les épices ancestrales du continent rencontrent l'exigence de la haute table moderne.
         </p>
-        <div class="flex flex-wrap gap-4 stagger-item" style="animation-delay: 0.55s;">
-          <a href="#" class="bg-vin text-white font-semibold py-3 px-8 rounded-full">Réserver</a>
-          <a href="#" class="border border-creme/25 text-creme font-semibold py-3 px-8 rounded-full">Menu</a>
+        
+        <div class="flex flex-wrap gap-5 stagger-item opacity-0" style="animation-delay: 0.6s;">
+          <a href="#" class="bg-vin hover:bg-vin/90 text-white font-medium text-sm tracking-wider uppercase py-4 px-9 transition-all duration-300 shadow-2xl shadow-vin/10 hover:shadow-vin/30 border border-vin">
+            Réserver
+          </a>
+          <a href="#" class="border border-creme/20 text-creme hover:text-white hover:border-creme/60 font-medium text-sm tracking-wider uppercase py-4 px-9 transition-all duration-300">
+            Découvrir le Menu
+          </a>
         </div>
       </div>
 
-      <!-- Carrousel (ROUE ) -->
-      <div class="relative hidden md:flex justify-center items-center" style="height: 500px;">
+      <!-- Colonne 2 : Carrousel 3D Horizontal (Isolé sur la droite) -->
+      <div class="relative hidden md:flex justify-center items-center overflow-visible select-none pointer-events-none" style="height: 450px;" id="parallax-wheel">
         
-        <!-- Halo central -->
-        <div class="absolute w-52 h-52 rounded-full bg-noir/40 backdrop-blur-md border border-creme/10 z-0"></div>
-
-        <!-- La roue (Animation Horaire) -->
-        <div class="wheel absolute w-full h-full">
+        <div class="premium-slider-3d">
           
-          <div class="dish-slot dish-slot-1">
-            <img src="/images/plats/plat-1.png" alt="Plat 1" class="dish-img w-[180px] h-[180px] object-contain" />
+          <!-- Plat 1 -->
+          <div class="slider-card sc-1">
+            <img src="/images/plats/plat-1.png" alt="Plat 1" class="w-52 h-52 object-contain dish-filter" />
           </div>
           
-          <div class="dish-slot dish-slot-2">
-            <img src="/images/plats/plat-2.png" alt="Plat 2" class="dish-img w-[180px] h-[180px] object-contain" />
+          <!-- Plat 2 -->
+          <div class="slider-card sc-2">
+            <img src="/images/plats/plat-2.png" alt="Plat 2" class="w-52 h-52 object-contain dish-filter" />
           </div>
           
-          <div class="dish-slot dish-slot-3">
-            <img src="/images/plats/plat-3.png" alt="Plat 3" class="dish-img w-[180px] h-[180px] object-contain" />
+          <!-- Plat 3 -->
+          <div class="slider-card sc-3">
+            <img src="/images/plats/plat-3.png" alt="Plat 3" class="w-52 h-52 object-contain dish-filter" />
           </div>
 
         </div>
@@ -65,86 +74,103 @@
 
 </section>
 
+<script>
+  // Effet de parallaxe sur la scène (Uniquement sur ordinateur)
+  const heroScene = document.getElementById('hero-scene');
+  const bg = document.getElementById('parallax-bg');
+  const wheel = document.getElementById('parallax-wheel');
+
+  if (heroScene && window.innerWidth > 768) {
+    heroScene.addEventListener('mousemove', (e) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      
+      const x = (clientX / innerWidth) - 0.5;
+      const y = (clientY / innerHeight) - 0.5;
+
+      if (bg) bg.style.transform = `scale(1.1) translate(${x * 15}px, ${y * 15}px)`;
+      if (wheel) wheel.style.transform = `translate(${x * -25}px, ${y * -15}px)`;
+    });
+  }
+</script>
+
 <style is:global>
-  :root { --noir: #0a0a0a; --vin: #800020; --creme: #f5f5dc; }
+  :root { --noir: #090909; --vin: #630f25; --creme: #f9f6f0; }
   .bg-noir { background-color: var(--noir); }
   .bg-vin { background-color: var(--vin); }
   .text-vin { color: var(--vin); }
   .text-creme { color: var(--creme); }
 
-  /* Animation de la roue : Sens Horaire (0 -> 120 -> 240 -> 360) */
-  .wheel {
-    animation: wheelRotateClockwise 20s cubic-bezier(0.85, 0, 0.15, 1) infinite;
-    transform-origin: center center;
+  /* Grain cinéma argentique en arrière-plan */
+  .premium-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.02;
+    z-index: 3;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://w3.org id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  .dish-filter {
+    filter: drop-shadow(0 30px 25px rgba(0, 0, 0, 0.5));
+  }
+
+  .premium-slider-3d {
     position: relative;
     width: 100%;
     height: 100%;
+    perspective: 1200px;
+    transform-style: preserve-3d;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
   }
 
-  @keyframes wheelRotateClockwise {
-    0%, 25%   { transform: rotate(0deg); }
-    33%, 58%  { transform: rotate(120deg); }
-    66%, 91%  { transform: rotate(240deg); }
-    100%      { transform: rotate(360deg); }
-  }
-
-  .dish-slot {
+  .slider-card {
     position: absolute;
-    width: 180px;
-    height: 180px;
+    transform-style: preserve-3d;
+    will-change: transform, opacity, filter;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    width: 240px;
+    height: 240px;
   }
 
-  /* Positionnement initial des 3 slots */
-  .dish-slot-1 { transform: rotate(0deg) translateY(-200px); }
-  .dish-slot-2 { transform: rotate(120deg) translateY(-200px); }
-  .dish-slot-3 { transform: rotate(240deg) translateY(-200px); }
+  .sc-1 { animation: slide3D-1 18s cubic-bezier(0.76, 0, 0.24, 1) infinite; }
+  .sc-2 { animation: slide3D-2 18s cubic-bezier(0.76, 0, 0.24, 1) infinite; }
+  .sc-3 { animation: slide3D-3 18s cubic-bezier(0.76, 0, 0.24, 1) infinite; }
 
-  /* Contre-rotation pour garder les images droites (Sens Anti-Horaire) */
-  .dish-img { transform-origin: center center; }
-
-  /* Image 1 : Compense la roue (0 -> -120 -> -240 -> -360) */
-  .dish-slot-1 .dish-img {
-    animation: counter1 20s cubic-bezier(0.85, 0, 0.15, 1) infinite;
-  }
-  @keyframes counter1 {
-    0%, 25%   { transform: rotate(0deg); }
-    33%, 58%  { transform: rotate(-120deg); }
-    66%, 91%  { transform: rotate(-240deg); }
-    100%      { transform: rotate(-360deg); }
+  @keyframes slide3D-1 {
+    0%, 28%    { transform: translateX(0) translateZ(100px) scale(1.1); opacity: 1; filter: blur(0); z-index: 30; }
+    33%, 61%   { transform: translateX(160px) translateZ(-150px) scale(0.85); opacity: 0.35; filter: blur(4px); z-index: 10; }
+    66%, 94%   { transform: translateX(-160px) translateZ(-150px) scale(0.85); opacity: 0.35; filter: blur(4px); z-index: 10; }
+    100%       { transform: translateX(0) translateZ(100px) scale(1.1); opacity: 1; filter: blur(0); z-index: 30; }
   }
 
-  /* Image 2 : Offset initial de -120deg puis suit le mouvement */
-  .dish-slot-2 .dish-img {
-    animation: counter2 20s cubic-bezier(0.85, 0, 0.15, 1) infinite;
-  }
-  @keyframes counter2 {
-    0%, 25%   { transform: rotate(-120deg); }
-    33%, 58%  { transform: rotate(-240deg); }
-    66%, 91%  { transform: rotate(-360deg); }
-    100%      { transform: rotate(-480deg); }
+  @keyframes slide3D-2 {
+    0%, 28%    { transform: translateX(160px) translateZ(-150px) scale(0.85); opacity: 0.35; filter: blur(4px); z-index: 10; }
+    33%, 61%   { transform: translateX(-160px) translateZ(-150px) scale(0.85); opacity: 0.35; filter: blur(4px); z-index: 10; }
+    66%, 94%   { transform: translateX(0) translateZ(100px) scale(1.1); opacity: 1; filter: blur(0); z-index: 30; }
+    100%       { transform: translateX(160px) translateZ(-150px) scale(0.85); opacity: 0.35; filter: blur(4px); z-index: 10; }
   }
 
-  /* Image 3 : Offset initial de -240deg puis suit le mouvement */
-  .dish-slot-3 .dish-img {
-    animation: counter3 20s cubic-bezier(0.85, 0, 0.15, 1) infinite;
-  }
-  @keyframes counter3 {
-    0%, 25%   { transform: rotate(-240deg); }
-    33%, 58%  { transform: rotate(-360deg); }
-    66%, 91%  { transform: rotate(-480deg); }
-    100%      { transform: rotate(-600deg); }
+  @keyframes slide3D-3 {
+    0%, 28%    { transform: translateX(-160px) translateZ(-150px) scale(0.85); opacity: 0.35; filter: blur(4px); z-index: 10; }
+    33%, 61%   { transform: translateX(0) translateZ(100px) scale(1.1); opacity: 1; filter: blur(0); z-index: 30; }
+    66%, 94%   { transform: translateX(160px) translateZ(-150px) scale(0.85); opacity: 0.35; filter: blur(4px); z-index: 10; }
+    100%       { transform: translateX(-160px) translateZ(-150px) scale(0.85); opacity: 0.35; filter: blur(4px); z-index: 10; }
   }
 
-  /* Animations standards */
-  .animate-kenburns { animation: kenburns 24s ease-out forwards; }
-  @keyframes kenburns { 0% { transform: scale(1.1); } 100% { transform: scale(1); } }
-  .stagger-item { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
-  @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-kenburns { animation: kenburns 30s ease-out infinite alternate; }
+  @keyframes kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.06); } }
+
+  .stagger-item { animation: premiumReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  @keyframes premiumReveal { 
+    from { opacity: 0; transform: translateY(35px); filter: blur(5px); } 
+    to { opacity: 1; transform: translateY(0); filter: blur(0); } 
+  }
 </style>
-

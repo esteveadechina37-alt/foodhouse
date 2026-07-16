@@ -1,59 +1,155 @@
 ---
-// Aucune logique particulière, juste du markup
+// Navbar FoodHouse avec Logo Classique
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 glass transition-all duration-300" id="navbar">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="#" class="text-2xl font-serif font-bold text-creme tracking-wide">
-      FoodHouse
+<nav
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent border-b border-transparent"
+  id="navbar"
+>
+  <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center transition-all duration-300" id="navbar-inner">
+
+    <!-- LOGO CLASSIQUE ET PRESTIGIEUX -->
+    <a href="#" class="flex items-center gap-3 group">
+      <!-- Monogramme / Icône -->
+      <div class="relative w-10 h-10 flex items-center justify-center border border-vin/30 rounded-full group-hover:border-vin transition-colors duration-500">
+        <span class="font-serif text-sm font-bold text-vin tracking-tighter">FH</span>
+        <!-- Détails classiques (points cardinaux) -->
+        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-vin rounded-full"></div>
+        <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-vin rounded-full"></div>
+      </div>
+      
+      <!-- Texte du Logo -->
+      <div class="flex flex-col leading-none">
+        <span class="text-xl font-serif font-bold text-creme tracking-[0.1em] uppercase">
+          Food<span class="text-vin">House</span>
+        </span>
+        <span class="text-[8px] uppercase tracking-[0.4em] text-creme/40 mt-1">Gastronomie Africaine</span>
+      </div>
     </a>
-    
+
     <!-- Liens Desktop -->
-    <ul class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-creme/80">
-      <li><a href="#experience" class="hover:text-vin transition-colors">À propos</a></li>
-      <li><a href="#menu" class="hover:text-vin transition-colors">Menu</a></li>
-      <li><a href="#galerie" class="hover:text-vin transition-colors">Galerie</a></li>
-      <li><a href="#contact" class="hover:text-vin transition-colors">Contact</a></li>
+    <ul class="hidden md:flex space-x-10 text-sm uppercase tracking-widest text-creme/80">
+      <li><a href="#experience" class="nav-link relative py-1">À propos</a></li>
+      <li><a href="#menu" class="nav-link relative py-1">Menu</a></li>
+      <li><a href="#galerie" class="nav-link relative py-1">Galerie</a></li>
+      <li><a href="#contact" class="nav-link relative py-1">Contact</a></li>
     </ul>
 
-    <!-- Bouton Réserver desktop -->
-    <a href="#reservation" class="hidden md:inline-block bg-vin hover:bg-vin/90 text-white font-semibold py-2 px-6 rounded-full transition-transform duration-250 hover:scale-105 shadow-lg">
+    <!-- Bouton Réservation -->
+    <a
+      href="#reservation"
+      class="hidden md:inline-block bg-vin hover:bg-vin/90 text-white font-semibold py-2.5 px-7 rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-vin/20"
+    >
       Réserver
     </a>
 
-    <!-- Menu burger mobile -->
-    <button class="md:hidden text-creme" id="menu-toggle" aria-label="Menu">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    <!-- Bouton burger mobile -->
+    <button
+      class="md:hidden relative w-9 h-9 flex flex-col justify-center items-center gap-1.5 text-creme"
+      id="menu-toggle"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="burger-line block w-6 h-0.5 bg-creme transition-all duration-300 origin-center"></span>
+      <span class="burger-line block w-6 h-0.5 bg-creme transition-all duration-300 origin-center"></span>
+      <span class="burger-line block w-6 h-0.5 bg-creme transition-all duration-300 origin-center"></span>
     </button>
   </div>
-  
-  <!-- Menu mobile (caché par défaut) -->
-  <div id="mobile-menu" class="hidden md:hidden bg-noir/95 px-6 pb-6 space-y-4">
-    <a href="#experience" class="block text-creme/80 hover:text-vin transition-colors uppercase tracking-widest text-sm">À propos</a>
-    <a href="#menu" class="block text-creme/80 hover:text-vin transition-colors uppercase tracking-widest text-sm">Menu</a>
-    <a href="#galerie" class="block text-creme/80 hover:text-vin transition-colors uppercase tracking-widest text-sm">Galerie</a>
-    <a href="#contact" class="block text-creme/80 hover:text-vin transition-colors uppercase tracking-widest text-sm">Contact</a>
-    <a href="#reservation" class="inline-block bg-vin text-white px-5 py-2 rounded-full text-sm font-semibold">Réserver</a>
+
+  <!-- Menu mobile -->
+  <div
+    id="mobile-menu"
+    class="md:hidden overflow-hidden max-h-0 transition-[max-height] duration-500 ease-in-out bg-noir/95 backdrop-blur-xl border-b border-creme/10"
+  >
+    <div class="px-6 pt-2 pb-8 space-y-5">
+      <a href="#experience" class="mobile-link block text-creme/80 uppercase tracking-widest text-sm">À propos</a>
+      <a href="#menu" class="mobile-link block text-creme/80 uppercase tracking-widest text-sm">Menu</a>
+      <a href="#galerie" class="mobile-link block text-creme/80 uppercase tracking-widest text-sm">Galerie</a>
+      <a href="#contact" class="mobile-link block text-creme/80 uppercase tracking-widest text-sm">Contact</a>
+      <a
+        href="#reservation"
+        class="mobile-link inline-block bg-vin text-white px-6 py-2.5 rounded-full text-sm font-semibold mt-2"
+      >
+        Réserver
+      </a>
+    </div>
   </div>
 </nav>
 
 <script>
-  // Toggle menu mobile
+  const nav = document.getElementById('navbar');
+  const navInner = document.getElementById('navbar-inner');
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('mobile-menu');
-  toggle?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
-  });
-  
-  // Effet navbar au scroll : plus opaque + ombre
-  window.addEventListener('scroll', () => {
-    const nav = document.getElementById('navbar');
-    if (window.scrollY > 20) {
-      nav?.classList.add('shadow-lg', 'bg-noir/90');
-      nav?.classList.remove('bg-noir/70');
-    } else {
-      nav?.classList.remove('shadow-lg', 'bg-noir/90');
-      nav?.classList.add('bg-noir/70');
+  const lines = toggle?.querySelectorAll('.burger-line');
+  const mobileLinks = menu?.querySelectorAll('.mobile-link');
+
+  let menuOpen = false;
+
+  function openMenu() {
+    menuOpen = true;
+    if (menu) menu.style.maxHeight = menu.scrollHeight + 'px';
+    toggle?.setAttribute('aria-expanded', 'true');
+    if (lines && lines.length === 3) {
+      (lines[0] as HTMLElement).style.transform = 'translateY(8px) rotate(45deg)';
+      (lines[1] as HTMLElement).style.opacity = '0';
+      (lines[2] as HTMLElement).style.transform = 'translateY(-8px) rotate(-45deg)';
     }
+  }
+
+  function closeMenu() {
+    menuOpen = false;
+    if (menu) menu.style.maxHeight = '0px';
+    toggle?.setAttribute('aria-expanded', 'false');
+    if (lines && lines.length === 3) {
+      (lines[0] as HTMLElement).style.transform = 'none';
+      (lines[1] as HTMLElement).style.opacity = '1';
+      (lines[2] as HTMLElement).style.transform = 'none';
+    }
+  }
+
+  toggle?.addEventListener('click', () => {
+    menuOpen ? closeMenu() : openMenu();
   });
+
+  mobileLinks?.forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      nav?.classList.add('bg-noir/90', 'backdrop-blur-xl', 'border-creme/10', 'shadow-lg');
+      nav?.classList.remove('bg-transparent', 'border-transparent');
+      navInner?.classList.replace('py-5', 'py-3');
+    } else {
+      nav?.classList.remove('bg-noir/90', 'backdrop-blur-xl', 'border-creme/10', 'shadow-lg');
+      nav?.classList.add('bg-transparent', 'border-transparent');
+      navInner?.classList.replace('py-3', 'py-5');
+    }
+  }, { passive: true });
 </script>
+
+<style is:global>
+  :root {
+    --vin: #800020;
+    --noir: #0a0a0a;
+    --creme: #f5f5dc;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 1px;
+    background-color: var(--vin);
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover { color: var(--vin); }
+  .nav-link:hover::after { width: 100%; }
+
+  .mobile-link { transition: all 0.25s ease; }
+  .mobile-link:hover { color: var(--vin); transform: translateX(4px); }
+</style>

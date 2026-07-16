@@ -1,0 +1,79 @@
+---
+// Section Expérience - FoodHouse (Version Fixe : Image Gauche / Texte Droite)
+---
+
+<section id="experience" class="py-24 md:py-32 bg-creme overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    
+    <div class="grid md:grid-cols-2 items-center gap-16">
+      
+      <!-- Colonne Image (À GAUCHE) -->
+      <div class="relative flex justify-center items-center order-2 md:order-1">
+        <div class="relative group">
+          <!-- Image fixe avec une ombre portée élégante -->
+          <img 
+            src="/images/plats/plat-4.png" 
+            alt="Plat signature FoodHouse" 
+            class="w-[300px] md:w-[500px] h-auto object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105"
+          />
+          
+          <!-- Décoration subtile en arrière-plan -->
+          <div class="absolute -inset-4 bg-vin/5 rounded-full -z-10 blur-2xl"></div>
+        </div>
+      </div>
+
+      <!-- Colonne Texte (À DROITE) -->
+      <div class="stagger-item order-1 md:order-2">
+        <span class="uppercase tracking-[0.3em] text-xs text-vin/70 font-medium">Pourquoi nous</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-noir mt-4 mb-8">L'expérience FoodHouse</h2>
+        
+        <div class="space-y-10">
+          <!-- Item 1 -->
+          <div class="flex gap-6 group">
+            <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-sm border border-vin/5 group-hover:bg-vin group-hover:text-white transition-colors duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="group-hover:stroke-white transition-colors"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div>
+              <h3 class="font-serif text-2xl text-noir mb-2">Produits frais</h3>
+              <p class="text-noir/60 leading-relaxed">Tous nos ingrédients sont sourcés chaque matin auprès de producteurs locaux, garantissant saveurs et qualité inégalées.</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="flex gap-6 group">
+            <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-sm border border-vin/5 group-hover:bg-vin group-hover:text-white transition-colors duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="group-hover:stroke-white transition-colors"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div>
+              <h3 class="font-serif text-2xl text-noir mb-2">Épices rares</h3>
+              <p class="text-noir/60 leading-relaxed">Un voyage sensoriel à travers des mélanges d'épices venus du continent, torréfiés et préparés sur place chaque jour.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  /* Styles épurés pour la version fixe */
+  #experience {
+    background-color: #f5f5dc; /* Couleur crème */
+  }
+
+  .stagger-item {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px );
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
