@@ -1,52 +1,69 @@
 ---
-// Section Expérience - FoodHouse (Version Fixe : Image Gauche / Texte Droite)
+// Section Expérience - FoodHouse avec Pluie de feuilles et animation au défilement (Scroll)
 ---
 
-<section id="experience" class="py-24 md:py-32 bg-creme overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 md:px-12">
-    
-    <div class="grid md:grid-cols-2 items-center gap-16">
+<section id="experience" class="relative py-24 md:py-32 bg-creme overflow-hidden">
+  
+  <!-- Aura d'arrière-plan couleur Vin floutée -->
+  <div class="absolute -top-20 -left-20 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-vin/10 rounded-full blur-3xl pointer-events-none z-0"></div>
+  <div class="absolute -bottom-20 -right-20 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-vin/5 rounded-full blur-3xl pointer-events-none z-0"></div>
+
+  <!-- Pluie de feuilles couleur Vin -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none z-1">
+    <svg class="leaf-particle lf-1 absolute text-vin/30" xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M2 22C2 12 10 4 22 2c0 10-8 18-20 20z"/></svg>
+    <svg class="leaf-particle lf-2 absolute text-vin/40" xmlns="http://w3.org" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2 22C2 12 10 4 22 2c0 10-8 18-20 20z"/></svg>
+    <svg class="leaf-particle lf-3 absolute text-vin/25" xmlns="http://w3.org" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M2 22C2 12 10 4 22 2c0 10-8 18-20 20z"/></svg>
+    <svg class="leaf-particle lf-4 absolute text-vin/35" xmlns="http://w3.org" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2 22C2 12 10 4 22 2c0 10-8 18-20 20z"/></svg>
+    <svg class="leaf-particle lf-5 absolute text-vin/20" xmlns="http://w3.org" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2 22C2 12 10 4 22 2c0 10-8 18-20 20z"/></svg>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+    <div class="grid md:grid-cols-2 items-center gap-20">
       
       <!-- Colonne Image (À GAUCHE) -->
-      <div class="relative flex justify-center items-center order-2 md:order-1">
-        <div class="relative group">
-          <!-- Image fixe avec une ombre portée élégante -->
+      <!-- MODIFICATION : La classe scroll-reveal attend le signal JS pour s'animer -->
+      <div class="relative flex justify-center items-center order-2 md:order-1 card-3d-scene scroll-reveal" style="transition-delay: 0.7s;">
+        <div class="relative group card-3d-element will-change-transform">
           <img 
             src="/images/plats/plat-4.png" 
             alt="Plat signature FoodHouse" 
-            class="w-[300px] md:w-[500px] h-auto object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105"
+            class="w-[300px] md:w-[480px] h-auto object-contain image-shadow select-none pointer-events-none transition-transform duration-500"
           />
-          
-          <!-- Décoration subtile en arrière-plan -->
-          <div class="absolute -inset-4 bg-vin/5 rounded-full -z-10 blur-2xl"></div>
+          <div class="absolute -inset-6 bg-vin/10 rounded-full -z-10 blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-700"></div>
         </div>
       </div>
 
       <!-- Colonne Texte (À DROITE) -->
-      <div class="stagger-item order-1 md:order-2">
-        <span class="uppercase tracking-[0.3em] text-xs text-vin/70 font-medium">Pourquoi nous</span>
-        <h2 class="font-serif text-4xl md:text-5xl text-noir mt-4 mb-8">L'expérience FoodHouse</h2>
+      <div class="order-1 md:order-2">
+        <!-- MODIFICATION : Chaque élément texte utilise maintenant scroll-reveal -->
+        <span class="scroll-reveal inline-block uppercase tracking-[0.4em] text-[10px] text-vin/80 font-bold" style="transition-delay: 0.1s;">
+          Pourquoi nous
+        </span>
+        
+        <h2 class="scroll-reveal font-serif text-4xl md:text-5xl text-noir mt-4 mb-10 tracking-wide leading-tight" style="transition-delay: 0.25s;">
+          L'expérience FoodHouse
+        </h2>
         
         <div class="space-y-10">
           <!-- Item 1 -->
-          <div class="flex gap-6 group">
-            <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-sm border border-vin/5 group-hover:bg-vin group-hover:text-white transition-colors duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="group-hover:stroke-white transition-colors"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <div class="scroll-reveal flex gap-6 group items-start" style="transition-delay: 0.4s;">
+            <div class="w-14 h-14 bg-white text-vin rounded-none flex items-center justify-center shrink-0 border border-vin/10 group-hover:bg-vin group-hover:text-white transition-all duration-500 ease-out shadow-xs group-hover:shadow-lg group-hover:shadow-vin/20">
+              <svg xmlns="http://w3.org" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" class="transition-transform duration-500 group-hover:scale-110"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             </div>
             <div>
-              <h3 class="font-serif text-2xl text-noir mb-2">Produits frais</h3>
-              <p class="text-noir/60 leading-relaxed">Tous nos ingrédients sont sourcés chaque matin auprès de producteurs locaux, garantissant saveurs et qualité inégalées.</p>
+              <h3 class="font-serif text-xl md:text-2xl text-noir mb-2.5 transition-colors duration-300 group-hover:text-vin">Produits frais</h3>
+              <p class="text-noir/60 leading-relaxed font-light text-sm md:text-base">Tous nos ingrédients sont sourcés chaque matin auprès de producteurs locaux, garantissant saveurs et quality inégalées.</p>
             </div>
           </div>
 
           <!-- Item 2 -->
-          <div class="flex gap-6 group">
-            <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-sm border border-vin/5 group-hover:bg-vin group-hover:text-white transition-colors duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="group-hover:stroke-white transition-colors"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div class="scroll-reveal flex gap-6 group items-start" style="transition-delay: 0.55s;">
+            <div class="w-14 h-14 bg-white text-vin rounded-none flex items-center justify-center shrink-0 border border-vin/10 group-hover:bg-vin group-hover:text-white transition-all duration-500 ease-out shadow-xs group-hover:shadow-lg group-hover:shadow-vin/20">
+              <svg xmlns="http://w3.org" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" class="transition-transform duration-500 group-hover:scale-110"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
             <div>
-              <h3 class="font-serif text-2xl text-noir mb-2">Épices rares</h3>
-              <p class="text-noir/60 leading-relaxed">Un voyage sensoriel à travers des mélanges d'épices venus du continent, torréfiés et préparés sur place chaque jour.</p>
+              <h3 class="font-serif text-xl md:text-2xl text-noir mb-2.5 transition-colors duration-300 group-hover:text-vin">Épices rares</h3>
+              <p class="text-noir/60 leading-relaxed font-light text-sm md:text-base">Un voyage sensoriel à travers des mélanges d'épices venus du continent, torréfiés et préparés sur place chaque jour.</p>
             </div>
           </div>
         </div>
@@ -56,24 +73,96 @@
   </div>
 </section>
 
+<script>
+  // --- ACTIVATION DES ANIMATIONS AU DEFILEMENT (Intersection Observer) ---
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15 // Déclenche l'animation quand 15% de la section est visible
+  };
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Sélectionne tous les éléments à révéler à l'intérieur de cette section
+        const elementsToReveal = entry.target.querySelectorAll('.scroll-reveal');
+        elementsToReveal.forEach((el) => {
+          el.classList.add('active');
+        });
+        // Optionnel : on arrête d'observer une fois l'animation jouée
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // On lance l'observation sur la section Expérience
+  const targetSection = document.getElementById('experience');
+  if (targetSection) {
+    revealObserver.observe(targetSection);
+  }
+
+  // --- EFFET DE PARALLAXE SOURIS (Inchangé) ---
+  const scene = document.querySelector('.card-3d-scene');
+  const card = document.querySelector('.card-3d-element') as HTMLElement;
+
+  if (scene && card && window.innerWidth > 768) {
+    scene.addEventListener('mousemove', (e: Event) => {
+      const mouseEvent = e as MouseEvent;
+      const rect = (scene as HTMLElement).getBoundingClientRect();
+      const x = (mouseEvent.clientX - rect.left) / rect.width - 0.5;
+      const y = (mouseEvent.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `rotateX(${y * -12}deg) rotateY(${x * 12}deg) scale(1.02)`;
+    });
+
+    scene.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+    });
+  }
+</script>
+
 <style is:global>
-  /* Styles épurés pour la version fixe */
-  #experience {
-    background-color: #f5f5dc; /* Couleur crème */
+  :root { --noir: #090909; --vin: #630f25; --creme: #f9f6f0; }
+  #experience { background-color: var(--creme); }
+  .card-3d-scene { perspective: 1000px; }
+  .card-3d-element { transform-style: preserve-3d; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+  .image-shadow { filter: drop-shadow(0 35px 30px rgba(0, 0, 0, 0.12)); }
+
+  /* --- ÉTAT INITIAL POUR LES ÉLÉMENTS À GAUGHE/DROITE (Invisible et décalé) --- */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    filter: blur(4px);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity, filter;
   }
 
-  .stagger-item {
-    animation: fadeInUp 1s ease-out forwards;
+  /* --- ÉTAT ACTIVÉ PAR LE SCRIPT (Visible et fluide) --- */
+  .scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
   }
 
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px );
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* Animation des feuilles (Inchangée) */
+  .leaf-particle {
+    top: -40px;
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: leafFall 7s linear infinite;
+  }
+  .lf-1 { left: 15%; animation-delay: 0s; animation-duration: 8s; }
+  .lf-2 { left: 40%; animation-delay: 2s; animation-duration: 6s; }
+  .lf-3 { left: 65%; animation-delay: 4.5s; animation-duration: 9.5s; }
+  .lf-4 { left: 85%; animation-delay: 1.2s; animation-duration: 7.2s; }
+  .lf-5 { left: 30%; animation-delay: 3.5s; animation-duration: 8.5s; }
+
+  @keyframes leafFall {
+    0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(110vh) rotate(420deg) translateX(40px); opacity: 0; }
   }
 </style>
+    
