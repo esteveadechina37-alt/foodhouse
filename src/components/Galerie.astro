@@ -1,0 +1,242 @@
+---
+// Section Galerie Haute Couture - FoodHouse Ultra Premium
+---
+
+<section id="galerie" class="relative bg-[#0B0B0B] py-32 overflow-hidden border-t border-b border-creme/5">
+  <!-- Lignes de fond subtiles style architecture de luxe -->
+  <div class="absolute inset-0 grid grid-cols-4 pointer-events-none opacity-5">
+    <div class="border-r border-creme"></div>
+    <div class="border-r border-creme"></div>
+    <div class="border-r border-creme"></div>
+    <div></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+    
+    <!-- En-tête Haute Couture -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-24 galerie-reveal-header opacity-0 transform translate-y-8 transition-all duration-[1200ms] cubic-bezier(0.16, 1, 0.3, 1)">
+      <div>
+        <span class="text-creme/40 uppercase tracking-[0.3em] text-[10px] block mb-4 font-sans">Esthétique Culinaire</span>
+        <h2 class="text-4xl md:text-6xl font-serif text-creme antialiased font-extralight tracking-tight leading-none">
+          L'Émotion <br class="hidden md:inline"/><span class="font-serif italic text-creme/70 pl-0 md:pl-12">par le Visuel</span>
+        </h2>
+      </div>
+      <div class="mt-6 md:mt-0 max-w-xs">
+        <p class="text-creme/50 text-xs font-light leading-relaxed font-sans tracking-wide">
+          Chaque détail est capturé pour transcender le goût. Une immersion brute dans l'atmosphère de notre maison.
+        </p>
+      </div>
+    </div>
+
+    <!-- Collection de pièces d'art (Grille à double rythme) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 items-start" id="galerie-observer">
+      
+      <!-- Œuvre 01 : Plat Signature -->
+      <div class="relative galerie-reveal-item group cursor-pointer" data-speed="1">
+        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
+          <img 
+            src="/images/plats/plat-4.png" 
+            alt="Plat signature aux crevettes" 
+            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
+          />
+          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
+        </div>
+        <!-- Infos minimalistes déportées -->
+        <div class="mt-4 flex justify-between items-start font-serif">
+          <div>
+            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">Le Signature</h3>
+            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Création iodée</p>
+          </div>
+          <span class="text-creme/20 text-xs font-sans tracking-widest">01 //</span>
+        </div>
+      </div>
+
+      <!-- Œuvre 02 : La Fraîcheur (Décalée et surélevée au scroll) -->
+      <div class="relative galerie-reveal-item group cursor-pointer lg:mt-16" style="transition-delay: 0.15s;" data-speed="1.1">
+        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
+          <img 
+            src="/images/plats/plat-7.png" 
+            alt="Salade fraîcheur et jus d'orange" 
+            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
+          />
+          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
+        </div>
+        <div class="mt-4 flex justify-between items-start font-serif">
+          <div>
+            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">La Fraîcheur</h3>
+            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Sélection du potager</p>
+          </div>
+          <span class="text-creme/20 text-xs font-sans tracking-widest">02 //</span>
+        </div>
+      </div>
+
+      <!-- Œuvre 03 : L'Art de la Table -->
+      <div class="relative galerie-reveal-item group cursor-pointer" style="transition-delay: 0.3s;" data-speed="0.9">
+        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
+          <img 
+            src="/images/plats/plat-8.png" 
+            alt="Ambiance de la table" 
+            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
+          />
+          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
+        </div>
+        <div class="mt-4 flex justify-between items-start font-serif">
+          <div>
+            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">L'Art de la Table</h3>
+            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Atmosphère feutrée</p>
+          </div>
+          <span class="text-creme/20 text-xs font-sans tracking-widest">03 //</span>
+        </div>
+      </div>
+
+      <!-- Œuvre 04 : L'Écrin -->
+      <div class="relative galerie-reveal-item group cursor-pointer lg:mt-16" style="transition-delay: 0.45s;" data-speed="1.15">
+        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
+          <img 
+            src="/images/plats/plat-9.png" 
+            alt="Intérieur du restaurant moderne" 
+            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
+          />
+          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
+        </div>
+        <div class="mt-4 flex justify-between items-start font-serif">
+          <div>
+            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">L'Écrin</h3>
+            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Architecture & Design</p>
+          </div>
+          <span class="text-creme/20 text-xs font-sans tracking-widest">04 //</span>
+        </div>
+      </div>
+
+            <!-- Œuvre 09 -->
+      <div class="relative galerie-reveal-item group cursor-pointer">
+        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
+          <img 
+            src="/images/plats/plat-10.png" 
+            alt="Nouvelle création culinaire" 
+            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
+          />
+          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
+        </div>
+        <div class="mt-4 flex justify-between items-start font-serif">
+          <div>
+            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">L'Éveil</h3>
+            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Expérience</p>
+          </div>
+          <span class="text-creme/20 text-xs font-sans tracking-widest">05 //</span>
+        </div>
+      </div>
+
+      <!-- Œuvre 10 (Décalée) -->
+      <div class="relative galerie-reveal-item group cursor-pointer lg:mt-16" style="transition-delay: 0.1s;">
+        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
+          <img 
+            src="/images/plats/plat-11.png" 
+            alt="Détail culinaire" 
+            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
+          />
+          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
+        </div>
+        <div class="mt-4 flex justify-between items-start font-serif">
+          <div>
+            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">La Nuance</h3>
+            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Textures</p>
+          </div>
+          <span class="text-creme/20 text-xs font-sans tracking-widest">06 //</span>
+        </div>
+      </div>
+
+      <!-- Œuvre 11 -->
+      <div class="relative galerie-reveal-item group cursor-pointer" style="transition-delay: 0.2s;">
+        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
+          <img 
+            src="/images/plats/plat-12.png" 
+            alt="Plat d'exception" 
+            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
+          />
+          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
+        </div>
+        <div class="mt-4 flex justify-between items-start font-serif">
+          <div>
+            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">L'Héritage</h3>
+            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Savoir-faire</p>
+          </div>
+          <span class="text-creme/20 text-xs font-sans tracking-widest">07 //</span>
+        </div>
+      </div>
+
+      <!-- Œuvre 12 (Décalée) -->
+      <div class="relative galerie-reveal-item group cursor-pointer lg:mt-16" style="transition-delay: 0.3s;">
+        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
+          <img 
+            src="/images/plats/plat-13.png" 
+            alt="Atmosphère" 
+            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
+          />
+          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
+        </div>
+        <div class="mt-4 flex justify-between items-start font-serif">
+          <div>
+            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">L'Équilibre</h3>
+            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Maison</p>
+          </div>
+          <span class="text-creme/20 text-xs font-sans tracking-widest">08 //</span>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const ultraGalerieObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Apparition douce de l'en-tête
+        const header = document.querySelector('.galerie-reveal-header');
+        if(header) header.classList.remove('opacity-0', 'translate-y-8');
+        
+        // Apparition rythmée des images
+        const items = entry.target.querySelectorAll('.galerie-reveal-item');
+        items.forEach((item) => item.classList.add('galerie-reveal-active'));
+        ultraGalerieObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.02 });
+
+  const galerieContainer = document.getElementById('galerie-observer');
+  if (galerieContainer) {
+    ultraGalerieObserver.observe(galerieContainer);
+  }
+</script>
+
+<style is:global>
+  /* Base d'apparition */
+  .galerie-reveal-item {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+  
+  .galerie-reveal-item.galerie-reveal-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Préservation des structures de décalage premium sur grands écrans */
+    @media (min-width: 1024px) {
+    /* Maintien du décalage fluide pour toutes les colonnes paires (2, 4, 6, 8, 10, 12) sur grand écran */
+    .galerie-reveal-item:nth-child(2).galerie-reveal-active,
+    .galerie-reveal-item:nth-child(4).galerie-reveal-active,
+    .galerie-reveal-item:nth-child(6).galerie-reveal-active,
+    .galerie-reveal-item:nth-child(8).galerie-reveal-active,
+    .galerie-reveal-item:nth-child(10).galerie-reveal-active,
+    .galerie-reveal-item:nth-child(12).galerie-reveal-active {
+      transform: translateY(64px); 
+    }
+  }
+
+</style>
