@@ -1,5 +1,5 @@
 ---
-// Navbar FoodHouse avec Logo Classique
+// Navbar FoodHouse avec ScrollSpy (Suivi automatique des sections actives)
 ---
 
 <nav
@@ -13,7 +13,6 @@
       <!-- Monogramme / Icône -->
       <div class="relative w-10 h-10 flex items-center justify-center border border-vin/30 rounded-full group-hover:border-vin transition-colors duration-500">
         <span class="font-serif text-sm font-bold text-vin tracking-tighter">FH</span>
-        <!-- Détails classiques (points cardinaux) -->
         <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-vin rounded-full"></div>
         <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-vin rounded-full"></div>
       </div>
@@ -29,10 +28,10 @@
 
     <!-- Liens Desktop -->
     <ul class="hidden md:flex space-x-10 text-sm uppercase tracking-widest text-creme/80">
-      <li><a href="#experience" class="nav-link relative py-1">À propos</a></li>
-      <li><a href="#menu" class="nav-link relative py-1">Menu</a></li>
-      <li><a href="#galerie" class="nav-link relative py-1">Galerie</a></li>
-      <li><a href="#contact" class="nav-link relative py-1">Contact</a></li>
+      <li><a href="#experience" class="nav-link relative py-1" data-section="experience">À propos</a></li>
+      <li><a href="#menu" class="nav-link relative py-1" data-section="menu">Menu</a></li>
+      <li><a href="#galerie" class="nav-link relative py-1" data-section="galerie">Galerie</a></li>
+      <li><a href="#contact" class="nav-link relative py-1" data-section="contact">Contact</a></li>
     </ul>
 
     <!-- Bouton Réservation -->
@@ -63,10 +62,10 @@
     class="md:hidden overflow-hidden max-h-0 transition-[max-height] duration-500 ease-in-out bg-noir/95 backdrop-blur-xl border-b border-creme/10"
   >
     <div class="px-6 pt-2 pb-8 space-y-5">
-      <a href="#experience" class="mobile-link block text-creme/80 uppercase tracking-widest text-sm">À propos</a>
-      <a href="#menu" class="mobile-link block text-creme/80 uppercase tracking-widest text-sm">Menu</a>
-      <a href="#galerie" class="mobile-link block text-creme/80 uppercase tracking-widest text-sm">Galerie</a>
-      <a href="#contact" class="mobile-link block text-creme/80 uppercase tracking-widest text-sm">Contact</a>
+      <a href="#experience" class="mobile-link block text-creme/80 uppercase tracking-widest text-sm" data-section="experience">À propos</a>
+      <a href="#menu" class="mobile-link block text-creme/80 uppercase tracking-widest text-sm" data-section="menu">Menu</a>
+      <a href="#galerie" class="mobile-link block text-creme/80 uppercase tracking-widest text-sm" data-section="galerie">Galerie</a>
+      <a href="#contact" class="mobile-link block text-creme/80 uppercase tracking-widest text-sm" data-section="contact">Contact</a>
       <a
         href="#reservation"
         class="mobile-link inline-block bg-vin text-white px-6 py-2.5 rounded-full text-sm font-semibold mt-2"
@@ -84,6 +83,7 @@
   const menu = document.getElementById('mobile-menu');
   const lines = toggle?.querySelectorAll('.burger-line');
   const mobileLinks = menu?.querySelectorAll('.mobile-link');
+  const desktopLinks = document.querySelectorAll('.nav-link');
 
   let menuOpen = false;
 
@@ -117,6 +117,7 @@
     link.addEventListener('click', closeMenu);
   });
 
+  // Gestion du style de la Navbar au défilement
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) {
       nav?.classList.add('bg-noir/90', 'backdrop-blur-xl', 'border-creme/10', 'shadow-lg');
@@ -128,6 +129,43 @@
       navInner?.classList.replace('py-3', 'py-5');
     }
   }, { passive: true });
+
+  // --- LOGIQUE SCROLLSPY (INTERSECTION OBSERVER) ---
+  const sections = document.querySelectorAll('section[id]');
+  
+  const spyOptions = {
+    // Déclenche le changement quand la section occupe le milieu de l'écran
+    rootMargin: '-30% 0px -60% 0px',
+    threshold: 0
+  };
+
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        
+        // Mettre à jour les liens Desktop
+        desktopLinks.forEach(link => {
+          if (link.getAttribute('data-section') === id) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+
+        // Mettre à jour les liens Mobile
+        mobileLinks?.forEach(link => {
+          if (link.getAttribute('data-section') === id) {
+            link.classList.add('active-mobile');
+          } else {
+            link.classList.remove('active-mobile');
+          }
+        });
+      }
+    });
+  }, spyOptions);
+
+  sections.forEach(section => spyObserver.observe(section));
 </script>
 
 <style is:global>
@@ -137,6 +175,7 @@
     --creme: #f5f5dc;
   }
 
+  /* Style de base des liens */
   .nav-link::after {
     content: '';
     position: absolute;
@@ -147,8 +186,25 @@
     background-color: var(--vin);
     transition: width 0.3s ease;
   }
+  .nav-link { transition: color 0.3s ease; }
   .nav-link:hover { color: var(--vin); }
   .nav-link:hover::after { width: 100%; }
+
+  /* --- ÉTATS ACTIFS (SCROLLSPY) --- */
+  /* Style du lien de la section en cours sur Desktop */
+  .nav-link.active {
+    color: var(--vin) !important;
+  }
+  .nav-link.active::after {
+    width: 100% !important;
+  }
+
+  /* Style du lien de la section en cours sur Mobile */
+  .mobile-link.active-mobile {
+    color: var(--vin) !important;
+    padding-left: 6px;
+    border-left: 2px solid var(--vin);
+  }
 
   .mobile-link { transition: all 0.25s ease; }
   .mobile-link:hover { color: var(--vin); transform: translateX(4px); }
