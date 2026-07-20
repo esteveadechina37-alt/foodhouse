@@ -3,152 +3,221 @@
 ---
 
 <section id="reservation" class="py-28 md:py-40 bg-vin relative overflow-hidden text-creme">
-  
+
   <!-- Brume lumineuse subtile -->
   <div class="absolute top-0 left-0 w-full h-64 bg-noir/10 pointer-events-none"></div>
   <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-noir/20 rounded-full filter blur-[120px] pointer-events-none"></div>
 
   <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10" id="contact-observer">
-    
+
     <!-- En-tête -->
-    <div class="text-center mb-20 contact-reveal">
+    <div class="text-center mb-16 contact-reveal">
       <span class="uppercase tracking-[0.6em] text-[9px] text-creme/60 font-bold block mb-3">Nous trouver</span>
       <h2 class="font-serif text-5xl md:text-7xl font-extralight tracking-tight leading-none">
         Réservez <span class="italic font-light text-creme/80">votre table</span>
       </h2>
+
+      <!-- Séparateur signature -->
+      <div class="flex items-center justify-center gap-4 mt-8">
+        <span class="w-12 h-px bg-creme/25"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="text-creme/50">
+          <path d="M8 2v7a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V2" />
+          <path d="M10 11v11" />
+          <path d="M16 2c-1.5 2-1.5 5 0 7v12" />
+        </svg>
+        <span class="w-12 h-px bg-creme/25"></span>
+      </div>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-16 items-start">
-      
+    <div class="grid md:grid-cols-12 gap-16 items-start relative">
+
+      <!-- Séparateur vertical (desktop uniquement) -->
+      <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-creme/10 -translate-x-1/2"></div>
+
       <!-- Colonne gauche : Formulaire -->
-      <div class="contact-reveal" style="transition-delay: 0.1s;">
-        <form id="reservation-form" class="space-y-6" onsubmit="return sendToWhatsApp(event)">
-          <div>
-            <label for="name" class="block text-xs uppercase tracking-[0.2em] text-creme/70 mb-2">Nom complet</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name" 
-              required 
-              placeholder="Votre nom"
-              class="w-full bg-transparent border border-creme/30 rounded-lg px-5 py-4 text-creme placeholder-creme/30 focus:outline-none focus:border-creme/60 transition-colors"
-            />
+      <div class="md:col-span-7 contact-reveal" style="transition-delay: 0.1s;">
+        <div class="bg-noir/25 border border-creme/10 rounded-2xl p-7 md:p-10 backdrop-blur-sm shadow-2xl shadow-noir/30">
+
+          <div class="mb-8">
+            <h3 class="font-serif text-2xl font-light">Faire une réservation</h3>
+            <p class="text-creme/50 text-sm mt-1">Remplissez le formulaire, nous vous répondons sur WhatsApp.</p>
           </div>
-          <div>
-            <label for="phone" class="block text-xs uppercase tracking-[0.2em] text-creme/70 mb-2">Téléphone</label>
-            <input 
-              type="tel" 
-              id="phone" 
-              name="phone" 
-              required 
-              placeholder="+229 01 96 97 72 15"
-              class="w-full bg-transparent border border-creme/30 rounded-lg px-5 py-4 text-creme placeholder-creme/30 focus:outline-none focus:border-creme/60 transition-colors"
-            />
-          </div>
-          <div class="grid grid-cols-2 gap-4">
+
+          <form id="reservation-form" class="space-y-6" onsubmit="return sendToWhatsApp(event)">
             <div>
-              <label for="date" class="block text-xs uppercase tracking-[0.2em] text-creme/70 mb-2">Date</label>
-              <input 
-                type="date" 
-                id="date" 
-                name="date" 
-                required 
-                class="w-full bg-transparent border border-creme/30 rounded-lg px-5 py-4 text-creme placeholder-creme/30 focus:outline-none focus:border-creme/60 transition-colors"
-              />
+              <label for="name" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Nom complet</label>
+              <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-creme/35 pointer-events-none">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Votre nom"
+                  class="w-full bg-transparent border border-creme/20 rounded-lg pl-12 pr-5 py-3.5 text-creme placeholder-creme/25 focus:outline-none focus:border-creme/50 focus:bg-creme/[0.03] transition-colors"
+                />
+              </div>
             </div>
+
             <div>
-              <label for="couverts" class="block text-xs uppercase tracking-[0.2em] text-creme/70 mb-2">Couverts</label>
-              <select 
-                id="couverts" 
-                name="couverts" 
-                required 
-                class="w-full bg-noir/20 border border-creme/30 rounded-lg px-5 py-4 text-creme focus:outline-none focus:border-creme/60 transition-colors"
-              >
-                <option value="1">1 personne</option>
-                <option value="2" selected>2 personnes</option>
-                <option value="3">3 personnes</option>
-                <option value="4">4 personnes</option>
-                <option value="5">5 personnes</option>
-                <option value="6+">6+ personnes</option>
-              </select>
+              <label for="phone" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Téléphone</label>
+              <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-creme/35 pointer-events-none">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  placeholder="+229 01 96 97 72 15"
+                  class="w-full bg-transparent border border-creme/20 rounded-lg pl-12 pr-5 py-3.5 text-creme placeholder-creme/25 focus:outline-none focus:border-creme/50 focus:bg-creme/[0.03] transition-colors"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <label for="message" class="block text-xs uppercase tracking-[0.2em] text-creme/70 mb-2">Message (optionnel)</label>
-            <textarea 
-              id="message" 
-              name="message" 
-              rows="3" 
-              placeholder="Une demande particulière ?"
-              class="w-full bg-transparent border border-creme/30 rounded-lg px-5 py-4 text-creme placeholder-creme/30 focus:outline-none focus:border-creme/60 transition-colors"
-            ></textarea>
-          </div>
-          <button 
-            type="submit" 
-            class="w-full bg-white text-vin font-semibold py-4 px-8 rounded-full hover:bg-creme transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-white/20 flex items-center justify-center gap-3"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13 2 9 22 2z"/></svg>
-            Réserver via WhatsApp
-          </button>
-        </form>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="date" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Date</label>
+                <div class="relative">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-creme/35 pointer-events-none">
+                    <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  <input
+                    type="date"
+                    id="date"
+                    name="date"
+                    required
+                    class="w-full bg-transparent border border-creme/20 rounded-lg pl-12 pr-3 py-3.5 text-creme placeholder-creme/25 focus:outline-none focus:border-creme/50 focus:bg-creme/[0.03] transition-colors"
+                  />
+                </div>
+              </div>
+              <div>
+                <label for="couverts" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Couverts</label>
+                <div class="relative">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-creme/35 pointer-events-none">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                  <select
+                    id="couverts"
+                    name="couverts"
+                    required
+                    class="w-full appearance-none bg-noir/20 border border-creme/20 rounded-lg pl-12 pr-8 py-3.5 text-creme focus:outline-none focus:border-creme/50 transition-colors"
+                  >
+                    <option value="1">1 personne</option>
+                    <option value="2" selected>2 personnes</option>
+                    <option value="3">3 personnes</option>
+                    <option value="4">4 personnes</option>
+                    <option value="5">5 personnes</option>
+                    <option value="6+">6+ personnes</option>
+                  </select>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute right-3 top-1/2 -translate-y-1/2 text-creme/40 pointer-events-none">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label for="message" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Message (optionnel)</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="3"
+                placeholder="Une demande particulière ?"
+                class="w-full bg-transparent border border-creme/20 rounded-lg px-5 py-3.5 text-creme placeholder-creme/25 focus:outline-none focus:border-creme/50 focus:bg-creme/[0.03] transition-colors resize-none"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-creme text-vin font-semibold py-4 px-8 rounded-full hover:bg-white transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-creme/20 flex items-center justify-center gap-3"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.6 6.32A8.86 8.86 0 0 0 12 4.15a8.94 8.94 0 0 0-7.75 13.4L3 21l3.55-1.22a8.9 8.9 0 0 0 5.44 1.86h.01a8.94 8.94 0 0 0 6.32-15.32ZM12 20.06a7.4 7.4 0 0 1-3.78-1.03l-.27-.16-2.8.97.94-2.73-.18-.28a7.47 7.47 0 1 1 6.09 3.23Zm4.09-5.6c-.22-.11-1.32-.65-1.53-.73-.2-.08-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.17-.48.06a6.06 6.06 0 0 1-1.78-1.1 6.65 6.65 0 0 1-1.23-1.53c-.13-.22 0-.34.1-.45.1-.1.22-.26.33-.4.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.4-.06-.11-.5-1.2-.68-1.64-.18-.43-.36-.37-.5-.38h-.42a.83.83 0 0 0-.6.28 2.5 2.5 0 0 0-.78 1.86c0 1.1.8 2.16.92 2.31.11.15 1.58 2.41 3.83 3.38a12.9 12.9 0 0 0 1.28.47c.54.17 1.03.15 1.42.09.43-.06 1.32-.54 1.51-1.06.19-.52.19-.96.13-1.06-.06-.1-.2-.15-.42-.26Z"/>
+              </svg>
+              Réserver via WhatsApp
+            </button>
+          </form>
+        </div>
       </div>
 
-      <!-- Colonne droite : Infos & Carte -->
-      <div class="space-y-12 contact-reveal" style="transition-delay: 0.3s;">
-        <!-- Bloc adresse -->
-        <div class="flex items-start gap-5">
-          <div class="w-12 h-12 rounded-full bg-creme/10 flex items-center justify-center flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div>
-            <h3 class="font-serif text-xl mb-1">Adresse</h3>
-            <p class="text-creme/60 text-sm leading-relaxed">Porto-Novo<br />République du Bénin</p>
-          </div>
-        </div>
+      <!-- Colonne droite : Infos -->
+      <div class="md:col-span-5 contact-reveal" style="transition-delay: 0.3s;">
+        <div class="space-y-8">
 
-        <!-- Bloc téléphone -->
-        <div class="flex items-start gap-5">
-          <div class="w-12 h-12 rounded-full bg-creme/10 flex items-center justify-center flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <!-- Adresse -->
+          <div class="flex items-start gap-5">
+            <div class="w-11 h-11 rounded-full border border-creme/20 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h3 class="font-serif text-lg mb-1">Adresse</h3>
+              <p class="text-creme/55 text-sm leading-relaxed">Porto-Novo<br />République du Bénin</p>
+              <a href="https://www.google.com/maps/search/FoodHouse+Porto-Novo+Benin" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-creme/70 text-xs mt-2 hover:text-creme transition-colors border-b border-creme/30 hover:border-creme/60 pb-0.5">
+                Voir l'itinéraire
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
+            </div>
           </div>
-          <div>
-            <h3 class="font-serif text-xl mb-1">Téléphone</h3>
-            <a href="tel:+2290196977215" class="text-creme/60 text-sm hover:text-creme transition-colors block">+229 01 96 97 72 15</a>
-          </div>
-        </div>
 
-        <!-- Bloc horaires -->
-        <div class="flex items-start gap-5">
-          <div class="w-12 h-12 rounded-full bg-creme/10 flex items-center justify-center flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <!-- Téléphone -->
+          <div class="flex items-start gap-5 pt-8 border-t border-creme/10">
+            <div class="w-11 h-11 rounded-full border border-creme/20 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <h3 class="font-serif text-lg mb-1">Téléphone</h3>
+              <a href="tel:+2290196977215" class="text-creme/55 text-sm hover:text-creme transition-colors block">+229 01 96 97 72 15</a>
+            </div>
           </div>
-          <div>
-            <h3 class="font-serif text-xl mb-1">Horaires</h3>
-            <p class="text-creme/60 text-sm leading-relaxed">
-              Lun – Ven : 12h00 – 15h00, 19h00 – 23h00<br />
-              Samedi : 19h00 – 00h00<br />
-              Dimanche : Fermé
-            </p>
-          </div>
-        </div>
 
-        <!-- Réseaux sociaux -->
-        <div class="flex gap-4 pt-4">
-          <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full border border-creme/30 flex items-center justify-center hover:border-creme hover:bg-creme/10 transition-all">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full border border-creme/30 flex items-center justify-center hover:border-creme hover:bg-creme/10 transition-all">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="#" aria-label="TikTok" class="w-10 h-10 rounded-full border border-creme/30 flex items-center justify-center hover:border-creme hover:bg-creme/10 transition-all">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 8 0 4 4 0 0 0-8 0z"/><path d="M15 8h.01"/></svg>
-          </a>
+          <!-- Horaires -->
+          <div class="flex items-start gap-5 pt-8 border-t border-creme/10">
+            <div class="w-11 h-11 rounded-full border border-creme/20 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-serif text-lg mb-3">Horaires</h3>
+              <div class="space-y-1.5 text-sm">
+                <div class="flex justify-between text-creme/55">
+                  <span>Lun – Ven</span>
+                  <span class="text-creme/75">12h–15h · 19h–23h</span>
+                </div>
+                <div class="flex justify-between text-creme/55">
+                  <span>Samedi</span>
+                  <span class="text-creme/75">19h–00h</span>
+                </div>
+                <div class="flex justify-between text-creme/55">
+                  <span>Dimanche</span>
+                  <span class="text-creme/40">Fermé</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Réseaux sociaux -->
+          <div class="flex gap-3 pt-8 border-t border-creme/10">
+            <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full border border-creme/20 flex items-center justify-center hover:border-creme/50 hover:bg-creme/5 transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full border border-creme/20 flex items-center justify-center hover:border-creme/50 hover:bg-creme/5 transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="TikTok" class="w-10 h-10 rounded-full border border-creme/20 flex items-center justify-center hover:border-creme/50 hover:bg-creme/5 transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 8 0 4 4 0 0 0-8 0z"/><path d="M15 8h.01"/></svg>
+            </a>
+          </div>
+
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
 <script is:inline>
   function sendToWhatsApp(event) {
     event.preventDefault();
@@ -160,13 +229,11 @@
     const couverts = formData.get('couverts');
     const message = formData.get('message') || 'Aucune';
 
-    // Formatage lisible de la date (JJ/MM/AAAA)
     const [year, month, day] = date.split('-');
     const dateFormatted = `${day}/${month}/${year}`;
 
     const whatsappNumber = '2290196977215'; // Numéro WhatsApp de FoodHouse (Porto-Novo, Bénin)
 
-    // Utilisation de vrais retours à la ligne (\n), pas de "%0A" en texte
     const rawText =
 `Nouvelle réservation FoodHouse
 
@@ -199,14 +266,16 @@ Message : ${message}`;
     filter: blur(0);
   }
 
-  /* Amélioration des champs date et select */
   input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(0.8);
+  }
+
+  select#couverts {
+    background-image: none;
   }
 </style>
 
 <script is:inline>
-  // Intersection Observer pour la révélation
   const contactObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
