@@ -95,28 +95,44 @@
                 </div>
               </div>
               <div>
-                <label for="couverts" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Couverts</label>
+                <label for="heure" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Heure d'arrivée</label>
                 <div class="relative">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-creme/35 pointer-events-none">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                   </svg>
-                  <select
-                    id="couverts"
-                    name="couverts"
+                  <input
+                    type="time"
+                    id="heure"
+                    name="heure"
                     required
-                    class="w-full appearance-none bg-noir/20 border border-creme/20 rounded-lg pl-12 pr-8 py-3.5 text-creme focus:outline-none focus:border-creme/50 transition-colors"
-                  >
-                    <option value="1">1 personne</option>
-                    <option value="2" selected>2 personnes</option>
-                    <option value="3">3 personnes</option>
-                    <option value="4">4 personnes</option>
-                    <option value="5">5 personnes</option>
-                    <option value="6+">6+ personnes</option>
-                  </select>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute right-3 top-1/2 -translate-y-1/2 text-creme/40 pointer-events-none">
-                    <polyline points="6 9 12 15 18 9"/>
-                  </svg>
+                    class="w-full bg-transparent border border-creme/20 rounded-lg pl-12 pr-3 py-3.5 text-creme placeholder-creme/25 focus:outline-none focus:border-creme/50 focus:bg-creme/[0.03] transition-colors"
+                  />
                 </div>
+              </div>
+            </div>
+
+            <div>
+              <label for="couverts" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Couverts</label>
+              <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-creme/35 pointer-events-none">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <select
+                  id="couverts"
+                  name="couverts"
+                  required
+                  class="w-full appearance-none bg-noir/20 border border-creme/20 rounded-lg pl-12 pr-8 py-3.5 text-creme focus:outline-none focus:border-creme/50 transition-colors"
+                >
+                  <option value="1">1 personne</option>
+                  <option value="2" selected>2 personnes</option>
+                  <option value="3">3 personnes</option>
+                  <option value="4">4 personnes</option>
+                  <option value="5">5 personnes</option>
+                  <option value="6+">6+ personnes</option>
+                </select>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute right-3 top-1/2 -translate-y-1/2 text-creme/40 pointer-events-none">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
               </div>
             </div>
 
@@ -226,6 +242,7 @@
     const name = formData.get('name');
     const phone = formData.get('phone');
     const date = formData.get('date');
+    const heure = formData.get('heure');
     const couverts = formData.get('couverts');
     const message = formData.get('message') || 'Aucune';
 
@@ -240,6 +257,7 @@
 Nom : ${name}
 Téléphone : ${phone}
 Date : ${dateFormatted}
+Heure d'arrivée : ${heure}
 Nombre de couverts : ${couverts}
 Message : ${message}`;
 
@@ -266,7 +284,8 @@ Message : ${message}`;
     filter: blur(0);
   }
 
-  input[type="date"]::-webkit-calendar-picker-indicator {
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
     filter: invert(0.8);
   }
 
