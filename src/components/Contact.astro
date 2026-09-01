@@ -78,6 +78,23 @@
               </div>
             </div>
 
+            <div>
+              <label for="email" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Email</label>
+              <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-creme/35 pointer-events-none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="votre@email.com"
+                  class="w-full bg-transparent border border-creme/20 rounded-lg pl-12 pr-5 py-3.5 text-creme placeholder-creme/25 focus:outline-none focus:border-creme/50 focus:bg-creme/[0.03] transition-colors"
+                />
+              </div>
+            </div>
+
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <label for="date" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Date</label>
@@ -154,7 +171,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.6 6.32A8.86 8.86 0 0 0 12 4.15a8.94 8.94 0 0 0-7.75 13.4L3 21l3.55-1.22a8.9 8.9 0 0 0 5.44 1.86h.01a8.94 8.94 0 0 0 6.32-15.32ZM12 20.06a7.4 7.4 0 0 1-3.78-1.03l-.27-.16-2.8.97.94-2.73-.18-.28a7.47 7.47 0 1 1 6.09 3.23Zm4.09-5.6c-.22-.11-1.32-.65-1.53-.73-.2-.08-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.17-.48.06a6.06 6.06 0 0 1-1.78-1.1 6.65 6.65 0 0 1-1.23-1.53c-.13-.22 0-.34.1-.45.1-.1.22-.26.33-.4.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.4-.06-.11-.5-1.2-.68-1.64-.18-.43-.36-.37-.5-.38h-.42a.83.83 0 0 0-.6.28 2.5 2.5 0 0 0-.78 1.86c0 1.1.8 2.16.92 2.31.11.15 1.58 2.41 3.83 3.38a12.9 12.9 0 0 0 1.28.47c.54.17 1.03.15 1.42.09.43-.06 1.32-.54 1.51-1.06.19-.52.19-.96.13-1.06-.06-.1-.2-.15-.42-.26Z"/>
               </svg>
-              Réserver via WhatsApp
+              Réserver et payer l'acompte
             </button>
           </form>
         </div>
@@ -241,6 +258,71 @@
     const formData = new FormData(form);
     const name = formData.get('name');
     const phone = formData.get('phone');
+    const email = formData.get('email');
+    const date = formData.get('date');
+    const heure = formData.get('heure');
+    const couverts = formData.get('couverts');
+    const message = formData.get('message') || 'Aucune';
+
+    const [year, month, day] = date.split('-');
+    const dateFormatted = `${day}/${month}/${year}`;
+
+    const whatsappNumber = '2290196977215'; // Numéro WhatsApp de FoodHouse
+
+    // Découpe le nom complet en prénom/nom pour FedaPay
+    const parts = name.trim().split(' ');
+    const prenom = parts[0] || name;
+    const nomFamille = parts.slice(1).join(' ') || name;
+
+    const widget = FedaPay.init({
+      public_key: 'pk_sandbox_PvSnrvtHYdCoNXQz-azTyeM8',
+      transaction: {
+        amount: 1500, // acompte symbolique pour garantir la réservation
+        description: `Acompte réservation FoodHouse - ${dateFormatted} ${heure}`
+      },
+      customer: {
+        firstname: prenom,
+        lastname: nomFamille,
+        email: email,
+        phone_number: {
+          number: phone,
+          country: 'bj'
+        }
+      },
+      onComplete: (resp) => {
+        if (resp.reason === FedaPay.CHECKOUT_COMPLETED) {
+          const rawText =
+`Nouvelle réservation FoodHouse (acompte payé ✅)
+
+Nom : ${name}
+Téléphone : ${phone}
+Date : ${dateFormatted}
+Heure d'arrivée : ${heure}
+Nombre de couverts : ${couverts}
+Message : ${message}
+
+Merci de me confirmer la réservation.`;
+
+          const text = encodeURIComponent(rawText);
+          window.location.href = `https://wa.me/${whatsappNumber}?text=${text}`;
+        } else {
+          alert("Le paiement de l'acompte n'a pas abouti. Merci de réessayer.");
+        }
+      }
+    });
+
+    widget.open();
+    return false;
+  }
+</script>
+
+<!-- <script is:inline>
+  function sendToWhatsApp(event) {
+    event.preventDefault();
+    const form = document.getElementById('reservation-form');
+    const formData = new FormData(form);
+    const name = formData.get('name');
+    const phone = formData.get('phone');
     const date = formData.get('date');
     const heure = formData.get('heure');
     const couverts = formData.get('couverts');
@@ -266,7 +348,7 @@ Message : ${message}`;
     window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
     return false;
   }
-</script>
+</script> -->
 
 <style is:global>
   .contact-reveal {

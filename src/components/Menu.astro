@@ -141,6 +141,109 @@
 </section>
 
 <script is:inline>
+  const whatsappNumber = '2290196977215';
+  let plateSelectionnee = { nom: '', prix: '' };
+
+  function commanderViaWhatsApp(nomPlat, prixTexte) {
+    plateSelectionnee = { nom: nomPlat, prix: prixTexte };
+    document.getElementById('modal-client-titre').textContent = `Commander : ${nomPlat}`;
+    document.getElementById('modal-client').classList.remove('hidden');
+  }
+
+  function fermerModal() {
+    document.getElementById('modal-client').classList.add('hidden');
+  }
+
+  function validerEtPayer(event) {
+    event.preventDefault();
+
+    const nom = document.getElementById('client-nom').value.trim();
+    const prenom = document.getElementById('client-prenom').value.trim();
+    const tel = document.getElementById('client-tel').value.trim();
+    const email = document.getElementById('client-email').value.trim();
+
+    if (!nom || !prenom || !tel || !email) {
+      alert('Merci de remplir tous les champs.');
+      return;
+    }
+
+    fermerModal();
+
+    const montant = parseInt(plateSelectionnee.prix.replace(/[^0-9]/g, ''), 10);
+
+    const widget = FedaPay.init({
+      public_key: 'pk_sandbox_PvSnrvtHYdCoNXQz-azTyeM8',
+      transaction: {
+        amount: montant,
+        description: `Commande FoodHouse - ${plateSelectionnee.nom}`
+      },
+      customer: {
+        firstname: prenom,
+        lastname: nom,
+        email: email,
+        phone_number: {
+          number: tel,
+          country: 'bj'
+        }
+      },
+      onComplete: (resp) => {
+        if (resp.reason === FedaPay.CHECKOUT_COMPLETED) {
+          const rawText =
+`Nouvelle commande FoodHouse (payée ✅)
+Client : ${prenom} ${nom}
+Téléphone : ${tel}
+Plat : ${plateSelectionnee.nom}
+Prix : ${plateSelectionnee.prix}
+Merci de me confirmer la disponibilité et les modalités de livraison / retrait.`;
+          const text = encodeURIComponent(rawText);
+          window.location.href = `https://wa.me/${whatsappNumber}?text=${text}`;
+        } else {
+          alert("Le paiement n'a pas abouti. Merci de réessayer.");
+        }
+      }
+    });
+
+    widget.open();
+  }
+</script>
+
+<!-- Modal formulaire client -->
+<div id="modal-client" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
+  <div class="bg-noir border border-vin/30 rounded-lg max-w-sm w-full p-8 relative">
+    <button onclick="fermerModal()" class="absolute top-4 right-4 text-creme/50 hover:text-vin text-xl">×</button>
+    <h3 id="modal-client-titre" class="font-serif text-2xl text-creme mb-6"></h3>
+
+    <form onsubmit="validerEtPayer(event)" class="space-y-4">
+      <div>
+        <label class="text-[10px] uppercase tracking-[0.2em] text-creme/50 block mb-1">Prénom</label>
+        <input type="text" id="client-prenom" required
+          class="w-full bg-transparent border border-creme/25 rounded px-4 py-2.5 text-creme focus:border-vin focus:outline-none transition-colors" />
+      </div>
+      <div>
+        <label class="text-[10px] uppercase tracking-[0.2em] text-creme/50 block mb-1">Nom</label>
+        <input type="text" id="client-nom" required
+          class="w-full bg-transparent border border-creme/25 rounded px-4 py-2.5 text-creme focus:border-vin focus:outline-none transition-colors" />
+      </div>
+      <div>
+        <label class="text-[10px] uppercase tracking-[0.2em] text-creme/50 block mb-1">Email</label>
+        <input type="email" id="client-email" required
+          class="w-full bg-transparent border border-creme/25 rounded px-4 py-2.5 text-creme focus:border-vin focus:outline-none transition-colors" />
+      </div>
+      <div>
+        <label class="text-[10px] uppercase tracking-[0.2em] text-creme/50 block mb-1">Téléphone</label>
+        <input type="tel" id="client-tel" required placeholder="97xxxxxx"
+          class="w-full bg-transparent border border-creme/25 rounded px-4 py-2.5 text-creme focus:border-vin focus:outline-none transition-colors" />
+      </div>
+
+      <button type="submit"
+        class="w-full mt-4 uppercase tracking-[0.25em] text-xs bg-vin text-creme rounded-full py-3.5 hover:bg-vin/80 transition-colors">
+        Continuer vers le paiement
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- <script is:inline>
   // Fonction globale de commande via WhatsApp, réutilisée par chaque bouton "Commander"
   function commanderViaWhatsApp(nomPlat, prix) {
     const whatsappNumber = '2290196977215'; // Numéro WhatsApp de FoodHouse (Porto-Novo, Bénin)
@@ -156,7 +259,7 @@ Merci de me confirmer la disponibilité et les modalités de livraison / retrait
     const text = encodeURIComponent(rawText);
     window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
   }
-</script>
+</script> -->
 
 <script is:inline>
   // Intersection Observer de haute précision pour un effet d'apparition séquentiel
