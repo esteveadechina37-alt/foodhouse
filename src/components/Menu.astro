@@ -1,311 +1,1080 @@
 ---
-// Section Menu Haute Gastronomie - Design Tendance "Split-Gallery Asymétrique"
+/**
+ * FoodHouse — Menu Premium / Immersive 3D
+ * Version finale : normalisation téléphone + image cliquable
+ */
 ---
 
-<section id="menu" class="py-28 md:py-40 bg-noir relative overflow-hidden text-creme">
-
-  <!-- Brume lumineuse d'ambiance d'un bordeaux très profond -->
-  <div class="absolute top-1/3 right-0 w-[600px] h-[600px] bg-vin/10 rounded-full filter blur-[160px] pointer-events-none select-none"></div>
-  <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-vin/5 rounded-full filter blur-[130px] pointer-events-none select-none"></div>
-
-  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10" id="premium-menu-observer">
-
-    <!-- En-tête Format Galerie de Luxe -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-32 gap-6 menu-reveal-node">
-      <div>
-        <span class="uppercase tracking-[0.6em] text-[9px] text-vin font-bold block mb-3">La Collection Privée</span>
-        <h2 class="font-serif text-5xl md:text-7xl font-extralight tracking-tight leading-none">
-          L'Art de <br class="hidden md:inline"/><span class="italic font-light text-vin">la Table</span>
-        </h2>
-      </div>
-      <p class="text-creme/40 max-w-xs font-light text-xs md:text-sm leading-relaxed border-l border-creme/10 pl-6">
-        Une réécriture contemporaine des grands classiques du continent africain.
-      </p>
-    </div>
-
-    <!-- Grille Asymétrique Inspirée des Magazines de Mode -->
-    <div class="grid md:grid-cols-12 gap-y-32 md:gap-x-16 items-start">
-
-      <!-- PLAT 1 : Le Ceebu Jën (Position Haute - Gauche) -->
-      <div class="md:col-span-5 space-y-8 menu-reveal-node" style="transition-delay: 0.1s;">
-        <!-- Cadre vertical élancé -->
-        <div class="relative aspect-[3/4] w-full overflow-hidden bg-neutral-950 border border-creme/5 group cursor-pointer">
-          <img
-            src="/images/plats/plat-5.png"
-            alt="Le Ceebu Jën Originel"
-            class="w-full h-full object-cover opacity-75 group-hover:opacity-100 group-hover:scale-103 transition-all duration-1000 ease-out filter contrast-110"
-          />
-          <!-- Voile dégradé cinéma -->
-          <div class="absolute inset-0 bg-linear-to-t from-noir via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-700"></div>
-        </div>
-
-        <div class="space-y-3 pt-2">
-          <div class="flex justify-between items-baseline">
-            <h3 class="font-serif text-3xl font-light tracking-wide group-hover:text-vin transition-colors">Ceebu Jën</h3>
-            <span class="font-serif text-lg text-vin tracking-widest">8 000 FCFA</span>
-          </div>
-          <p class="text-creme/50 text-sm font-light leading-relaxed max-w-md">
-            Riz mûri dans un court-bouillon de thiof noble infusé aux herbes du Sine Saloum, textures de légumes oubliés glacés et réduction de tamarin confit.
-          </p>
-          <div class="text-[9px] uppercase tracking-[0.3em] text-creme/30 font-semibold pt-1">Héritage Sénégalais</div>
-
-          <button
-            type="button"
-            onclick="commanderViaWhatsApp('Ceebu Jën', '8 000 FCFA')"
-            class="group/btn mt-4 inline-flex items-center gap-2.5 text-xs uppercase tracking-[0.25em] text-creme/70 border border-creme/25 rounded-full px-6 py-3 hover:border-vin hover:text-vin hover:bg-vin/5 transition-all duration-500"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.6 6.32A8.86 8.86 0 0 0 12 4.15a8.94 8.94 0 0 0-7.75 13.4L3 21l3.55-1.22a8.9 8.9 0 0 0 5.44 1.86h.01a8.94 8.94 0 0 0 6.32-15.32ZM12 20.06a7.4 7.4 0 0 1-3.78-1.03l-.27-.16-2.8.97.94-2.73-.18-.28a7.47 7.47 0 1 1 6.09 3.23Zm4.09-5.6c-.22-.11-1.32-.65-1.53-.73-.2-.08-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.17-.48.06a6.06 6.06 0 0 1-1.78-1.1 6.65 6.65 0 0 1-1.23-1.53c-.13-.22 0-.34.1-.45.1-.1.22-.26.33-.4.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.4-.06-.11-.5-1.2-.68-1.64-.18-.43-.36-.37-.5-.38h-.42a.83.83 0 0 0-.6.28 2.5 2.5 0 0 0-.78 1.86c0 1.1.8 2.16.92 2.31.11.15 1.58 2.41 3.83 3.38a12.9 12.9 0 0 0 1.28.47c.54.17 1.03.15 1.42.09.43-.06 1.32-.54 1.51-1.06.19-.52.19-.96.13-1.06-.06-.1-.2-.15-.42-.26Z"/>
-            </svg>
-            Commander
-          </button>
-        </div>
-      </div>
-
-      <!-- ESPACE VIDE DE TRANSITION POUR L'ASYMÉTRIE SUR DESKTOP -->
-      <div class="hidden md:block md:col-span-2"></div>
-
-      <!-- PLAT 2 : L'Attiéké Translucide (Position Centrée Décalée - Droite) -->
-      <div class="md:col-span-5 space-y-8 md:mt-24 menu-reveal-node" style="transition-delay: 0.25s;">
-        <div class="relative aspect-[3/4] w-full overflow-hidden bg-neutral-950 border border-creme/5 group cursor-pointer">
-          <img
-            src="/images/plats/plat-6.png"
-            alt="L'Attiéké Translucide"
-            class="w-full h-full object-cover opacity-75 group-hover:opacity-100 group-hover:scale-103 transition-all duration-1000 ease-out filter contrast-110"
-          />
-          <div class="absolute inset-0 bg-linear-to-t from-noir via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-700"></div>
-        </div>
-
-        <div class="space-y-3 pt-2">
-          <div class="flex justify-between items-baseline">
-            <h3 class="font-serif text-3xl font-light tracking-wide">L'Attiéké</h3>
-            <span class="font-serif text-lg text-vin tracking-widest">5 500 FCFA</span>
-          </div>
-          <p class="text-creme/50 text-sm font-light leading-relaxed max-w-md">
-            Manioc de tabou affiné travaillé en grains de soie aériens, pavé de capitaine rôti sur peau, condiments vierges aux piments doux locaux et oignons rouges acidulés.
-          </p>
-          <div class="text-[9px] uppercase tracking-[0.3em] text-creme/30 font-semibold pt-1">Épure Ivoirienne</div>
-
-          <button
-            type="button"
-            onclick="commanderViaWhatsApp('L\'Attiéké', '5 500 FCFA')"
-            class="group/btn mt-4 inline-flex items-center gap-2.5 text-xs uppercase tracking-[0.25em] text-creme/70 border border-creme/25 rounded-full px-6 py-3 hover:border-vin hover:text-vin hover:bg-vin/5 transition-all duration-500"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.6 6.32A8.86 8.86 0 0 0 12 4.15a8.94 8.94 0 0 0-7.75 13.4L3 21l3.55-1.22a8.9 8.9 0 0 0 5.44 1.86h.01a8.94 8.94 0 0 0 6.32-15.32ZM12 20.06a7.4 7.4 0 0 1-3.78-1.03l-.27-.16-2.8.97.94-2.73-.18-.28a7.47 7.47 0 1 1 6.09 3.23Zm4.09-5.6c-.22-.11-1.32-.65-1.53-.73-.2-.08-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.17-.48.06a6.06 6.06 0 0 1-1.78-1.1 6.65 6.65 0 0 1-1.23-1.53c-.13-.22 0-.34.1-.45.1-.1.22-.26.33-.4.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.4-.06-.11-.5-1.2-.68-1.64-.18-.43-.36-.37-.5-.38h-.42a.83.83 0 0 0-.6.28 2.5 2.5 0 0 0-.78 1.86c0 1.1.8 2.16.92 2.31.11.15 1.58 2.41 3.83 3.38a12.9 12.9 0 0 0 1.28.47c.54.17 1.03.15 1.42.09.43-.06 1.32-.54 1.51-1.06.19-.52.19-.96.13-1.06-.06-.1-.2-.15-.42-.26Z"/>
-            </svg>
-            Commander
-          </button>
-        </div>
-      </div>
-
-      <!-- PLAT 3 : Le Ndolé (Centré en bas sur une large colonne) -->
-      <div class="md:col-span-7 md:col-start-3 space-y-8 md:mt-16 menu-reveal-node" style="transition-delay: 0.4s;">
-        <!-- Format paysage panoramique luxueux pour le dernier plat -->
-        <div class="relative aspect-video w-full overflow-hidden bg-neutral-950 border border-creme/5 group cursor-pointer">
-          <img
-            src="/images/plats/plat-7.png"
-            alt="Le Ndolé d'Orfèvre"
-            class="w-full h-full object-cover opacity-75 group-hover:opacity-100 group-hover:scale-102 transition-all duration-1000 ease-out"
-          />
-          <div class="absolute inset-0 bg-linear-to-t from-noir via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-700"></div>
-        </div>
-
-        <div class="grid md:grid-cols-12 gap-4 pt-2">
-          <div class="md:col-span-5">
-            <h3 class="font-serif text-3xl font-light tracking-wide mb-1">Ndolé d'Orfèvre</h3>
-            <span class="text-[9px] uppercase tracking-[0.3em] text-creme/30 font-semibold">Tradition Camerounaise</span>
-          </div>
-          <div class="md:col-span-7 space-y-3 md:text-right flex flex-col items-start md:items-end">
-            <span class="font-serif text-xl text-vin tracking-widest block">9 500 FCFA</span>
-            <p class="text-creme/50 text-sm font-light leading-relaxed max-w-md">
-              Feuilles amères de Ndolé minutieusement lavées, velouté d'arachides fraîches et noix de cajou torréfiées, escortées de reines crevettes snackées au beurre de karité clarifié.
-            </p>
-
-            <button
-              type="button"
-              onclick="commanderViaWhatsApp('Ndolé d\'Orfèvre', '9 500 FCFA')"
-              class="group/btn inline-flex items-center gap-2.5 text-xs uppercase tracking-[0.25em] text-creme/70 border border-creme/25 rounded-full px-6 py-3 hover:border-vin hover:text-vin hover:bg-vin/5 transition-all duration-500"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.6 6.32A8.86 8.86 0 0 0 12 4.15a8.94 8.94 0 0 0-7.75 13.4L3 21l3.55-1.22a8.9 8.9 0 0 0 5.44 1.86h.01a8.94 8.94 0 0 0 6.32-15.32ZM12 20.06a7.4 7.4 0 0 1-3.78-1.03l-.27-.16-2.8.97.94-2.73-.18-.28a7.47 7.47 0 1 1 6.09 3.23Zm4.09-5.6c-.22-.11-1.32-.65-1.53-.73-.2-.08-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.17-.48.06a6.06 6.06 0 0 1-1.78-1.1 6.65 6.65 0 0 1-1.23-1.53c-.13-.22 0-.34.1-.45.1-.1.22-.26.33-.4.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.4-.06-.11-.5-1.2-.68-1.64-.18-.43-.36-.37-.5-.38h-.42a.83.83 0 0 0-.6.28 2.5 2.5 0 0 0-.78 1.86c0 1.1.8 2.16.92 2.31.11.15 1.58 2.41 3.83 3.38a12.9 12.9 0 0 0 1.28.47c.54.17 1.03.15 1.42.09.43-.06 1.32-.54 1.51-1.06.19-.52.19-.96.13-1.06-.06-.1-.2-.15-.42-.26Z"/>
-              </svg>
-              Commander
-            </button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<script is:inline>
-  const whatsappNumber = '2290196977215';
-  let plateSelectionnee = { nom: '', prix: '' };
-
-  function commanderViaWhatsApp(nomPlat, prixTexte) {
-    plateSelectionnee = { nom: nomPlat, prix: prixTexte };
-    document.getElementById('modal-client-titre').textContent = `Commander : ${nomPlat}`;
-    document.getElementById('modal-client').classList.remove('hidden');
-  }
-
-  function fermerModal() {
-    document.getElementById('modal-client').classList.add('hidden');
-  }
-
-  function validerEtPayer(event) {
-    event.preventDefault();
-
-    const nom = document.getElementById('client-nom').value.trim();
-    const prenom = document.getElementById('client-prenom').value.trim();
-    const tel = document.getElementById('client-tel').value.trim();
-    const email = document.getElementById('client-email').value.trim();
-
-    if (!nom || !prenom || !tel || !email) {
-      alert('Merci de remplir tous les champs.');
-      return;
-    }
-
-    fermerModal();
-
-    const montant = parseInt(plateSelectionnee.prix.replace(/[^0-9]/g, ''), 10);
-
-    const widget = FedaPay.init({
-      public_key: 'pk_sandbox_PvSnrvtHYdCoNXQz-azTyeM8',
-      transaction: {
-        amount: montant,
-        description: `Commande FoodHouse - ${plateSelectionnee.nom}`
-      },
-      customer: {
-        firstname: prenom,
-        lastname: nom,
-        email: email,
-        phone_number: {
-          number: tel,
-          country: 'bj'
-        }
-      },
-      onComplete: (resp) => {
-        if (resp.reason === FedaPay.CHECKOUT_COMPLETED) {
-          const rawText =
-`Nouvelle commande FoodHouse (payée ✅)
-Client : ${prenom} ${nom}
-Téléphone : ${tel}
-Plat : ${plateSelectionnee.nom}
-Prix : ${plateSelectionnee.prix}
-Merci de me confirmer la disponibilité et les modalités de livraison / retrait.`;
-          const text = encodeURIComponent(rawText);
-          window.location.href = `https://wa.me/${whatsappNumber}?text=${text}`;
-        } else {
-          alert("Le paiement n'a pas abouti. Merci de réessayer.");
-        }
-      }
-    });
-
-    widget.open();
-  }
-</script>
-
-<!-- Modal formulaire client -->
-<div id="modal-client" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
-  <div class="bg-noir border border-vin/30 rounded-lg max-w-sm w-full p-8 relative">
-    <button onclick="fermerModal()" class="absolute top-4 right-4 text-creme/50 hover:text-vin text-xl">×</button>
-    <h3 id="modal-client-titre" class="font-serif text-2xl text-creme mb-6"></h3>
-
-    <form onsubmit="validerEtPayer(event)" class="space-y-4">
-      <div>
-        <label class="text-[10px] uppercase tracking-[0.2em] text-creme/50 block mb-1">Prénom</label>
-        <input type="text" id="client-prenom" required
-          class="w-full bg-transparent border border-creme/25 rounded px-4 py-2.5 text-creme focus:border-vin focus:outline-none transition-colors" />
-      </div>
-      <div>
-        <label class="text-[10px] uppercase tracking-[0.2em] text-creme/50 block mb-1">Nom</label>
-        <input type="text" id="client-nom" required
-          class="w-full bg-transparent border border-creme/25 rounded px-4 py-2.5 text-creme focus:border-vin focus:outline-none transition-colors" />
-      </div>
-      <div>
-        <label class="text-[10px] uppercase tracking-[0.2em] text-creme/50 block mb-1">Email</label>
-        <input type="email" id="client-email" required
-          class="w-full bg-transparent border border-creme/25 rounded px-4 py-2.5 text-creme focus:border-vin focus:outline-none transition-colors" />
-      </div>
-      <div>
-        <label class="text-[10px] uppercase tracking-[0.2em] text-creme/50 block mb-1">Téléphone</label>
-        <input type="tel" id="client-tel" required placeholder="97xxxxxx"
-          class="w-full bg-transparent border border-creme/25 rounded px-4 py-2.5 text-creme focus:border-vin focus:outline-none transition-colors" />
-      </div>
-
-      <button type="submit"
-        class="w-full mt-4 uppercase tracking-[0.25em] text-xs bg-vin text-creme rounded-full py-3.5 hover:bg-vin/80 transition-colors">
-        Continuer vers le paiement
-      </button>
-    </form>
-  </div>
-</div>
-
-<!-- <script is:inline>
-  // Fonction globale de commande via WhatsApp, réutilisée par chaque bouton "Commander"
-  function commanderViaWhatsApp(nomPlat, prix) {
-    const whatsappNumber = '2290196977215'; // Numéro WhatsApp de FoodHouse (Porto-Novo, Bénin)
-
-    const rawText =
-`Nouvelle commande FoodHouse
-
-Plat : ${nomPlat}
-Prix : ${prix}
-
-Merci de me confirmer la disponibilité et les modalités de livraison / retrait.`;
-
-    const text = encodeURIComponent(rawText);
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
-  }
-</script> -->
-
-<script is:inline>
-  // Intersection Observer de haute précision pour un effet d'apparition séquentiel
-  const premiumOptions = {
-    root: null,
-    rootMargin: '-40px 0px', // Se déclenche légèrement avant l'entrée complète pour plus de fluidité
-    threshold: 0.05
-  };
-
-  const premiumObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const nodes = entry.target.querySelectorAll('.menu-reveal-node');
-        nodes.forEach((node) => node.classList.add('reveal-active'));
-        premiumObserver.unobserve(entry.target);
-      }
-    });
-  }, premiumOptions);
-
-  const containerTarget = document.getElementById('premium-menu-observer');
-  if (containerTarget) {
-    premiumObserver.observe(containerTarget);
-  }
-</script>
-
+<!-- ============================================================
+     STYLES — placés en tête pour garantir leur prise en compte
+     ============================================================ -->
 <style is:global>
-  /* Structure et typographie de luxe cinématique */
+  :root {
+    --fh-noir: #090909;
+    --fh-vin: #630f25;
+    --fh-vin-dark: #430c1b;
+    --fh-creme: #f9f6f0;
+  }
+
+  /* BASE */
+  #menu.fh-menu {
+    position: relative;
+    background:
+      radial-gradient(circle at 78% 18%, rgba(99, 15, 37, .13), transparent 27%),
+      radial-gradient(circle at 12% 82%, rgba(99, 15, 37, .09), transparent 25%),
+      var(--fh-noir);
+  }
+
+  /* GLOW */
+  .fh-menu-glow {
+    position: absolute;
+    width: 42rem;
+    height: 42rem;
+    border-radius: 999px;
+    filter: blur(120px);
+    pointer-events: none;
+    opacity: .45;
+  }
+  .fh-menu-glow-a { top: 14%; right: -18rem; background: rgba(99, 15, 37, .18); }
+  .fh-menu-glow-b { bottom: 3%; left: -20rem; background: rgba(99, 15, 37, .11); }
+
+  /* GRID DECOR */
+  .fh-menu-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .035;
+    background-image:
+      linear-gradient(rgba(249,246,240,.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(249,246,240,.5) 1px, transparent 1px);
+    background-size: 90px 90px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  }
+
+  /* HEADER */
+  .fh-menu-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .fh-eyebrow {
+    display: block;
+    margin-bottom: .8rem;
+    color: rgba(99,15,37,.95);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .6em;
+    text-transform: uppercase;
+  }
+
+  .fh-title {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+    font-weight: 300;
+    line-height: .9;
+    letter-spacing: -.04em;
+  }
+
+  .fh-title span {
+    display: inline-block;
+    color: var(--fh-vin);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .fh-intro {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 20rem;
+    color: rgba(249,246,240,.42);
+    font-size: .78rem;
+    line-height: 1.75;
+  }
+
+  .fh-intro-line {
+    width: 1px;
+    min-width: 1px;
+    height: 2.8rem;
+    background: rgba(249,246,240,.16);
+  }
+
+  /* NAV */
+  .fh-menu-nav {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 0;
+    margin-bottom: 2.75rem;
+    border-bottom: 1px solid rgba(249,246,240,.09);
+    overflow: visible;
+  }
+
+  .fh-menu-nav-item {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 0 0 .9rem;
+    border: 0;
+    background: transparent;
+    color: rgba(249,246,240,.36);
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    transition: color .45s ease;
+  }
+
+  .fh-menu-nav-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 1px;
+    background: var(--fh-vin);
+    transition: width .55s cubic-bezier(.19,1,.22,1);
+  }
+
+  .fh-menu-nav-item:hover,
+  .fh-menu-nav-item.is-active { color: var(--fh-creme); }
+
+  .fh-menu-nav-item.is-active::after { width: 100%; }
+
+  /* COLLECTION */
+  .fh-menu-collection {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 1.75rem;
+    row-gap: 3.5rem;
+    align-items: stretch;
+  }
+
+  .fh-dish {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin: 0;
+    transition: opacity .5s ease, transform .7s cubic-bezier(.19,1,.22,1);
+  }
+
+  .fh-dish-one,
+  .fh-dish-two,
+  .fh-dish-three {
+    grid-column: auto;
+    margin-top: 0;
+  }
+
+  .fh-dish.is-filtered-out { display: none; }
+
+  /* IMAGE — reset des styles par défaut du <a> cliquable */
+  .fh-dish-media {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    isolation: isolate;
+    background: #050505;
+    border: 1px solid rgba(249,246,240,.08);
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    transform:
+      perspective(1000px)
+      rotateX(var(--rx, 0deg))
+      rotateY(var(--ry, 0deg))
+      translate3d(0,0,0);
+    transition:
+      transform .8s cubic-bezier(.19,1,.22,1),
+      border-color .6s ease;
+    box-shadow: 0 24px 55px rgba(0,0,0,.32);
+    text-decoration: none;
+  }
+
+  .fh-dish-media:hover { border-color: rgba(99,15,37,.55); }
+
+  .fh-dish-media:focus-visible {
+    outline: 2px solid var(--fh-vin);
+    outline-offset: 4px;
+  }
+
+  .fh-dish-image-wrap,
+  .fh-dish-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .fh-dish-image-wrap { overflow: hidden; }
+
+  .fh-dish-image {
+    object-fit: cover;
+    opacity: .72;
+    filter: contrast(1.05) brightness(.88) saturate(.92);
+    transform: translate3d(var(--img-x, 0px), var(--img-y, 0px), 0) scale(1);
+    transition:
+      transform 1s cubic-bezier(.19,1,.22,1),
+      opacity .8s ease,
+      filter .8s ease;
+    will-change: transform;
+  }
+
+  .fh-dish-media:hover .fh-dish-image {
+    opacity: 1;
+    transform: translate3d(var(--img-x, 0px), var(--img-y, 0px), 0) scale(1.05);
+    filter: contrast(1.05) brightness(.96) saturate(1);
+  }
+
+  /* LIGHT */
+  .fh-dish-light {
+    position: absolute;
+    inset: -20%;
+    z-index: 2;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,.11), transparent 34%);
+    opacity: 0;
+    transform: translate3d(var(--mx,0), var(--my,0), 0);
+    transition: opacity .7s ease, transform .15s linear;
+    mix-blend-mode: screen;
+  }
+
+  .fh-dish-media:hover .fh-dish-light { opacity: .8; }
+
+  /* SHINE */
+  .fh-dish-shine {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 28%, rgba(249,246,240,.08) 48%, transparent 62%);
+    transform: translateX(-130%);
+    transition: transform 1.2s cubic-bezier(.19,1,.22,1);
+  }
+
+  .fh-dish-media:hover .fh-dish-shine { transform: translateX(130%); }
+
+  /* INFOS SUR IMAGE */
+  .fh-dish-number {
+    position: absolute;
+    top: .9rem;
+    left: .9rem;
+    z-index: 5;
+    color: rgba(249,246,240,.72);
+    font-family: Georgia, serif;
+    font-size: .78rem;
+    letter-spacing: .12em;
+  }
+
+  .fh-dish-caption {
+    position: absolute;
+    right: .9rem;
+    bottom: .9rem;
+    z-index: 5;
+    color: rgba(249,246,240,.6);
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+  }
+
+  .fh-view-dish {
+    position: absolute;
+    left: .9rem;
+    bottom: .9rem;
+    z-index: 5;
+    color: var(--fh-creme);
+    font-size: 8px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity .5s ease, transform .5s ease;
+  }
+
+  .fh-view-dish span { color: var(--fh-vin); font-size: .9rem; }
+
+  .fh-dish-media:hover .fh-view-dish,
+  .fh-dish-media:focus-visible .fh-view-dish {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* INFOS SOUS L'IMAGE */
+  .fh-dish-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding-top: 1.15rem;
+  }
+
+  .fh-dish-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: .75rem;
+  }
+
+  .fh-dish-heading h3 {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.35rem;
+    font-weight: 300;
+    letter-spacing: .01em;
+    line-height: 1.1;
+  }
+
+  .fh-dish-heading span {
+    display: block;
+    margin-top: .3rem;
+    color: rgba(249,246,240,.3);
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+  }
+
+  .fh-dish-heading strong {
+    flex-shrink: 0;
+    color: var(--fh-vin);
+    font-family: Georgia, serif;
+    font-size: .82rem;
+    font-weight: 400;
+    letter-spacing: .06em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .fh-dish-heading strong em {
+    font-style: italic;
+    font-size: .78em;
+    opacity: .75;
+    margin-left: .15em;
+  }
+
+  .fh-dish-info > p {
+    margin: .75rem 0 0;
+    color: rgba(249,246,240,.48);
+    font-size: .78rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* BOUTON */
+  .fh-order {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    align-self: flex-start;
+    margin-top: auto;
+    padding: .65rem .95rem;
+    border: 1px solid rgba(249,246,240,.2);
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(249,246,240,.72);
+    cursor: pointer;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    transition:
+      background .45s ease,
+      border-color .45s ease,
+      color .45s ease,
+      transform .45s cubic-bezier(.19,1,.22,1);
+  }
+
+  .fh-dish-info > p + .fh-order { margin-top: 1rem; }
+
+  .fh-order:hover {
+    border-color: var(--fh-vin);
+    background: rgba(99,15,37,.13);
+    color: var(--fh-creme);
+    transform: translateY(-2px);
+  }
+
+  .fh-order:focus-visible {
+    outline: 2px solid var(--fh-vin);
+    outline-offset: 4px;
+  }
+
+  .fh-order-arrow {
+    color: var(--fh-vin);
+    font-size: .9rem;
+    transition: transform .45s ease;
+  }
+
+  .fh-order:hover .fh-order-arrow { transform: translate(3px,-3px); }
+
+  /* PARTICULES */
+  .fh-menu-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .fh-particle {
+    position: absolute;
+    top: -8%;
+    left: var(--left);
+    width: var(--size);
+    height: calc(var(--size) * 1.6);
+    border-radius: 80% 20% 70% 30%;
+    background: rgba(249,246,240,.18);
+    opacity: 0;
+    animation: fh-fall var(--duration) linear var(--delay) infinite;
+  }
+
+  @keyframes fh-fall {
+    0%   { opacity: 0; transform: translate3d(0, -5vh, 0) rotate(0deg); }
+    9%   { opacity: .55; }
+    50%  { transform: translate3d(calc(var(--drift) * .55), 55vh, 0) rotate(calc(var(--rotation) * .5)); }
+    91%  { opacity: .45; }
+    100% { opacity: 0; transform: translate3d(var(--drift), 115vh, 0) rotate(var(--rotation)); }
+  }
+
+  /* REVEAL */
   .menu-reveal-node {
     opacity: 0;
-    transform: translateY(50px);
-    filter: blur(8px);
-    transition: transform 1.6s cubic-bezier(0.19, 1, 0.22, 1),
-                opacity 1.6s cubic-bezier(0.19, 1, 0.22, 1),
-                filter 1.6s cubic-bezier(0.19, 1, 0.22, 1);
-    will-change: transform, opacity, filter;
+    transform: translateY(28px);
+    filter: blur(4px);
+    transition:
+      opacity 1s cubic-bezier(.19,1,.22,1),
+      transform 1s cubic-bezier(.19,1,.22,1),
+      filter 1s cubic-bezier(.19,1,.22,1);
+    transition-delay: var(--delay, 0s);
   }
 
-  /* Révélation d'une douceur absolue */
   .menu-reveal-node.reveal-active {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
   }
 
-  /* Teinte subtile sur l'image pour le style éditorial */
-  .contrast-110 {
-    filter: contrast(1.05) brightness(0.9);
+  /* MODAL */
+  body.fh-modal-open { overflow: hidden; }
+
+  .fh-modal {
+    position: relative;
+    width: min(100%, 25rem);
+    padding: 2.2rem;
+    border: 1px solid rgba(99,15,37,.42);
+    background: #090909;
+    box-shadow: 0 40px 120px rgba(0,0,0,.65);
+  }
+
+  .fh-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    color: rgba(249,246,240,.45);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.4rem;
+    transition: color .3s ease, transform .3s ease;
+  }
+
+  .fh-modal-close:hover { color: var(--fh-creme); transform: rotate(90deg); }
+
+  .fh-modal-title {
+    margin: 1rem 0 1.6rem;
+    color: var(--fh-creme);
+    font-family: Georgia, serif;
+    font-size: 1.7rem;
+    font-weight: 300;
+  }
+
+  .fh-input {
+    width: 100%;
+    padding: .85rem 0;
+    border: 0;
+    border-bottom: 1px solid rgba(249,246,240,.15);
+    outline: none;
+    background: transparent;
+    color: var(--fh-creme);
+    font-size: .9rem;
+  }
+
+  .fh-input:focus { border-bottom-color: var(--fh-vin); }
+  .fh-input::placeholder { color: rgba(249,246,240,.35); }
+
+  .fh-payment-button {
+    width: 100%;
+    margin-top: .8rem;
+    padding: 1rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--fh-vin);
+    color: var(--fh-creme);
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    transition: transform .4s ease, background .4s ease;
+  }
+
+  .fh-payment-button:hover {
+    background: var(--fh-vin-dark);
+    transform: translateY(-2px);
+  }
+
+  /* TABLETTE */
+  @media (max-width: 1024px) {
+    .fh-title { font-size: clamp(2.4rem, 7vw, 3.6rem); }
+    .fh-menu-collection { column-gap: 1.25rem; row-gap: 3rem; }
+    .fh-dish-heading h3 { font-size: 1.2rem; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    .fh-menu-header { display: block; margin-bottom: 2rem; }
+    .fh-title { font-size: clamp(2.4rem, 12vw, 3.4rem); }
+    .fh-intro { margin-top: 1.25rem; }
+
+    .fh-menu-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 0;
+      margin-bottom: 2.25rem;
+      overflow: visible;
+    }
+
+    .fh-menu-nav-item {
+      flex: 1 1 0;
+      font-size: 7px;
+      letter-spacing: .14em;
+      padding: 0 0 .85rem;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .fh-menu-collection {
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 3rem;
+    }
+
+    .fh-dish,
+    .fh-dish-one,
+    .fh-dish-two,
+    .fh-dish-three { margin: 0; }
+
+    .fh-dish-media { aspect-ratio: 1 / 1; }
+
+    .fh-dish-heading h3 { font-size: 1.35rem; }
+    .fh-dish-heading strong { font-size: .78rem; }
+    .fh-dish-info > p { font-size: .76rem; }
+
+    .fh-menu-grid { background-size: 55px 55px; }
+  }
+
+  /* REDUCED MOTION */
+  @media (prefers-reduced-motion: reduce) {
+    .fh-menu-particles,
+    .fh-particle { display: none; }
+
+    .menu-reveal-node {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition: none;
+    }
+
+    .fh-dish-media,
+    .fh-dish-image,
+    .fh-dish-light,
+    .fh-dish-shine,
+    .fh-order {
+      transition: none;
+      transform: none !important;
+    }
   }
 </style>
+
+<!-- ============================================================
+     SECTION
+     ============================================================ -->
+<section id="menu" class="fh-menu relative overflow-hidden bg-noir text-creme">
+
+  <div class="fh-menu-glow fh-menu-glow-a" aria-hidden="true"></div>
+  <div class="fh-menu-glow fh-menu-glow-b" aria-hidden="true"></div>
+
+  <div class="fh-menu-grid" aria-hidden="true"></div>
+
+  <div id="menu-particles" class="fh-menu-particles" aria-hidden="true"></div>
+
+  <div class="relative z-10 mx-auto max-w-5xl px-6 py-16 md:px-10 md:py-24">
+
+    <!-- HEADER -->
+    <header class="fh-menu-header menu-reveal-node">
+      <div>
+        <span class="fh-eyebrow">La Collection Privée</span>
+        <h2 class="fh-title">
+          L'Art de
+          <span>la Table</span>
+        </h2>
+      </div>
+
+      <div class="fh-intro">
+        <span class="fh-intro-line" aria-hidden="true"></span>
+        <p>
+          Une réécriture contemporaine des grands classiques
+          du continent africain.
+        </p>
+      </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="fh-menu-nav menu-reveal-node" aria-label="Catégories du menu">
+      <button class="fh-menu-nav-item is-active" type="button" data-menu-filter="all">La collection</button>
+      <button class="fh-menu-nav-item" type="button" data-menu-filter="signature">Signatures</button>
+      <button class="fh-menu-nav-item" type="button" data-menu-filter="heritage">Héritage</button>
+    </nav>
+
+    <!-- COLLECTION -->
+    <div class="fh-menu-collection">
+
+      <!-- PLAT 1 -->
+      <article class="fh-dish fh-dish-one menu-reveal-node" data-category="heritage" style="--delay: .10s;">
+        <a href="#"
+           class="fh-dish-media fh-tilt-card"
+           data-tilt
+           data-order-name="Ceebu Jën"
+           data-order-price="8 000 FCFA"
+           aria-label="Commander Ceebu Jën">
+          <div class="fh-dish-number">01</div>
+          <div class="fh-dish-image-wrap">
+            <img src="/images/plats/plat-5.png" alt="Ceebu Jën" class="fh-dish-image" loading="lazy" />
+          </div>
+          <div class="fh-dish-light" aria-hidden="true"></div>
+          <div class="fh-dish-shine" aria-hidden="true"></div>
+          <div class="fh-dish-caption">Héritage Sénégalais</div>
+          <span class="fh-view-dish">Découvrir <span>↗</span></span>
+        </a>
+
+        <div class="fh-dish-info">
+          <div class="fh-dish-heading">
+            <div>
+              <h3>Ceebu Jën</h3>
+              <span>Héritage Sénégalais</span>
+            </div>
+            <strong>8 000 <em>FCFA</em></strong>
+          </div>
+
+          <p>
+            Riz mûri dans un court-bouillon de thiof noble
+            infusé aux herbes du Sine Saloum, textures de
+            légumes oubliés glacés et réduction de tamarin confit.
+          </p>
+
+          <button type="button" class="fh-order" data-order-name="Ceebu Jën" data-order-price="8 000 FCFA">
+            <span>Commander</span>
+            <span class="fh-order-arrow">↗</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- PLAT 2 -->
+      <article class="fh-dish fh-dish-two menu-reveal-node" data-category="signature" style="--delay: .25s;">
+        <a href="#"
+           class="fh-dish-media fh-tilt-card"
+           data-tilt
+           data-order-name="L'Attiéké"
+           data-order-price="5 500 FCFA"
+           aria-label="Commander L'Attiéké">
+          <div class="fh-dish-number">02</div>
+          <div class="fh-dish-image-wrap">
+            <img src="/images/plats/plat-6.png" alt="L'Attiéké" class="fh-dish-image" loading="lazy" />
+          </div>
+          <div class="fh-dish-light" aria-hidden="true"></div>
+          <div class="fh-dish-shine" aria-hidden="true"></div>
+          <div class="fh-dish-caption">Épure Ivoirienne</div>
+          <span class="fh-view-dish">Découvrir <span>↗</span></span>
+        </a>
+
+        <div class="fh-dish-info">
+          <div class="fh-dish-heading">
+            <div>
+              <h3>L'Attiéké</h3>
+              <span>Épure Ivoirienne</span>
+            </div>
+            <strong>5 500 <em>FCFA</em></strong>
+          </div>
+
+          <p>
+            Manioc de tabou affiné travaillé en grains de soie
+            aériens, pavé de capitaine rôti sur peau, condiments
+            vierges aux piments doux locaux et oignons rouges acidulés.
+          </p>
+
+          <button type="button" class="fh-order" data-order-name="L'Attiéké" data-order-price="5 500 FCFA">
+            <span>Commander</span>
+            <span class="fh-order-arrow">↗</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- PLAT 3 -->
+      <article class="fh-dish fh-dish-three menu-reveal-node" data-category="signature heritage" style="--delay: .40s;">
+        <a href="#"
+           class="fh-dish-media fh-tilt-card"
+           data-tilt
+           data-order-name="Ndolé d'Orfèvre"
+           data-order-price="9 500 FCFA"
+           aria-label="Commander Ndolé d'Orfèvre">
+          <div class="fh-dish-number">03</div>
+          <div class="fh-dish-image-wrap">
+            <img src="/images/plats/plat-7.png" alt="Ndolé d'Orfèvre" class="fh-dish-image" loading="lazy" />
+          </div>
+          <div class="fh-dish-light" aria-hidden="true"></div>
+          <div class="fh-dish-shine" aria-hidden="true"></div>
+          <div class="fh-dish-caption">Tradition Camerounaise</div>
+          <span class="fh-view-dish">Découvrir <span>↗</span></span>
+        </a>
+
+        <div class="fh-dish-info">
+          <div class="fh-dish-heading">
+            <div>
+              <h3>Ndolé d'Orfèvre</h3>
+              <span>Tradition Camerounaise</span>
+            </div>
+            <strong>9 500 <em>FCFA</em></strong>
+          </div>
+
+          <p>
+            Feuilles amères de Ndolé minutieusement lavées,
+            velouté d'arachides fraîches et noix de cajou torréfiées,
+            escortées de reines crevettes snackées au beurre de
+            karité clarifié.
+          </p>
+
+          <button type="button" class="fh-order" data-order-name="Ndolé d'Orfèvre" data-order-price="9 500 FCFA">
+            <span>Commander</span>
+            <span class="fh-order-arrow">↗</span>
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MODAL COMMANDE
+     ============================================================ -->
+<div id="modal-client" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/75 px-4 backdrop-blur-md"
+     role="dialog" aria-modal="true" aria-labelledby="modal-client-titre">
+  <div class="fh-modal">
+    <button type="button" id="modal-client-close" class="fh-modal-close" aria-label="Fermer">×</button>
+
+    <span class="fh-eyebrow">FoodHouse · Commande</span>
+    <h3 id="modal-client-titre" class="fh-modal-title">Votre commande</h3>
+
+    <form id="client-order-form" class="space-y-4">
+      <input type="text" id="client-prenom" required placeholder="Prénom" autocomplete="given-name" class="fh-input" />
+      <input type="text" id="client-nom" required placeholder="Nom" autocomplete="family-name" class="fh-input" />
+      <input type="email" id="client-email" required placeholder="Email" autocomplete="email" class="fh-input" />
+      <input type="tel" id="client-tel" required placeholder="Téléphone" autocomplete="tel" class="fh-input" />
+
+      <button type="submit" class="fh-payment-button">
+        Continuer vers le paiement
+        <span>↗</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCRIPT
+     ============================================================ -->
+<script is:inline>
+  (() => {
+    'use strict';
+
+    const whatsappNumber = '2290196977215';
+    let plateSelectionnee = { nom: '', prix: '' };
+
+    const section = document.getElementById('menu');
+    const modal = document.getElementById('modal-client');
+    const modalTitle = document.getElementById('modal-client-titre');
+    const modalClose = document.getElementById('modal-client-close');
+    const orderForm = document.getElementById('client-order-form');
+    const particleLayer = document.getElementById('menu-particles');
+
+    if (!section) return;
+
+    /* ==========================================
+       NORMALISATION DU NUMÉRO BÉNINOIS
+       Garantit le format : +229 01 XXXX XXXX
+       ========================================== */
+    function normaliserTelBenin(tel) {
+      let n = tel.replace(/[^0-9]/g, '');          // enlève +, espaces, tirets
+
+      // Enlève l'indicatif 229 s'il est déjà présent
+      if (n.startsWith('229')) n = n.slice(3);
+
+      // Ajoute le 01 obligatoire si absent
+      if (!n.startsWith('01')) n = '01' + n;
+
+      return '+229' + n;
+    }
+
+    /* ==========================================
+       MODAL
+       ========================================== */
+    function ouvrirModal(nomPlat, prixTexte) {
+      plateSelectionnee = { nom: nomPlat, prix: prixTexte };
+      if (modalTitle) modalTitle.textContent = `Commander : ${nomPlat}`;
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.classList.add('fh-modal-open');
+      }
+      const firstInput = document.getElementById('client-prenom');
+      if (firstInput) window.setTimeout(() => firstInput.focus(), 100);
+    }
+
+    function fermerModal() {
+      if (modal) modal.classList.add('hidden');
+      document.body.classList.remove('fh-modal-open');
+    }
+
+    /* ==========================================
+       DÉCLENCHEURS — Bouton ET Image du plat
+       ========================================== */
+    section.querySelectorAll('.fh-order, .fh-dish-media').forEach((trigger) => {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault(); // évite le saut href="#"
+
+        const nom = trigger.getAttribute('data-order-name');
+        const prix = trigger.getAttribute('data-order-price');
+        if (!nom || !prix) return;
+
+        ouvrirModal(nom, prix);
+      });
+    });
+
+    /* ==========================================
+       FERMETURE
+       ========================================== */
+    if (modalClose) modalClose.addEventListener('click', fermerModal);
+    if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) fermerModal(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) fermerModal();
+    });
+
+    /* ==========================================
+       FORMULAIRE + FEDAPAY
+       ========================================== */
+    if (orderForm) {
+      orderForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const nom = document.getElementById('client-nom')?.value.trim();
+        const prenom = document.getElementById('client-prenom')?.value.trim();
+        const tel = document.getElementById('client-tel')?.value.trim();
+        const email = document.getElementById('client-email')?.value.trim();
+
+        if (!nom || !prenom || !tel || !email) {
+          alert('Merci de remplir tous les champs.');
+          return;
+        }
+
+        const montant = parseInt(plateSelectionnee.prix.replace(/[^0-9]/g, ''), 10);
+
+        if (!plateSelectionnee.nom || !plateSelectionnee.prix || Number.isNaN(montant)) {
+          alert('Impossible de récupérer les informations de la commande.');
+          return;
+        }
+
+        if (typeof window.FedaPay === 'undefined') {
+          alert('Le module de paiement FedaPay n’est pas disponible. Vérifiez que son script est bien chargé.');
+          return;
+        }
+
+        /* ✅ Normalisation du numéro AVANT l'envoi à FedaPay */
+        const telNormalise = normaliserTelBenin(tel);
+
+        fermerModal();
+
+        try {
+          const widget = window.FedaPay.init({
+            public_key: 'pk_sandbox_PvSnrvtHYdCoNXQz-azTyeM8',
+            transaction: {
+              amount: montant,
+              description: `Commande FoodHouse - ${plateSelectionnee.nom}`
+            },
+            customer: {
+              firstname: prenom,
+              lastname: nom,
+              email: email,
+              phone_number: {
+                number: telNormalise,
+                country: 'bj'
+              }
+            },
+            onComplete: (response) => {
+              if (response && response.reason === window.FedaPay.CHECKOUT_COMPLETED) {
+                const rawText =
+`Nouvelle commande FoodHouse (payée ✅)
+Client : ${prenom} ${nom}
+Téléphone : ${telNormalise}
+Email : ${email}
+Plat : ${plateSelectionnee.nom}
+Prix : ${plateSelectionnee.prix}
+
+Merci de me confirmer la disponibilité et les modalités de livraison / retrait.`;
+                window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(rawText)}`;
+              } else {
+                alert("Le paiement n'a pas abouti. Merci de réessayer.");
+              }
+            }
+          });
+          if (widget && typeof widget.open === 'function') widget.open();
+          else alert('Impossible d’ouvrir le paiement FedaPay.');
+        } catch (error) {
+          console.error('Erreur FedaPay :', error);
+          alert('Une erreur est survenue lors de l’ouverture du paiement.');
+        }
+      });
+    }
+
+    /* ==========================================
+       REVEAL
+       ========================================== */
+    const revealNodes = section.querySelectorAll('.menu-reveal-node');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reducedMotion) {
+      revealNodes.forEach((node) => node.classList.add('reveal-active'));
+    } else {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('reveal-active');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+
+      revealNodes.forEach((node) => revealObserver.observe(node));
+    }
+
+    /* ==========================================
+       TILT 3D
+       ========================================== */
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    if (finePointer && !reducedMotion) {
+      section.querySelectorAll('[data-tilt]').forEach((card) => {
+        const media = card.querySelector('.fh-dish-image');
+
+        let rafId = null;
+        let tRX = 0, tRY = 0, tMX = 0, tMY = 0;
+        let cRX = 0, cRY = 0, cMX = 0, cMY = 0;
+
+        const onMove = (event) => {
+          const rect = card.getBoundingClientRect();
+          if (!rect.width || !rect.height) return;
+
+          const x = (event.clientX - rect.left) / rect.width;
+          const y = (event.clientY - rect.top) / rect.height;
+
+          tRY = (x - 0.5) * 3.5;
+          tRX = (0.5 - y) * 3.5;
+          tMX = (x - 0.5) * 8;
+          tMY = (y - 0.5) * 8;
+
+          if (rafId === null) rafId = requestAnimationFrame(tick);
+        };
+
+        const onLeave = () => {
+          tRX = 0; tRY = 0; tMX = 0; tMY = 0;
+          if (rafId === null) rafId = requestAnimationFrame(tick);
+        };
+
+        const tick = () => {
+          cRX += (tRX - cRX) * 0.12;
+          cRY += (tRY - cRY) * 0.12;
+          cMX += (tMX - cMX) * 0.12;
+          cMY += (tMY - cMY) * 0.12;
+
+          card.style.setProperty('--rx', cRX.toFixed(3) + 'deg');
+          card.style.setProperty('--ry', cRY.toFixed(3) + 'deg');
+          card.style.setProperty('--mx', cMX.toFixed(2) + 'px');
+          card.style.setProperty('--my', cMY.toFixed(2) + 'px');
+
+          if (media) {
+            media.style.setProperty('--img-x', (cMX * 0.4).toFixed(2) + 'px');
+            media.style.setProperty('--img-y', (cMY * 0.4).toFixed(2) + 'px');
+          }
+
+          const done =
+            Math.abs(tRX - cRX) < 0.02 &&
+            Math.abs(tRY - cRY) < 0.02 &&
+            Math.abs(tMX - cMX) < 0.1 &&
+            Math.abs(tMY - cMY) < 0.1;
+
+          if (done) { rafId = null; return; }
+          rafId = requestAnimationFrame(tick);
+        };
+
+        card.addEventListener('pointermove', onMove);
+        card.addEventListener('pointerleave', onLeave);
+      });
+    }
+
+    /* ==========================================
+       FILTRES
+       ========================================== */
+    const filterButtons = section.querySelectorAll('[data-menu-filter]');
+    const dishes = section.querySelectorAll('.fh-dish');
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-menu-filter');
+        if (!filter) return;
+
+        filterButtons.forEach((item) => item.classList.remove('is-active'));
+        button.classList.add('is-active');
+
+        dishes.forEach((dish) => {
+          const categories = (dish.getAttribute('data-category') || '').split(' ');
+          const visible = filter === 'all' || categories.includes(filter);
+          dish.classList.toggle('is-filtered-out', !visible);
+        });
+      });
+    });
+
+    /* ==========================================
+       PARTICULES
+       ========================================== */
+    if (particleLayer && !reducedMotion) {
+      const particleCount = 14;
+      for (let i = 0; i < particleCount; i += 1) {
+        const particle = document.createElement('span');
+        particle.className = 'fh-particle';
+        particle.style.setProperty('--left', `${Math.random() * 100}%`);
+        particle.style.setProperty('--size', `${4 + Math.random() * 7}px`);
+        particle.style.setProperty('--duration', `${11 + Math.random() * 10}s`);
+        particle.style.setProperty('--delay', `${Math.random() * -18}s`);
+        particle.style.setProperty('--drift', `${-55 + Math.random() * 110}px`);
+        particle.style.setProperty('--rotation', `${-220 + Math.random() * 440}deg`);
+        particleLayer.appendChild(particle);
+      }
+    }
+  })();
+</script>

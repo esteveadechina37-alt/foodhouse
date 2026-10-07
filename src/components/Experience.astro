@@ -1,168 +1,1219 @@
 ---
-// Section Expérience - FoodHouse avec Pluie de feuilles et animation au défilement (Scroll)
+/**
+ * Section À propos / Expérience — FoodHouse
+ * Palette : bordeaux, crème et noir
+ * Structure éditoriale premium avec cinq avantages
+ */
 ---
 
-<section id="experience" class="relative py-24 md:py-32 bg-creme overflow-hidden">
-  
-  <!-- Aura d'arrière-plan couleur Vin floutée -->
-  <div class="absolute -top-20 -left-20 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-vin/10 rounded-full blur-3xl pointer-events-none z-0"></div>
-  <div class="absolute -bottom-20 -right-20 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-vin/5 rounded-full blur-3xl pointer-events-none z-0"></div>
-
-  <!-- Pluie de feuilles couleur Vin -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none z-1">
-    <svg class="leaf-particle lf-1 absolute text-vin/30" xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M2 22C2 12 10 4 22 2c0 10-8 18-20 20z"/></svg>
-    <svg class="leaf-particle lf-2 absolute text-vin/40" xmlns="http://w3.org" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2 22C2 12 10 4 22 2c0 10-8 18-20 20z"/></svg>
-    <svg class="leaf-particle lf-3 absolute text-vin/25" xmlns="http://w3.org" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M2 22C2 12 10 4 22 2c0 10-8 18-20 20z"/></svg>
-    <svg class="leaf-particle lf-4 absolute text-vin/35" xmlns="http://w3.org" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2 22C2 12 10 4 22 2c0 10-8 18-20 20z"/></svg>
-    <svg class="leaf-particle lf-5 absolute text-vin/20" xmlns="http://w3.org" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2 22C2 12 10 4 22 2c0 10-8 18-20 20z"/></svg>
+<section
+  id="experience"
+  class="experience-section relative overflow-hidden bg-creme text-noir"
+>
+  <!-- Décorations organiques -->
+  <div
+    class="experience-decoration decoration-leaf decoration-leaf-one"
+    aria-hidden="true"
+  >
+    <svg viewBox="0 0 48 48" fill="none">
+      <path
+        d="M7 39C10 22 22 9 42 6C39 26 26 39 7 39Z"
+        fill="currentColor"
+      />
+      <path
+        d="M8 39C18 31 27 23 38 11"
+        stroke="currentColor"
+        stroke-width="1.2"
+        stroke-linecap="round"
+      />
+    </svg>
   </div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
-    <div class="grid md:grid-cols-2 items-center gap-20">
-      
-      <!-- Colonne Image (À GAUCHE) -->
-      <!-- MODIFICATION : La classe scroll-reveal attend le signal JS pour s'animer -->
-      <div class="relative flex justify-center items-center order-2 md:order-1 card-3d-scene scroll-reveal" style="transition-delay: 0.7s;">
-        <div class="relative group card-3d-element will-change-transform">
-          <img 
-            src="/images/plats/plat-4.png" 
-            alt="Plat signature FoodHouse" 
-            class="w-[300px] md:w-[480px] h-auto object-contain image-shadow select-none pointer-events-none transition-transform duration-500"
-          />
-          <div class="absolute -inset-6 bg-vin/10 rounded-full -z-10 blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-700"></div>
-        </div>
-      </div>
+  <div
+    class="experience-decoration decoration-leaf decoration-leaf-two"
+    aria-hidden="true"
+  >
+    <svg viewBox="0 0 48 48" fill="none">
+      <path
+        d="M9 39C11 25 20 14 38 8C37 24 28 37 9 39Z"
+        fill="currentColor"
+      />
+      <path
+        d="M10 39C19 30 26 22 34 12"
+        stroke="currentColor"
+        stroke-width="1.2"
+        stroke-linecap="round"
+      />
+    </svg>
+  </div>
 
-      <!-- Colonne Texte (À DROITE) -->
-      <div class="order-1 md:order-2">
-        <!-- MODIFICATION : Chaque élément texte utilise maintenant scroll-reveal -->
-        <span class="scroll-reveal inline-block uppercase tracking-[0.4em] text-[10px] text-vin/80 font-bold" style="transition-delay: 0.1s;">
-          Pourquoi nous
-        </span>
-        
-        <h2 class="scroll-reveal font-serif text-4xl md:text-5xl text-noir mt-4 mb-10 tracking-wide leading-tight" style="transition-delay: 0.25s;">
-          L'expérience FoodHouse
-        </h2>
-        
-        <div class="space-y-10">
-          <!-- Item 1 -->
-          <div class="scroll-reveal flex gap-6 group items-start" style="transition-delay: 0.4s;">
-            <div class="w-14 h-14 bg-white text-vin rounded-none flex items-center justify-center shrink-0 border border-vin/10 group-hover:bg-vin group-hover:text-white transition-all duration-500 ease-out shadow-xs group-hover:shadow-lg group-hover:shadow-vin/20">
-              <svg xmlns="http://w3.org" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" class="transition-transform duration-500 group-hover:scale-110"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            </div>
-            <div>
-              <h3 class="font-serif text-xl md:text-2xl text-noir mb-2.5 transition-colors duration-300 group-hover:text-vin">Produits frais</h3>
-              <p class="text-noir/60 leading-relaxed font-light text-sm md:text-base">Tous nos ingrédients sont sourcés chaque matin auprès de producteurs locaux, garantissant saveurs et quality inégalées.</p>
+  <div
+    class="experience-decoration spice spice-one"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="experience-decoration spice spice-two"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="experience-decoration spice spice-three"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="experience-decoration seed seed-one"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="experience-decoration seed seed-two"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="experience-wrapper relative z-10 mx-auto max-w-7xl px-6 py-24 md:px-12 md:py-32 lg:py-40"
+  >
+    <!-- Introduction -->
+    <div class="experience-intro reveal-up mx-auto mb-20 max-w-2xl text-center md:mb-28">
+      <span class="mb-5 block text-[10px] font-semibold uppercase tracking-[0.55em] text-vin/75">
+        L'esprit FoodHouse
+      </span>
+
+      <p class="font-serif text-2xl font-light leading-relaxed tracking-wide text-noir md:text-3xl">
+        Une cuisine africaine sincère, pensée comme une expérience où les produits,
+        les épices et la mémoire se rencontrent avec élégance.
+      </p>
+
+      <div class="mx-auto mt-8 flex items-center justify-center gap-4">
+        <span class="h-px w-12 bg-vin/25"></span>
+        <span class="h-2 w-2 rotate-45 border border-vin/60"></span>
+        <span class="h-px w-12 bg-vin/25"></span>
+      </div>
+    </div>
+
+    <!-- Composition éditoriale -->
+    <div class="experience-editorial">
+      <!-- Image -->
+      <div class="experience-image-column reveal-left">
+        <div class="experience-image-frame">
+          <div class="experience-image-inner">
+            <img
+              src="/images/plats/plat-4.png"
+              alt="Plat signature de la cuisine africaine FoodHouse"
+              class="experience-image"
+              loading="lazy"
+            />
+
+            <div class="experience-image-overlay"></div>
+
+            <div class="experience-image-caption">
+              <span>Création FoodHouse</span>
+              <span class="caption-line"></span>
+              <span>01 / 05</span>
             </div>
           </div>
 
-          <!-- Item 2 -->
-          <div class="scroll-reveal flex gap-6 group items-start" style="transition-delay: 0.55s;">
-            <div class="w-14 h-14 bg-white text-vin rounded-none flex items-center justify-center shrink-0 border border-vin/10 group-hover:bg-vin group-hover:text-white transition-all duration-500 ease-out shadow-xs group-hover:shadow-lg group-hover:shadow-vin/20">
-              <svg xmlns="http://w3.org" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" class="transition-transform duration-500 group-hover:scale-110"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            </div>
-            <div>
-              <h3 class="font-serif text-xl md:text-2xl text-noir mb-2.5 transition-colors duration-300 group-hover:text-vin">Épices rares</h3>
-              <p class="text-noir/60 leading-relaxed font-light text-sm md:text-base">Un voyage sensoriel à travers des mélanges d'épices venus du continent, torréfiés et préparés sur place chaque jour.</p>
-            </div>
-          </div>
+          <div class="experience-image-shadow"></div>
+          <div class="experience-image-accent"></div>
         </div>
       </div>
 
+      <!-- Contenu -->
+      <div class="experience-content">
+        <div class="experience-heading reveal-right">
+          <span class="mb-5 block text-[10px] font-semibold uppercase tracking-[0.45em] text-vin/75">
+            Ce que nous offrons
+          </span>
+
+          <h2 class="font-serif text-4xl font-light leading-[1.05] tracking-tight text-noir md:text-5xl lg:text-6xl">
+            L'expérience
+            <span class="block italic text-vin">FoodHouse</span>
+          </h2>
+
+          <p class="mt-7 max-w-lg text-sm font-light leading-7 text-noir/60 md:text-base">
+            Chaque assiette raconte une histoire. Nous travaillons des produits
+            choisis avec soin et des saveurs africaines que nous interprétons avec
+            précision, générosité et modernité.
+          </p>
+        </div>
+
+        <!-- Avantage 1 -->
+        <div class="experience-features">
+          <article
+            class="experience-feature reveal-feature"
+            style="--feature-delay: 120ms;"
+          >
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 7v5l3 2"></path>
+              </svg>
+            </div>
+
+            <div class="feature-content">
+              <h3>Une cuisine vivante</h3>
+              <p>
+                Des recettes inspirées de nos territoires et préparées avec
+                attention.
+              </p>
+            </div>
+          </article>
+
+          <!-- Avantage 2 -->
+          <article
+            class="experience-feature reveal-feature"
+            style="--feature-delay: 220ms;"
+          >
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 21c4.5-4 7-7.4 7-11a7 7 0 0 0-14 0c0 3.6 2.5 7 7 11Z"></path>
+                <path d="M12 7c1.8 1.3 2.7 2.7 2.7 4.2"></path>
+                <path d="M12 7c-1.8 1.3-2.7 2.7-2.7 4.2"></path>
+              </svg>
+            </div>
+
+            <div class="feature-content">
+              <h3>Des produits choisis</h3>
+              <p>
+                Des ingrédients sélectionnés pour leur fraîcheur, leur origine
+                et leur goût.
+              </p>
+            </div>
+          </article>
+
+          <!-- Avantage 3 -->
+          <article
+            class="experience-feature reveal-feature"
+            style="--feature-delay: 320ms;"
+          >
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 20h16"></path>
+                <path d="M6 20V9"></path>
+                <path d="M18 20V9"></path>
+                <path d="M5 9h14"></path>
+                <path d="M7 9a5 5 0 0 1 10 0"></path>
+                <path d="M9 5h6"></path>
+              </svg>
+            </div>
+
+            <div class="feature-content">
+              <h3>Des épices authentiques</h3>
+              <p>
+                Un équilibre précis entre intensité, douceur et profondeur
+                aromatique.
+              </p>
+            </div>
+          </article>
+
+          <!-- Avantage 4 -->
+          <article
+            class="experience-feature reveal-feature"
+            style="--feature-delay: 420ms;"
+          >
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 18c4-1 6-3.5 8-8 2 4.5 4 7 8 8"></path>
+                <path d="M12 10V4"></path>
+                <path d="M8 7c1.5-1.5 2.8-2 4-2"></path>
+                <path d="M16 7c-1.5-1.5-2.8-2-4-2"></path>
+              </svg>
+            </div>
+
+            <div class="feature-content">
+              <h3>Une table généreuse</h3>
+              <p>
+                Un moment chaleureux imaginé pour partager, découvrir et
+                revenir.
+              </p>
+            </div>
+          </article>
+
+          <!-- Avantage 5 -->
+          <article
+            class="experience-feature reveal-feature"
+            style="--feature-delay: 520ms;"
+          >
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 3 4 7v5c0 4.5 3.4 7.5 8 9 4.6-1.5 8-4.5 8-9V7l-8-4Z"></path>
+                <path d="m8.5 12 2.2 2.2 4.8-5"></path>
+              </svg>
+            </div>
+
+            <div class="feature-content">
+              <h3>Le sens du détail</h3>
+              <p>
+                Du dressage à l'accueil, chaque geste participe à votre
+                expérience.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<script>
-  // --- ACTIVATION DES ANIMATIONS AU DEFILEMENT (Intersection Observer) ---
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.15 // Déclenche l'animation quand 15% de la section est visible
-  };
-
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Sélectionne tous les éléments à révéler à l'intérieur de cette section
-        const elementsToReveal = entry.target.querySelectorAll('.scroll-reveal');
-        elementsToReveal.forEach((el) => {
-          el.classList.add('active');
-        });
-        // Optionnel : on arrête d'observer une fois l'animation jouée
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // On lance l'observation sur la section Expérience
-  const targetSection = document.getElementById('experience');
-  if (targetSection) {
-    revealObserver.observe(targetSection);
+<style is:global>
+  :root {
+    --foodhouse-noir: #090909;
+    --foodhouse-vin: #630f25;
+    --foodhouse-vin-dark: #430c1b;
+    --foodhouse-creme: #f9f6f0;
   }
 
-  // --- EFFET DE PARALLAXE SOURIS (Inchangé) ---
-  const scene = document.querySelector('.card-3d-scene');
-  const card = document.querySelector('.card-3d-element') as HTMLElement;
+  #experience {
+    background:
+      radial-gradient(circle at 8% 15%, rgba(99, 15, 37, 0.07), transparent 25%),
+      radial-gradient(circle at 92% 85%, rgba(99, 15, 37, 0.05), transparent 24%),
+      var(--foodhouse-creme);
+  }
 
-  if (scene && card && window.innerWidth > 768) {
-    scene.addEventListener('mousemove', (e: Event) => {
-      const mouseEvent = e as MouseEvent;
-      const rect = (scene as HTMLElement).getBoundingClientRect();
-      const x = (mouseEvent.clientX - rect.left) / rect.width - 0.5;
-      const y = (mouseEvent.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `rotateX(${y * -12}deg) rotateY(${x * 12}deg) scale(1.02)`;
-    });
+  .experience-section { isolation: isolate; }
+  .experience-wrapper { min-height: 720px; }
 
-    scene.addEventListener('mouseleave', () => {
-      card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
-    });
+  .experience-editorial {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    align-items: center;
+    gap: clamp(3rem, 8vw, 8rem);
+  }
+
+  .experience-image-column {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .experience-image-frame {
+    position: relative;
+    width: min(100%, 500px);
+    padding: 18px;
+  }
+
+  .experience-image-inner {
+    position: relative;
+    z-index: 2;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--foodhouse-vin-dark);
+    box-shadow: 0 28px 70px rgba(40, 10, 18, 0.18);
+  }
+
+  .experience-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1);
+    filter: saturate(0.92) contrast(1.04);
+    transition:
+      transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 1.2s ease;
+  }
+
+  .experience-section.is-active .experience-image {
+    transform: scale(1.04);
+    filter: saturate(1) contrast(1.04);
+  }
+
+  .experience-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(9, 9, 9, 0.04) 0%,
+      rgba(9, 9, 9, 0.08) 55%,
+      rgba(9, 9, 9, 0.5) 100%
+    );
+    pointer-events: none;
+  }
+
+  .experience-image-caption {
+    position: absolute;
+    right: 22px;
+    bottom: 20px;
+    left: 22px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(249, 246, 240, 0.82);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .caption-line {
+    height: 1px;
+    flex: 1;
+    background: rgba(249, 246, 240, 0.45);
+  }
+
+  .experience-image-shadow {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 34px;
+    z-index: 0;
+    height: 75%;
+    background: rgba(99, 15, 37, 0.12);
+    transform: translate(18px, 18px);
+  }
+
+  .experience-image-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 76px;
+    height: 76px;
+    border-top: 1px solid rgba(99, 15, 37, 0.55);
+    border-left: 1px solid rgba(99, 15, 37, 0.55);
+    pointer-events: none;
+  }
+
+  .experience-content { max-width: 650px; }
+  .experience-heading { margin-bottom: 3rem; }
+
+  .experience-features {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .experience-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(9, 9, 9, 0.12);
+  }
+
+  .experience-feature:last-child {
+    border-bottom: 1px solid rgba(9, 9, 9, 0.12);
+  }
+
+  .feature-icon {
+    display: flex;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(99, 15, 37, 0.3);
+    border-radius: 50%;
+    color: var(--foodhouse-vin);
+    transform: scale(0.85);
+    transition:
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.4s ease,
+      color 0.4s ease;
+  }
+
+  .experience-feature.is-visible:hover .feature-icon,
+  .experience-feature:hover .feature-icon {
+    background: var(--foodhouse-vin);
+    color: var(--foodhouse-creme);
+    transform: scale(1.05);
+  }
+
+  .feature-icon svg { width: 17px; height: 17px; }
+
+  .feature-content h3 {
+    margin: 1px 0 4px;
+    color: var(--foodhouse-noir);
+    font-family: var(--font-serif);
+    font-size: 1.18rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  .feature-content p {
+    max-width: 500px;
+    color: rgba(9, 9, 9, 0.55);
+    font-size: 0.86rem;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  /* ============================================
+     DÉCORATIONS — CHUTE PERPÉTUELLE
+     ============================================ */
+
+  .experience-decoration {
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    /* Valeurs par défaut, surchargées par chaque élément */
+    --deco-opacity: 0.35;
+
+    /* Animation en longhand (plus robuste que le shorthand) */
+    animation-name: fall;
+    animation-duration: 18s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+
+    /* Parallax au scroll via la propriété indépendante `translate` */
+    translate: 0 var(--parallax-y, 0px);
+    transition: translate 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+    will-change: top, opacity;
+  }
+
+  /* La couleur (avec alpha) porte la discrétion,
+     l'opacité de l'animation reste à 1 pour rester visible */
+  .decoration-leaf { color: rgba(99, 15, 37, 0.4); }
+  .spice           { background: rgba(99, 15, 37, 0.5); }
+  .seed            { border-color: rgba(99, 15, 37, 0.6); }
+
+  @keyframes fall {
+    0%   { top: -15%; opacity: 0; }
+    10%  { opacity: var(--deco-opacity); }
+    90%  { opacity: var(--deco-opacity); }
+    100% { top: 115%; opacity: 0; }
+  }
+
+  /* Feuille 1 */
+  .decoration-leaf {
+    width: 62px;
+    height: 62px;
+  }
+
+  .decoration-leaf-one {
+    left: 2.5%;
+    rotate: -28deg;
+    animation-duration: 16s;
+    animation-delay: -2s;
+    --deco-opacity: 0.5;
+  }
+
+  .decoration-leaf-two {
+    right: 3%;
+    rotate: 150deg;
+    animation-duration: 22s;
+    animation-delay: -7s;
+    --deco-opacity: 0.4;
+  }
+
+  /* Épices */
+  .spice {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .spice-one {
+    right: 11%;
+    animation-duration: 13s;
+    animation-delay: -3s;
+    --deco-opacity: 0.55;
+  }
+
+  .spice-two {
+    left: 10%;
+    width: 5px;
+    height: 5px;
+    animation-duration: 15s;
+    animation-delay: -9s;
+    --deco-opacity: 0.7;
+  }
+
+  .spice-three {
+    left: 5%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 12s;
+    animation-delay: -5s;
+    --deco-opacity: 0.5;
+  }
+
+  /* Graines */
+  .seed {
+    width: 7px;
+    height: 14px;
+    border: 1px solid;
+    border-radius: 70% 30% 70% 30%;
+    rotate: 32deg;
+    --deco-opacity: 0.7;
+  }
+
+  .seed-one {
+    right: 5%;
+    animation-duration: 18s;
+    animation-delay: -4s;
+  }
+
+  .seed-two {
+    right: 8%;
+    rotate: -42deg;
+    scale: 0.7;
+    animation-duration: 24s;
+    animation-delay: -11s;
+  }
+
+  /* ==============================
+     RÉVÉLATIONS AU SCROLL
+     ============================== */
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .reveal-feature {
+    opacity: 0;
+    filter: blur(4px);
+    transition:
+      opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-up    { transform: translateY(20px); }
+  .reveal-left  { transform: translateX(-30px); }
+  .reveal-right { transform: translateX(30px); transition-delay: 140ms; }
+  .reveal-feature { transform: translateY(18px); transition-delay: var(--feature-delay); }
+
+  .reveal-up.is-visible,
+  .reveal-left.is-visible,
+  .reveal-right.is-visible,
+  .reveal-feature.is-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(0);
+  }
+
+  .reveal-feature.is-visible .feature-icon { transform: scale(1); }
+
+  /* ==============================
+     RESPONSIVE
+     ============================== */
+  @media (max-width: 900px) {
+    .experience-editorial { gap: 3rem; }
+    .experience-wrapper {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .experience-wrapper {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    .experience-intro { margin-bottom: 4rem; }
+    .experience-intro p { font-size: 1.45rem; }
+
+    .experience-editorial {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 3.5rem;
+    }
+
+    .experience-image-column { order: 1; }
+    .experience-content      { order: 2; }
+
+    .experience-image-frame {
+      width: min(100%, 420px);
+      margin: 0 auto;
+      padding: 12px;
+    }
+
+    .experience-heading { margin-bottom: 2rem; }
+    .experience-feature { gap: 14px; padding: 16px 0; }
+    .feature-icon       { width: 32px; height: 32px; flex-basis: 32px; }
+    .feature-content h3 { font-size: 1.08rem; }
+    .feature-content p  { font-size: 0.82rem; }
+
+    .decoration-leaf { scale: 0.7; }
+  }
+
+  /* ============================================
+     ⚠️ IMPORTANT — ce bloc est ce qui a tout figé
+     On NE touche plus aux décorations ici.
+     ============================================ */
+  @media (prefers-reduced-motion: reduce) {
+    .experience-image,
+    .reveal-up,
+    .reveal-left,
+    .reveal-right,
+    .reveal-feature,
+    .feature-icon {
+      animation: none !important;
+      transition: none !important;
+      filter: none !important;
+      transform: none !important;
+    }
+
+    .reveal-up,
+    .reveal-left,
+    .reveal-right,
+    .reveal-feature {
+      opacity: 1 !important;
+    }
+
+    /* On laisse tomber les décorations plus lentement plutôt que de les figer */
+    .experience-decoration {
+      animation-duration: 40s !important;
+    }
+  }
+</style>
+
+<!-- <script>
+  const experienceSection =
+    document.getElementById('experience');
+
+  if (experienceSection) {
+    const animatedElements =
+      experienceSection.querySelectorAll<HTMLElement>(
+        '.reveal-up, .reveal-left, .reveal-right, .reveal-feature'
+      );
+
+    const prefersReducedMotion =
+      window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches;
+
+    if (prefersReducedMotion) {
+      animatedElements.forEach((element) => {
+        element.classList.add('is-visible');
+      });
+    } else {
+      const revealObserver =
+        new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              experienceSection.classList.add('is-active');
+
+              animatedElements.forEach((element) => {
+                element.classList.add('is-visible');
+              });
+
+              observer.unobserve(entry.target);
+            });
+          },
+          {
+            threshold: 0.15,
+            rootMargin: '0px 0px -8% 0px',
+          }
+        );
+
+      revealObserver.observe(experienceSection);
+
+      const decorations =
+        experienceSection.querySelectorAll<HTMLElement>(
+          '.experience-decoration'
+        );
+
+      // Correction : on passe par une variable CSS --parallax-y
+      // au lieu d'écraser le transform (ce qui supprimait les rotations).
+      const updateDecorationParallax = () => {
+        if (
+          !experienceSection.classList.contains(
+            'is-active'
+          )
+        ) {
+          return;
+        }
+
+        const rect =
+          experienceSection.getBoundingClientRect();
+
+        const progress =
+          (window.innerHeight - rect.top) /
+          window.innerHeight;
+
+        decorations.forEach((decoration, index) => {
+          const speed = 0.08 + index * 0.03;
+          const offsetY = progress * 160 * speed;
+
+          decoration.style.setProperty(
+            '--parallax-y',
+            `${offsetY}px`
+          );
+        });
+      };
+
+      window.addEventListener(
+        'scroll',
+        updateDecorationParallax,
+        { passive: true }
+      );
+    }
   }
 </script>
 
 <style is:global>
-  :root { --noir: #090909; --vin: #630f25; --creme: #f9f6f0; }
-  #experience { background-color: var(--creme); }
-  .card-3d-scene { perspective: 1000px; }
-  .card-3d-element { transform-style: preserve-3d; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
-  .image-shadow { filter: drop-shadow(0 35px 30px rgba(0, 0, 0, 0.12)); }
+  :root {
+    --foodhouse-noir: #090909;
+    --foodhouse-vin: #630f25;
+    --foodhouse-vin-dark: #430c1b;
+    --foodhouse-creme: #f9f6f0;
+  }
 
-  /* --- ÉTAT INITIAL POUR LES ÉLÉMENTS À GAUGHE/DROITE (Invisible et décalé) --- */
-  .scroll-reveal {
+  #experience {
+    background:
+      radial-gradient(
+        circle at 8% 15%,
+        rgba(99, 15, 37, 0.07),
+        transparent 25%
+      ),
+      radial-gradient(
+        circle at 92% 85%,
+        rgba(99, 15, 37, 0.05),
+        transparent 24%
+      ),
+      var(--foodhouse-creme);
+  }
+
+  .experience-section {
+    isolation: isolate;
+  }
+
+  .experience-wrapper {
+    min-height: 720px;
+  }
+
+  .experience-editorial {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 0.92fr)
+      minmax(0, 1.08fr);
+    align-items: center;
+    gap: clamp(3rem, 8vw, 8rem);
+  }
+
+  .experience-image-column {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .experience-image-frame {
+    position: relative;
+    width: min(100%, 500px);
+    padding: 18px;
+  }
+
+  .experience-image-inner {
+    position: relative;
+    z-index: 2;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--foodhouse-vin-dark);
+    box-shadow: 0 28px 70px rgba(40, 10, 18, 0.18);
+  }
+
+  .experience-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1);
+    filter: saturate(0.92) contrast(1.04);
+    transition:
+      transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 1.2s ease;
+  }
+
+  .experience-section.is-active .experience-image {
+    transform: scale(1.04);
+    filter: saturate(1) contrast(1.04);
+  }
+
+  .experience-image-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(9, 9, 9, 0.04) 0%,
+        rgba(9, 9, 9, 0.08) 55%,
+        rgba(9, 9, 9, 0.5) 100%
+      );
+    pointer-events: none;
+  }
+
+  .experience-image-caption {
+    position: absolute;
+    right: 22px;
+    bottom: 20px;
+    left: 22px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(249, 246, 240, 0.82);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .caption-line {
+    height: 1px;
+    flex: 1;
+    background: rgba(249, 246, 240, 0.45);
+  }
+
+  .experience-image-shadow {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 34px;
+    z-index: 0;
+    height: 75%;
+    background: rgba(99, 15, 37, 0.12);
+    transform: translate(18px, 18px);
+  }
+
+  .experience-image-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 76px;
+    height: 76px;
+    border-top: 1px solid rgba(99, 15, 37, 0.55);
+    border-left: 1px solid rgba(99, 15, 37, 0.55);
+    pointer-events: none;
+  }
+
+  .experience-content {
+    max-width: 650px;
+  }
+
+  .experience-heading {
+    margin-bottom: 3rem;
+  }
+
+  .experience-features {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .experience-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(9, 9, 9, 0.12);
+  }
+
+  .experience-feature:last-child {
+    border-bottom: 1px solid rgba(9, 9, 9, 0.12);
+  }
+
+  .feature-icon {
+    display: flex;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(99, 15, 37, 0.3);
+    border-radius: 50%;
+    color: var(--foodhouse-vin);
+    transform: scale(0.85);
+    transition:
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.4s ease,
+      color 0.4s ease;
+  }
+
+  .experience-feature:hover .feature-icon {
+    background: var(--foodhouse-vin);
+    color: var(--foodhouse-creme);
+    transform: scale(1.05);
+  }
+
+  .feature-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .feature-content h3 {
+    margin: 1px 0 4px;
+    color: var(--foodhouse-noir);
+    font-family: var(--font-serif);
+    font-size: 1.18rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  .feature-content p {
+    max-width: 500px;
+    color: rgba(9, 9, 9, 0.55);
+    font-size: 0.86rem;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  .experience-decoration {
+    position: absolute;
+    z-index: 0;
+    color: rgba(99, 15, 37, 0.2);
+    pointer-events: none;
+    --parallax-y: 0px;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .decoration-leaf {
+    width: 62px;
+    height: 62px;
+  }
+
+  .decoration-leaf-one {
+    top: 16%;
+    left: 2.5%;
+    transform: rotate(-28deg) translateY(var(--parallax-y));
+  }
+
+  .decoration-leaf-two {
+    right: 3%;
+    bottom: 14%;
+    transform: rotate(150deg) translateY(var(--parallax-y));
+  }
+
+  .spice {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--foodhouse-vin);
+    opacity: 0.32;
+    transform: translateY(var(--parallax-y));
+  }
+
+  .spice-one {
+    top: 28%;
+    right: 11%;
+  }
+
+  .spice-two {
+    bottom: 26%;
+    left: 10%;
+    width: 5px;
+    height: 5px;
+    opacity: 0.48;
+  }
+
+  .spice-three {
+    top: 42%;
+    left: 5%;
+    width: 4px;
+    height: 4px;
+    opacity: 0.3;
+  }
+
+  .seed {
+    width: 7px;
+    height: 14px;
+    border: 1px solid rgba(99, 15, 37, 0.42);
+    border-radius: 70% 30% 70% 30%;
+    transform: rotate(32deg) translateY(var(--parallax-y));
+  }
+
+  .seed-one {
+    top: 20%;
+    right: 5%;
+  }
+
+  .seed-two {
+    right: 8%;
+    bottom: 21%;
+    transform: rotate(-42deg) scale(0.7) translateY(var(--parallax-y));
+  }
+
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .reveal-feature {
     opacity: 0;
-    transform: translateY(35px);
     filter: blur(4px);
-    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-                opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-                filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, opacity, filter;
+    transition:
+      opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 1s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* --- ÉTAT ACTIVÉ PAR LE SCRIPT (Visible et fluide) --- */
-  .scroll-reveal.active {
+  .reveal-up {
+    transform: translateY(20px);
+  }
+
+  .reveal-left {
+    transform: translateX(-30px);
+  }
+
+  .reveal-right {
+    transform: translateX(30px);
+    transition-delay: 140ms;
+  }
+
+  .reveal-feature {
+    transform: translateY(18px);
+    transition-delay: var(--feature-delay);
+  }
+
+  .reveal-up.is-visible,
+  .reveal-left.is-visible,
+  .reveal-right.is-visible,
+  .reveal-feature.is-visible {
     opacity: 1;
-    transform: translateY(0);
     filter: blur(0);
+    transform: translate(0);
   }
 
-  /* Animation des feuilles (Inchangée) */
-  .leaf-particle {
-    top: -40px;
-    opacity: 0;
-    will-change: transform, opacity;
-    animation: leafFall 7s linear infinite;
+  .reveal-feature.is-visible .feature-icon {
+    transform: scale(1);
   }
-  .lf-1 { left: 15%; animation-delay: 0s; animation-duration: 8s; }
-  .lf-2 { left: 40%; animation-delay: 2s; animation-duration: 6s; }
-  .lf-3 { left: 65%; animation-delay: 4.5s; animation-duration: 9.5s; }
-  .lf-4 { left: 85%; animation-delay: 1.2s; animation-duration: 7.2s; }
-  .lf-5 { left: 30%; animation-delay: 3.5s; animation-duration: 8.5s; }
 
-  @keyframes leafFall {
-    0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(110vh) rotate(420deg) translateX(40px); opacity: 0; }
+  @media (max-width: 900px) {
+    .experience-editorial {
+      gap: 3rem;
+    }
+
+    .experience-wrapper {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
   }
-</style>
-    
+
+  @media (max-width: 767px) {
+    .experience-wrapper {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    .experience-intro {
+      margin-bottom: 4rem;
+    }
+
+    .experience-intro p {
+      font-size: 1.45rem;
+    }
+
+    .experience-editorial {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 3.5rem;
+    }
+
+    .experience-image-column {
+      order: 1;
+    }
+
+    .experience-content {
+      order: 2;
+    }
+
+    .experience-image-frame {
+      width: min(100%, 420px);
+      margin: 0 auto;
+      padding: 12px;
+    }
+
+    .experience-heading {
+      margin-bottom: 2rem;
+    }
+
+    .experience-feature {
+      gap: 14px;
+      padding: 16px 0;
+    }
+
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      flex-basis: 32px;
+    }
+
+    .feature-content h3 {
+      font-size: 1.08rem;
+    }
+
+    .feature-content p {
+      font-size: 0.82rem;
+    }
+
+    .experience-decoration {
+      opacity: 0.45;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .experience-decoration,
+    .experience-image,
+    .reveal-up,
+    .reveal-left,
+    .reveal-right,
+    .reveal-feature,
+    .feature-icon {
+      animation: none !important;
+      filter: none !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    .reveal-up,
+    .reveal-left,
+    .reveal-right,
+    .reveal-feature {
+      opacity: 1 !important;
+    }
+  }
+</style> -->

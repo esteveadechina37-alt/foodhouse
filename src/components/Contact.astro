@@ -1,301 +1,1144 @@
 ---
-// Section Contact & Réservation - FoodHouse
+// Section Contact & Réservation — FoodHouse · Premium Booking Wizard
 ---
 
-<section id="reservation" class="py-28 md:py-40 bg-vin relative overflow-hidden text-creme">
+<!-- ============================================================
+     STYLES
+     ============================================================ -->
+<style is:global>
+  :root {
+    --rsv-creme: #f9f6f0;
+    --rsv-vin: #630f25;
+    --rsv-vin-dark: #430c1b;
+    --rsv-noir: #090909;
+    --rsv-ease: cubic-bezier(0.19, 1, 0.22, 1);
+  }
 
-  <!-- Brume lumineuse subtile -->
-  <div class="absolute top-0 left-0 w-full h-64 bg-noir/10 pointer-events-none"></div>
-  <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-noir/20 rounded-full filter blur-[120px] pointer-events-none"></div>
+  #reservation {
+    position: relative;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(9, 9, 9, .28), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(9, 9, 9, .22), transparent 38%),
+      var(--rsv-vin);
+    color: var(--rsv-creme);
+    overflow: hidden;
+  }
 
-  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10" id="contact-observer">
+  /* ---------- DÉCORATIONS ---------- */
+  .rsv-hairline-top,
+  .rsv-hairline-bottom {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .rsv-hairline-top {
+    top: 0;
+    background: linear-gradient(to right, transparent, rgba(249,246,240,.35), transparent);
+  }
+  .rsv-hairline-bottom {
+    bottom: 0;
+    background: linear-gradient(to right, transparent, rgba(249,246,240,.22), transparent);
+  }
 
-    <!-- En-tête -->
-    <div class="text-center mb-16 contact-reveal">
-      <span class="uppercase tracking-[0.6em] text-[9px] text-creme/60 font-bold block mb-3">Nous trouver</span>
-      <h2 class="font-serif text-5xl md:text-7xl font-extralight tracking-tight leading-none">
-        Réservez <span class="italic font-light text-creme/80">votre table</span>
+  .rsv-ghost {
+    position: absolute;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: 200;
+    color: rgba(249, 246, 240, .05);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  .rsv-ghost-1 { top: 8%; left: -2%; font-size: clamp(140px, 18vw, 240px); }
+  .rsv-ghost-2 { bottom: 4%; right: -2%; font-size: clamp(110px, 14vw, 200px); }
+
+  /* ---------- HEADER ---------- */
+  .rsv-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 3;
+  }
+
+  .rsv-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(249,246,240,.75);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .6em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .rsv-eyebrow-line {
+    width: 24px;
+    height: 1px;
+    background: rgba(249,246,240,.4);
+  }
+
+  .rsv-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 200;
+    line-height: .95;
+    letter-spacing: -.035em;
+    margin: 0;
+  }
+
+  .rsv-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(249,246,240,.65);
+  }
+
+  .rsv-subtitle {
+    max-width: 26rem;
+    margin: 1rem auto 0;
+    color: rgba(249,246,240,.5);
+    font-size: .78rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  .rsv-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+    position: relative;
+    z-index: 3;
+  }
+
+  /* ---------- CARROUSEL ---------- */
+  .rsv-carousel {
+    position: relative;
+    background: rgba(9, 9, 9, .32);
+    border: 1px solid rgba(249,246,240,.1);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 1.75rem 2rem;
+    box-shadow: 0 40px 100px rgba(0,0,0,.35);
+  }
+
+  /* ---------- PROGRESSION ---------- */
+  .rsv-progress {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(249,246,240,.1);
+  }
+
+  .rsv-progress-step {
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+    opacity: .3;
+    transition: opacity .6s var(--rsv-ease);
+  }
+
+  .rsv-progress-step.is-active,
+  .rsv-progress-step.is-done { opacity: 1; }
+
+  .rsv-progress-num {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: .78rem;
+    color: rgba(249,246,240,.7);
+  }
+
+  .rsv-progress-step.is-active .rsv-progress-num { color: var(--rsv-creme); }
+
+  .rsv-progress-label {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: rgba(249,246,240,.6);
+    white-space: nowrap;
+  }
+
+  .rsv-progress-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(249,246,240,.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rsv-progress-line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--rsv-creme);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .8s var(--rsv-ease);
+  }
+
+  .rsv-progress-line.is-filled::after { transform: scaleX(1); }
+
+  /* ---------- TRACK ---------- */
+  .rsv-track-wrap {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .rsv-track {
+    display: flex;
+    width: 300%;
+    transition: transform .9s var(--rsv-ease);
+  }
+
+  .rsv-track[data-step="1"] { transform: translateX(0); }
+  .rsv-track[data-step="2"] { transform: translateX(-33.3333%); }
+  .rsv-track[data-step="3"] { transform: translateX(-66.6666%); }
+
+  .rsv-slide {
+    width: 33.3333%;
+    flex-shrink: 0;
+    padding-right: 2px;
+  }
+
+  /* ---------- SLIDE INTERNE ---------- */
+  .rsv-slide-head {
+    margin-bottom: 1.25rem;
+    position: relative;
+  }
+
+  .rsv-slide-ghost {
+    position: absolute;
+    top: -1.5rem;
+    left: -.5rem;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: 200;
+    color: rgba(249,246,240,.05);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .rsv-slide-title {
+    font-family: Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: -.01em;
+    margin: 0 0 .35rem;
+    position: relative;
+  }
+
+  .rsv-slide-title em {
+    font-style: italic;
+    color: rgba(249,246,240,.65);
+  }
+
+  .rsv-slide-desc {
+    font-size: .75rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(249,246,240,.5);
+    max-width: 22rem;
+    margin: 0;
+  }
+
+  /* ---------- CHAMPS ---------- */
+  .rsv-field {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    margin-bottom: .9rem;
+  }
+
+  .rsv-label {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: rgba(249,246,240,.55);
+  }
+
+  .rsv-input,
+  .rsv-textarea {
+    width: 100%;
+    padding: .6rem 0;
+    border: 0;
+    border-bottom: 1px solid rgba(249,246,240,.2);
+    background: transparent;
+    color: var(--rsv-creme);
+    font-family: inherit;
+    font-size: .9rem;
+    font-weight: 300;
+    outline: none;
+    transition:
+      border-color .5s var(--rsv-ease),
+      background-color .5s var(--rsv-ease);
+  }
+
+  .rsv-input::placeholder,
+  .rsv-textarea::placeholder { color: rgba(249,246,240,.3); }
+
+  .rsv-input:focus,
+  .rsv-textarea:focus {
+    border-bottom-color: var(--rsv-creme);
+    background: rgba(249,246,240,.02);
+  }
+
+  .rsv-textarea {
+    resize: none;
+    line-height: 1.55;
+  }
+
+  /* ---------- SEGMENTED (couverts) ---------- */
+  .rsv-segmented {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: .3rem;
+  }
+
+  .rsv-segmented-btn {
+    padding: .5rem .2rem;
+    border: 1px solid rgba(249,246,240,.15);
+    background: transparent;
+    color: rgba(249,246,240,.6);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: .78rem;
+    transition:
+      background .4s var(--rsv-ease),
+      border-color .4s var(--rsv-ease),
+      color .4s var(--rsv-ease);
+  }
+
+  .rsv-segmented-btn:hover {
+    border-color: rgba(249,246,240,.35);
+    color: var(--rsv-creme);
+  }
+
+  .rsv-segmented-btn.is-active {
+    background: var(--rsv-creme);
+    border-color: var(--rsv-creme);
+    color: var(--rsv-vin);
+    font-weight: 600;
+  }
+
+  /* ---------- DATES / HEURE ---------- */
+  .rsv-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .rsv-input::-webkit-calendar-picker-indicator {
+    filter: invert(1) opacity(.55);
+    cursor: pointer;
+  }
+
+  /* ---------- RÉCAP ---------- */
+  .rsv-recap {
+    border: 1px solid rgba(249,246,240,.12);
+    background: rgba(9,9,9,.28);
+    padding: .85rem 1.1rem;
+    margin: .9rem 0 .5rem;
+  }
+
+  .rsv-recap-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: .35rem 0;
+    border-bottom: 1px solid rgba(249,246,240,.08);
+    font-size: .78rem;
+  }
+
+  .rsv-recap-row:last-child { border-bottom: 0; }
+
+  .rsv-recap-key {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: rgba(249,246,240,.5);
+  }
+
+  .rsv-recap-val {
+    color: var(--rsv-creme);
+    font-weight: 300;
+    text-align: right;
+  }
+
+  /* ---------- NAVIGATION ---------- */
+  .rsv-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(249,246,240,.1);
+  }
+
+  .rsv-back,
+  .rsv-next,
+  .rsv-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .7rem 1.2rem;
+    border: 1px solid transparent;
+    background: transparent;
+    color: rgba(249,246,240,.7);
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      background .45s var(--rsv-ease),
+      border-color .45s var(--rsv-ease),
+      color .45s var(--rsv-ease),
+      transform .45s var(--rsv-ease);
+  }
+
+  .rsv-back {
+    border-color: rgba(249,246,240,.15);
+    padding-left: .9rem;
+    padding-right: 1rem;
+  }
+
+  .rsv-back:hover {
+    border-color: rgba(249,246,240,.4);
+    color: var(--rsv-creme);
+  }
+
+  .rsv-next {
+    margin-left: auto;
+    border-color: rgba(249,246,240,.4);
+    color: var(--rsv-creme);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rsv-next::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--rsv-creme);
+    transform: translateY(102%);
+    transition: transform .6s var(--rsv-ease);
+    z-index: 0;
+  }
+
+  .rsv-next:hover::before { transform: translateY(0); }
+
+  .rsv-next > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .rsv-next:hover { color: var(--rsv-vin); }
+
+  .rsv-next-arrow { transition: transform .45s var(--rsv-ease); }
+  .rsv-next:hover .rsv-next-arrow { transform: translateX(4px); }
+
+  .rsv-submit {
+    margin-left: auto;
+    background: var(--rsv-creme);
+    color: var(--rsv-vin);
+    border-color: var(--rsv-creme);
+  }
+
+  .rsv-submit:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0,0,0,.3);
+  }
+
+  .rsv-submit svg { color: var(--rsv-vin); }
+
+  /* ---------- INFOS ---------- */
+  .rsv-infos {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .rsv-info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(249,246,240,.12);
+    transition: padding-left .5s var(--rsv-ease);
+  }
+
+  .rsv-info-card:hover { padding-left: .4rem; }
+
+  .rsv-info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(249,246,240,.22);
+    border-radius: 50%;
+    color: var(--rsv-creme);
+    transition:
+      background .5s var(--rsv-ease),
+      color .5s var(--rsv-ease),
+      transform .5s var(--rsv-ease);
+  }
+
+  .rsv-info-card:hover .rsv-info-icon {
+    background: var(--rsv-creme);
+    color: var(--rsv-vin);
+    transform: rotate(-8deg);
+  }
+
+  .rsv-info-eyebrow {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    color: rgba(249,246,240,.5);
+    margin-bottom: .25rem;
+  }
+
+  .rsv-info-title {
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0 0 .25rem;
+  }
+
+  .rsv-info-text {
+    font-size: .78rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(249,246,240,.6);
+    margin: 0;
+  }
+
+  .rsv-info-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    margin-top: .45rem;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(249,246,240,.75);
+    border-bottom: 1px solid rgba(249,246,240,.3);
+    padding-bottom: 2px;
+    transition: color .3s ease, border-color .3s ease;
+  }
+
+  .rsv-info-link:hover {
+    color: var(--rsv-creme);
+    border-color: var(--rsv-creme);
+  }
+
+  .rsv-hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: .78rem;
+    color: rgba(249,246,240,.55);
+    padding: .15rem 0;
+  }
+
+  .rsv-hours-row strong {
+    color: rgba(249,246,240,.85);
+    font-weight: 400;
+  }
+
+  /* ---------- RÉVÉLATION ---------- */
+  .contact-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(4px);
+    transition:
+      opacity 1.2s var(--rsv-ease),
+      transform 1.2s var(--rsv-ease),
+      filter 1.2s var(--rsv-ease);
+    will-change: transform, opacity, filter;
+  }
+
+  .contact-reveal.reveal-active {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1024px) {
+    .rsv-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .rsv-carousel { padding: 1.5rem; }
+    .rsv-ghost-1 { font-size: 140px; }
+    .rsv-ghost-2 { font-size: 110px; }
+  }
+
+  @media (max-width: 767px) {
+    .rsv-header { margin-bottom: 2rem; }
+    .rsv-title { font-size: clamp(1.9rem, 9vw, 2.6rem); }
+    .rsv-carousel { padding: 1.25rem; }
+
+    .rsv-progress { gap: .4rem; margin-bottom: 1.25rem; padding-bottom: .85rem; }
+    .rsv-progress-label { display: none; }
+    .rsv-progress-num { font-size: .72rem; }
+
+    .rsv-slide-ghost {
+      font-size: 3rem;
+      top: -1rem;
+    }
+
+    .rsv-slide-title { font-size: 1.2rem; }
+    .rsv-slide-desc { font-size: .72rem; }
+
+    .rsv-row-2 { gap: .9rem; }
+
+    .rsv-segmented { gap: .22rem; }
+    .rsv-segmented-btn {
+      padding: .45rem .1rem;
+      font-size: .72rem;
+    }
+
+    .rsv-field { margin-bottom: .8rem; }
+    .rsv-input, .rsv-textarea { padding: .55rem 0; font-size: .85rem; }
+
+    .rsv-nav {
+      flex-direction: column-reverse;
+      align-items: stretch;
+      gap: .6rem;
+      margin-top: .9rem;
+      padding-top: .85rem;
+    }
+
+    .rsv-back,
+    .rsv-next,
+    .rsv-submit {
+      justify-content: center;
+      width: 100%;
+      margin: 0;
+      padding: .7rem 1rem;
+    }
+
+    .rsv-info-card { padding: .85rem 0; }
+    .rsv-info-icon { width: 34px; height: 34px; }
+
+    .rsv-ghost-1,
+    .rsv-ghost-2 { display: none; }
+  }
+
+  /* ---------- REDUCED MOTION ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .contact-reveal {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition: none;
+    }
+
+    .rsv-track,
+    .rsv-next::before,
+    .rsv-info-icon,
+    .rsv-info-card {
+      transition: none;
+    }
+  }
+</style>
+
+<!-- ============================================================
+     SECTION
+     ============================================================ -->
+<section id="reservation" class="py-16 md:py-24">
+
+  <div class="rsv-hairline-top" aria-hidden="true"></div>
+  <div class="rsv-hairline-bottom" aria-hidden="true"></div>
+
+  <span class="rsv-ghost rsv-ghost-1" aria-hidden="true">02</span>
+  <span class="rsv-ghost rsv-ghost-2" aria-hidden="true">✦</span>
+
+  <div class="max-w-6xl mx-auto px-6 md:px-10 relative z-10" id="contact-observer">
+
+    <!-- HEADER -->
+    <header class="rsv-header contact-reveal">
+      <span class="rsv-eyebrow">
+        <span class="rsv-eyebrow-line"></span>
+        Nous trouver
+        <span class="rsv-eyebrow-line"></span>
+      </span>
+
+      <h2 class="rsv-title">
+        Réservez <em>votre table</em>
       </h2>
 
-      <!-- Séparateur signature -->
-      <div class="flex items-center justify-center gap-4 mt-8">
-        <span class="w-12 h-px bg-creme/25"></span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="text-creme/50">
-          <path d="M8 2v7a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V2" />
-          <path d="M10 11v11" />
-          <path d="M16 2c-1.5 2-1.5 5 0 7v12" />
-        </svg>
-        <span class="w-12 h-px bg-creme/25"></span>
-      </div>
-    </div>
+      <p class="rsv-subtitle">
+        Trois étapes, quelques secondes. Nous vous répondons ensuite
+        sur WhatsApp pour confirmer votre venue.
+      </p>
+    </header>
 
-    <div class="grid md:grid-cols-12 gap-16 items-start relative">
+    <div class="rsv-grid">
 
-      <!-- Séparateur vertical (desktop uniquement) -->
-      <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-creme/10 -translate-x-1/2"></div>
+      <!-- ============================
+           CARROUSEL FORMULAIRE
+           ============================ -->
+      <div class="contact-reveal" style="transition-delay:.1s;">
 
-      <!-- Colonne gauche : Formulaire -->
-      <div class="md:col-span-7 contact-reveal" style="transition-delay: 0.1s;">
-        <div class="bg-noir/25 border border-creme/10 rounded-2xl p-7 md:p-10 backdrop-blur-sm shadow-2xl shadow-noir/30">
+        <form id="reservation-form" class="rsv-carousel">
 
-          <div class="mb-8">
-            <h3 class="font-serif text-2xl font-light">Faire une réservation</h3>
-            <p class="text-creme/50 text-sm mt-1">Remplissez le formulaire, nous vous répondons sur WhatsApp.</p>
+          <!-- PROGRESSION -->
+          <div class="rsv-progress" aria-hidden="true">
+            <div class="rsv-progress-step is-active" data-step="1">
+              <span class="rsv-progress-num">01</span>
+              <span class="rsv-progress-label">Le moment</span>
+            </div>
+            <div class="rsv-progress-line" data-line="1"></div>
+            <div class="rsv-progress-step" data-step="2">
+              <span class="rsv-progress-num">02</span>
+              <span class="rsv-progress-label">Coordonnées</span>
+            </div>
+            <div class="rsv-progress-line" data-line="2"></div>
+            <div class="rsv-progress-step" data-step="3">
+              <span class="rsv-progress-num">03</span>
+              <span class="rsv-progress-label">Confirmation</span>
+            </div>
           </div>
 
-          <form id="reservation-form" class="space-y-6" onsubmit="return sendToWhatsApp(event)">
-            <div>
-              <label for="name" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Nom complet</label>
-              <div class="relative">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-creme/35 pointer-events-none">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-                </svg>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="Votre nom"
-                  class="w-full bg-transparent border border-creme/20 rounded-lg pl-12 pr-5 py-3.5 text-creme placeholder-creme/25 focus:outline-none focus:border-creme/50 focus:bg-creme/[0.03] transition-colors"
-                />
-              </div>
-            </div>
+          <!-- TRACK -->
+          <div class="rsv-track-wrap">
+            <div class="rsv-track" data-step="1">
 
-            <div>
-              <label for="phone" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Téléphone</label>
-              <div class="relative">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-creme/35 pointer-events-none">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  required
-                  placeholder="+229 01 96 97 72 15"
-                  class="w-full bg-transparent border border-creme/20 rounded-lg pl-12 pr-5 py-3.5 text-creme placeholder-creme/25 focus:outline-none focus:border-creme/50 focus:bg-creme/[0.03] transition-colors"
-                />
-              </div>
-            </div>
+              <!-- =====================
+                   ÉTAPE 1 — LE MOMENT
+                   ===================== -->
+              <div class="rsv-slide" data-slide="1">
+                <div class="rsv-slide-head">
+                  <span class="rsv-slide-ghost" aria-hidden="true">01</span>
+                  <h3 class="rsv-slide-title">
+                    Quand souhaitez-vous <em>venir</em> ?
+                  </h3>
+                  <p class="rsv-slide-desc">
+                    Choisissez votre date, votre heure d'arrivée
+                    et le nombre de convives.
+                  </p>
+                </div>
 
-            <div>
-              <label for="email" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Email</label>
-              <div class="relative">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-creme/35 pointer-events-none">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-                </svg>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="votre@email.com"
-                  class="w-full bg-transparent border border-creme/20 rounded-lg pl-12 pr-5 py-3.5 text-creme placeholder-creme/25 focus:outline-none focus:border-creme/50 focus:bg-creme/[0.03] transition-colors"
-                />
-              </div>
-            </div>
+                <div class="rsv-row-2">
+                  <div class="rsv-field">
+                    <label class="rsv-label" for="date">Date</label>
+                    <input
+                      type="date"
+                      id="date"
+                      name="date"
+                      required
+                      class="rsv-input"
+                    />
+                  </div>
 
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label for="date" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Date</label>
-                <div class="relative">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-creme/35 pointer-events-none">
-                    <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-                  </svg>
+                  <div class="rsv-field">
+                    <label class="rsv-label" for="heure">Heure d'arrivée</label>
+                    <input
+                      type="time"
+                      id="heure"
+                      name="heure"
+                      required
+                      class="rsv-input"
+                    />
+                  </div>
+                </div>
+
+                <div class="rsv-field">
+                  <label class="rsv-label">Couverts</label>
+                  <div class="rsv-segmented" id="couverts-segmented">
+                    <button type="button" class="rsv-segmented-btn" data-value="1">1</button>
+                    <button type="button" class="rsv-segmented-btn is-active" data-value="2">2</button>
+                    <button type="button" class="rsv-segmented-btn" data-value="3">3</button>
+                    <button type="button" class="rsv-segmented-btn" data-value="4">4</button>
+                    <button type="button" class="rsv-segmented-btn" data-value="5">5</button>
+                    <button type="button" class="rsv-segmented-btn" data-value="6+">6+</button>
+                  </div>
+                  <input type="hidden" id="couverts" name="couverts" value="2" />
+                </div>
+              </div>
+
+              <!-- =====================
+                   ÉTAPE 2 — COORDONNÉES
+                   ===================== -->
+              <div class="rsv-slide" data-slide="2">
+                <div class="rsv-slide-head">
+                  <span class="rsv-slide-ghost" aria-hidden="true">02</span>
+                  <h3 class="rsv-slide-title">
+                    Faisons <em>connaissance</em>
+                  </h3>
+                  <p class="rsv-slide-desc">
+                    Ces informations nous permettent de vous joindre
+                    si nécessaire.
+                  </p>
+                </div>
+
+                <div class="rsv-field">
+                  <label class="rsv-label" for="name">Nom complet</label>
                   <input
-                    type="date"
-                    id="date"
-                    name="date"
+                    type="text"
+                    id="name"
+                    name="name"
                     required
-                    class="w-full bg-transparent border border-creme/20 rounded-lg pl-12 pr-3 py-3.5 text-creme placeholder-creme/25 focus:outline-none focus:border-creme/50 focus:bg-creme/[0.03] transition-colors"
+                    placeholder="Votre nom"
+                    autocomplete="name"
+                    class="rsv-input"
+                  />
+                </div>
+
+                <div class="rsv-field">
+                  <label class="rsv-label" for="phone">Téléphone</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    placeholder="+229 01 96 97 72 15"
+                    autocomplete="tel"
+                    class="rsv-input"
+                  />
+                </div>
+
+                <div class="rsv-field">
+                  <label class="rsv-label" for="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="votre@email.com"
+                    autocomplete="email"
+                    class="rsv-input"
                   />
                 </div>
               </div>
-              <div>
-                <label for="heure" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Heure d'arrivée</label>
-                <div class="relative">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-creme/35 pointer-events-none">
-                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                  <input
-                    type="time"
-                    id="heure"
-                    name="heure"
-                    required
-                    class="w-full bg-transparent border border-creme/20 rounded-lg pl-12 pr-3 py-3.5 text-creme placeholder-creme/25 focus:outline-none focus:border-creme/50 focus:bg-creme/[0.03] transition-colors"
-                  />
+
+              <!-- =====================
+                   ÉTAPE 3 — CONFIRMATION
+                   ===================== -->
+              <div class="rsv-slide" data-slide="3">
+                <div class="rsv-slide-head">
+                  <span class="rsv-slide-ghost" aria-hidden="true">03</span>
+                  <h3 class="rsv-slide-title">
+                    Dernière <em>touche</em>
+                  </h3>
+                  <p class="rsv-slide-desc">
+                    Un mot pour notre équipe, puis validez pour
+                    bloquer votre table.
+                  </p>
+                </div>
+
+                <div class="rsv-field">
+                  <label class="rsv-label" for="message">Message (optionnel)</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="2"
+                    placeholder="Une demande particulière ? Occasion spéciale ?"
+                    class="rsv-textarea"
+                  ></textarea>
+                </div>
+
+                <!-- Récap -->
+                <div class="rsv-recap" aria-live="polite">
+                  <div class="rsv-recap-row">
+                    <span class="rsv-recap-key">Date</span>
+                    <span class="rsv-recap-val" data-recap="date">—</span>
+                  </div>
+                  <div class="rsv-recap-row">
+                    <span class="rsv-recap-key">Heure</span>
+                    <span class="rsv-recap-val" data-recap="heure">—</span>
+                  </div>
+                  <div class="rsv-recap-row">
+                    <span class="rsv-recap-key">Couverts</span>
+                    <span class="rsv-recap-val" data-recap="couverts">—</span>
+                  </div>
+                  <div class="rsv-recap-row">
+                    <span class="rsv-recap-key">Nom</span>
+                    <span class="rsv-recap-val" data-recap="name">—</span>
+                  </div>
+                  <div class="rsv-recap-row">
+                    <span class="rsv-recap-key">Téléphone</span>
+                    <span class="rsv-recap-val" data-recap="phone">—</span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div>
-              <label for="couverts" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Couverts</label>
-              <div class="relative">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-creme/35 pointer-events-none">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
-                <select
-                  id="couverts"
-                  name="couverts"
-                  required
-                  class="w-full appearance-none bg-noir/20 border border-creme/20 rounded-lg pl-12 pr-8 py-3.5 text-creme focus:outline-none focus:border-creme/50 transition-colors"
-                >
-                  <option value="1">1 personne</option>
-                  <option value="2" selected>2 personnes</option>
-                  <option value="3">3 personnes</option>
-                  <option value="4">4 personnes</option>
-                  <option value="5">5 personnes</option>
-                  <option value="6+">6+ personnes</option>
-                </select>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute right-3 top-1/2 -translate-y-1/2 text-creme/40 pointer-events-none">
-                  <polyline points="6 9 12 15 18 9"/>
-                </svg>
-              </div>
             </div>
+          </div>
 
-            <div>
-              <label for="message" class="block text-xs uppercase tracking-[0.2em] text-creme/60 mb-2">Message (optionnel)</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="3"
-                placeholder="Une demande particulière ?"
-                class="w-full bg-transparent border border-creme/20 rounded-lg px-5 py-3.5 text-creme placeholder-creme/25 focus:outline-none focus:border-creme/50 focus:bg-creme/[0.03] transition-colors resize-none"
-              ></textarea>
-            </div>
+          <!-- NAVIGATION -->
+          <div class="rsv-nav">
+            <button type="button" class="rsv-back" id="rsv-back" style="display:none;">
+              ← Retour
+            </button>
 
-            <button
-              type="submit"
-              class="w-full bg-creme text-vin font-semibold py-4 px-8 rounded-full hover:bg-white transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-creme/20 flex items-center justify-center gap-3"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+            <button type="button" class="rsv-next" id="rsv-next">
+              <span>Continuer</span>
+              <span class="rsv-next-arrow">→</span>
+            </button>
+
+            <button type="submit" class="rsv-submit" id="rsv-submit" style="display:none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M17.6 6.32A8.86 8.86 0 0 0 12 4.15a8.94 8.94 0 0 0-7.75 13.4L3 21l3.55-1.22a8.9 8.9 0 0 0 5.44 1.86h.01a8.94 8.94 0 0 0 6.32-15.32ZM12 20.06a7.4 7.4 0 0 1-3.78-1.03l-.27-.16-2.8.97.94-2.73-.18-.28a7.47 7.47 0 1 1 6.09 3.23Zm4.09-5.6c-.22-.11-1.32-.65-1.53-.73-.2-.08-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.17-.48.06a6.06 6.06 0 0 1-1.78-1.1 6.65 6.65 0 0 1-1.23-1.53c-.13-.22 0-.34.1-.45.1-.1.22-.26.33-.4.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.4-.06-.11-.5-1.2-.68-1.64-.18-.43-.36-.37-.5-.38h-.42a.83.83 0 0 0-.6.28 2.5 2.5 0 0 0-.78 1.86c0 1.1.8 2.16.92 2.31.11.15 1.58 2.41 3.83 3.38a12.9 12.9 0 0 0 1.28.47c.54.17 1.03.15 1.42.09.43-.06 1.32-.54 1.51-1.06.19-.52.19-.96.13-1.06-.06-.1-.2-.15-.42-.26Z"/>
               </svg>
               Réserver et payer l'acompte
             </button>
-          </form>
-        </div>
+          </div>
+
+        </form>
       </div>
 
-      <!-- Colonne droite : Infos -->
-      <div class="md:col-span-5 contact-reveal" style="transition-delay: 0.3s;">
-        <div class="space-y-8">
+      <!-- ============================
+           INFOS
+           ============================ -->
+      <div class="rsv-infos contact-reveal" style="transition-delay:.25s;">
 
-          <!-- Adresse -->
-          <div class="flex items-start gap-5">
-            <div class="w-11 h-11 rounded-full border border-creme/20 flex items-center justify-center flex-shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <h3 class="font-serif text-lg mb-1">Adresse</h3>
-              <p class="text-creme/55 text-sm leading-relaxed">Porto-Novo<br />République du Bénin</p>
-              <a href="https://www.google.com/maps/search/FoodHouse+Porto-Novo+Benin" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-creme/70 text-xs mt-2 hover:text-creme transition-colors border-b border-creme/30 hover:border-creme/60 pb-0.5">
-                Voir l'itinéraire
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-              </a>
-            </div>
+        <!-- Adresse -->
+        <div class="rsv-info-card">
+          <div class="rsv-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
-
-          <!-- Téléphone -->
-          <div class="flex items-start gap-5 pt-8 border-t border-creme/10">
-            <div class="w-11 h-11 rounded-full border border-creme/20 flex items-center justify-center flex-shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </div>
-            <div>
-              <h3 class="font-serif text-lg mb-1">Téléphone</h3>
-              <a href="tel:+2290196977215" class="text-creme/55 text-sm hover:text-creme transition-colors block">+229 01 96 97 72 15</a>
-            </div>
-          </div>
-
-          <!-- Horaires -->
-          <div class="flex items-start gap-5 pt-8 border-t border-creme/10">
-            <div class="w-11 h-11 rounded-full border border-creme/20 flex items-center justify-center flex-shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div class="flex-1">
-              <h3 class="font-serif text-lg mb-3">Horaires</h3>
-              <div class="space-y-1.5 text-sm">
-                <div class="flex justify-between text-creme/55">
-                  <span>Lun – Ven</span>
-                  <span class="text-creme/75">12h–15h · 19h–23h</span>
-                </div>
-                <div class="flex justify-between text-creme/55">
-                  <span>Samedi</span>
-                  <span class="text-creme/75">19h–00h</span>
-                </div>
-                <div class="flex justify-between text-creme/55">
-                  <span>Dimanche</span>
-                  <span class="text-creme/40">Fermé</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Réseaux sociaux -->
-          <div class="flex gap-3 pt-8 border-t border-creme/10">
-            <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full border border-creme/20 flex items-center justify-center hover:border-creme/50 hover:bg-creme/5 transition-all">
-              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-            <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full border border-creme/20 flex items-center justify-center hover:border-creme/50 hover:bg-creme/5 transition-all">
-              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <a href="#" aria-label="TikTok" class="w-10 h-10 rounded-full border border-creme/20 flex items-center justify-center hover:border-creme/50 hover:bg-creme/5 transition-all">
-              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 8 0 4 4 0 0 0-8 0z"/><path d="M15 8h.01"/></svg>
+          <div>
+            <div class="rsv-info-eyebrow">Adresse</div>
+            <h3 class="rsv-info-title">Porto-Novo</h3>
+            <p class="rsv-info-text">République du Bénin</p>
+            <a href="https://www.google.com/maps/search/FoodHouse+Porto-Novo+Benin" target="_blank" rel="noopener" class="rsv-info-link">
+              Voir l'itinéraire
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
             </a>
           </div>
-
         </div>
-      </div>
 
+        <!-- Téléphone -->
+        <div class="rsv-info-card">
+          <div class="rsv-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="rsv-info-eyebrow">Réservations</div>
+            <a href="tel:+2290196977215" class="rsv-info-link" style="font-size:1rem; letter-spacing:.03em; text-transform:none; border:0; padding:0; margin-top:0; color: rgba(249,246,240,.85);">
+              +229 01 96 97 72 15
+            </a>
+          </div>
+        </div>
+
+        <!-- Horaires -->
+        <div class="rsv-info-card">
+          <div class="rsv-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div style="flex:1;">
+            <div class="rsv-info-eyebrow">Horaires</div>
+            <div class="rsv-hours-row"><span>Lun – Ven</span><strong>12h–15h · 19h–23h</strong></div>
+            <div class="rsv-hours-row"><span>Samedi</span><strong>19h–00h</strong></div>
+            <div class="rsv-hours-row"><span>Dimanche</span><span style="opacity:.4;">Fermé</span></div>
+          </div>
+        </div>
+
+        <!-- Réseaux -->
+        <div class="rsv-info-card" style="border-bottom:0;">
+          <div class="rsv-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <div>
+            <div class="rsv-info-eyebrow">Suivez-nous</div>
+            <div style="display:flex; gap:1rem; margin-top:.4rem;">
+              <a href="#" aria-label="Instagram" class="rsv-info-link" style="border:0; padding:0;">Instagram</a>
+              <a href="#" aria-label="Facebook" class="rsv-info-link" style="border:0; padding:0;">Facebook</a>
+              <a href="#" aria-label="TikTok" class="rsv-info-link" style="border:0; padding:0;">TikTok</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SCRIPT — Carrousel + FedaPay + WhatsApp + Reveal
+     ============================================================ -->
 <script is:inline>
-  function sendToWhatsApp(event) {
-    event.preventDefault();
+  (function () {
+    'use strict';
+
     const form = document.getElementById('reservation-form');
-    const formData = new FormData(form);
-    const name = formData.get('name');
-    const phone = formData.get('phone');
-    const email = formData.get('email');
-    const date = formData.get('date');
-    const heure = formData.get('heure');
-    const couverts = formData.get('couverts');
-    const message = formData.get('message') || 'Aucune';
+    if (!form) return;
 
-    const [year, month, day] = date.split('-');
-    const dateFormatted = `${day}/${month}/${year}`;
+    const track       = form.querySelector('.rsv-track');
+    const backBtn     = document.getElementById('rsv-back');
+    const nextBtn     = document.getElementById('rsv-next');
+    const submitBtn   = document.getElementById('rsv-submit');
+    const steps       = form.querySelectorAll('.rsv-progress-step');
+    const lines       = form.querySelectorAll('.rsv-progress-line');
+    const whatsappNumber = '2290196977215';
 
-    const whatsappNumber = '2290196977215'; // Numéro WhatsApp de FoodHouse
+    let currentStep = 1;
+    const totalSteps = 3;
 
-    // Découpe le nom complet en prénom/nom pour FedaPay
-    const parts = name.trim().split(' ');
-    const prenom = parts[0] || name;
-    const nomFamille = parts.slice(1).join(' ') || name;
+    /* ---------- Sécurité téléphone Bénin ---------- */
+    function normaliserTelBenin(tel) {
+      let n = tel.replace(/[^0-9]/g, '');
+      if (n.startsWith('229')) n = n.slice(3);
+      if (!n.startsWith('01')) n = '01' + n;
+      return '+229' + n;
+    }
 
-    const widget = FedaPay.init({
-      public_key: 'pk_sandbox_PvSnrvtHYdCoNXQz-azTyeM8',
-      transaction: {
-        amount: 1500, // acompte symbolique pour garantir la réservation
-        description: `Acompte réservation FoodHouse - ${dateFormatted} ${heure}`
-      },
-      customer: {
-        firstname: prenom,
-        lastname: nomFamille,
-        email: email,
-        phone_number: {
-          number: phone,
-          country: 'bj'
+    /* ---------- Navigation entre étapes ---------- */
+    function setStep(step) {
+      currentStep = Math.max(1, Math.min(totalSteps, step));
+      track.setAttribute('data-step', String(currentStep));
+
+      steps.forEach((s) => {
+        const n = Number(s.getAttribute('data-step'));
+        s.classList.toggle('is-active', n === currentStep);
+        s.classList.toggle('is-done', n < currentStep);
+      });
+
+      lines.forEach((l) => {
+        const n = Number(l.getAttribute('data-line'));
+        l.classList.toggle('is-filled', n < currentStep);
+      });
+
+      backBtn.style.display = currentStep === 1 ? 'none' : 'inline-flex';
+      nextBtn.style.display = currentStep === totalSteps ? 'none' : 'inline-flex';
+      submitBtn.style.display = currentStep === totalSteps ? 'inline-flex' : 'none';
+
+      const activeSlide = form.querySelector(`.rsv-slide[data-slide="${currentStep}"]`);
+      const firstInput = activeSlide?.querySelector('input:not([type="hidden"]), textarea');
+      if (firstInput) setTimeout(() => firstInput.focus(), 350);
+
+      if (currentStep === totalSteps) {
+        const formData = new FormData(form);
+        const dateVal = formData.get('date');
+        const dateFmt = dateVal
+          ? (() => {
+              const [y, m, d] = dateVal.split('-');
+              return `${d}/${m}/${y}`;
+            })()
+          : '—';
+
+        form.querySelector('[data-recap="date"]').textContent = dateFmt;
+        form.querySelector('[data-recap="heure"]').textContent = formData.get('heure') || '—';
+        form.querySelector('[data-recap="couverts"]').textContent =
+          (formData.get('couverts') || '—') + ' pers.';
+        form.querySelector('[data-recap="name"]').textContent = formData.get('name') || '—';
+        form.querySelector('[data-recap="phone"]').textContent = formData.get('phone') || '—';
+      }
+    }
+
+    /* ---------- Validation ---------- */
+    function validateStep(step) {
+      const slide = form.querySelector(`.rsv-slide[data-slide="${step}"]`);
+      if (!slide) return true;
+
+      const requiredFields = slide.querySelectorAll('input[required], textarea[required]');
+      for (const field of requiredFields) {
+        if (!field.value.trim()) {
+          field.focus();
+          field.style.borderBottomColor = 'rgba(249,246,240,.9)';
+          setTimeout(() => (field.style.borderBottomColor = ''), 900);
+          return false;
         }
-      },
-      onComplete: (resp) => {
-        if (resp.reason === FedaPay.CHECKOUT_COMPLETED) {
-          const rawText =
+      }
+      return true;
+    }
+
+    nextBtn.addEventListener('click', () => {
+      if (!validateStep(currentStep)) return;
+      setStep(currentStep + 1);
+    });
+
+    backBtn.addEventListener('click', () => setStep(currentStep - 1));
+
+    /* ---------- Segmented couverts ---------- */
+    const segmentedBtns = form.querySelectorAll('.rsv-segmented-btn');
+    const couvertsInput = document.getElementById('couverts');
+
+    segmentedBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        segmentedBtns.forEach((b) => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        couvertsInput.value = btn.getAttribute('data-value') || '2';
+      });
+    });
+
+    /* ---------- Soumission + FedaPay ---------- */
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!validateStep(1) || !validateStep(2)) {
+        setStep(!form.querySelector('[data-slide="1"] input:invalid') ? 2 : 1);
+        return;
+      }
+
+      const formData = new FormData(form);
+      const name     = formData.get('name');
+      const phone    = formData.get('phone');
+      const email    = formData.get('email');
+      const date     = formData.get('date');
+      const heure    = formData.get('heure');
+      const couverts = formData.get('couverts');
+      const message  = formData.get('message') || 'Aucune';
+
+      const [year, month, day] = date.split('-');
+      const dateFormatted = `${day}/${month}/${year}`;
+
+      const parts = name.trim().split(' ');
+      const prenom = parts[0] || name;
+      const nomFamille = parts.slice(1).join(' ') || name;
+
+      if (typeof window.FedaPay === 'undefined') {
+        alert("Le module de paiement FedaPay n'est pas disponible.");
+        return;
+      }
+
+      const widget = window.FedaPay.init({
+        public_key: 'pk_sandbox_PvSnrvtHYdCoNXQz-azTyeM8',
+        transaction: {
+          amount: 1500,
+          description: `Acompte réservation FoodHouse - ${dateFormatted} ${heure}`
+        },
+        customer: {
+          firstname: prenom,
+          lastname: nomFamille,
+          email: email,
+          phone_number: {
+            number: normaliserTelBenin(phone),
+            country: 'bj'
+          }
+        },
+        onComplete: (resp) => {
+          if (resp && resp.reason === window.FedaPay.CHECKOUT_COMPLETED) {
+            const rawText =
 `Nouvelle réservation FoodHouse (acompte payé ✅)
 
 Nom : ${name}
-Téléphone : ${phone}
+Téléphone : ${normaliserTelBenin(phone)}
+Email : ${email}
 Date : ${dateFormatted}
 Heure d'arrivée : ${heure}
 Nombre de couverts : ${couverts}
@@ -303,92 +1146,33 @@ Message : ${message}
 
 Merci de me confirmer la réservation.`;
 
-          const text = encodeURIComponent(rawText);
-          window.location.href = `https://wa.me/${whatsappNumber}?text=${text}`;
-        } else {
-          alert("Le paiement de l'acompte n'a pas abouti. Merci de réessayer.");
+            window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(rawText)}`;
+          } else {
+            alert("Le paiement de l'acompte n'a pas abouti. Merci de réessayer.");
+          }
         }
-      }
+      });
+
+      if (widget && typeof widget.open === 'function') widget.open();
+      else alert("Impossible d'ouvrir le paiement FedaPay.");
     });
 
-    widget.open();
-    return false;
-  }
-</script>
+    /* ---------- Reveal au scroll ---------- */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target
+            .querySelectorAll('.contact-reveal')
+            .forEach((node) => node.classList.add('reveal-active'));
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
 
-<!-- <script is:inline>
-  function sendToWhatsApp(event) {
-    event.preventDefault();
-    const form = document.getElementById('reservation-form');
-    const formData = new FormData(form);
-    const name = formData.get('name');
-    const phone = formData.get('phone');
-    const date = formData.get('date');
-    const heure = formData.get('heure');
-    const couverts = formData.get('couverts');
-    const message = formData.get('message') || 'Aucune';
+    const target = document.getElementById('contact-observer');
+    if (target) observer.observe(target);
 
-    const [year, month, day] = date.split('-');
-    const dateFormatted = `${day}/${month}/${year}`;
-
-    const whatsappNumber = '2290196977215'; // Numéro WhatsApp de FoodHouse (Porto-Novo, Bénin)
-
-    const rawText =
-`Nouvelle réservation FoodHouse
-
-Nom : ${name}
-Téléphone : ${phone}
-Date : ${dateFormatted}
-Heure d'arrivée : ${heure}
-Nombre de couverts : ${couverts}
-Message : ${message}`;
-
-    const text = encodeURIComponent(rawText);
-
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
-    return false;
-  }
-</script> -->
-
-<style is:global>
-  .contact-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    filter: blur(4px);
-    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1),
-                opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1),
-                filter 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-    will-change: transform, opacity, filter;
-  }
-  .contact-reveal.reveal-active {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-
-  input[type="date"]::-webkit-calendar-picker-indicator,
-  input[type="time"]::-webkit-calendar-picker-indicator {
-    filter: invert(0.8);
-  }
-
-  select#couverts {
-    background-image: none;
-  }
-</style>
-
-<script is:inline>
-  const contactObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const nodes = entry.target.querySelectorAll('.contact-reveal');
-        nodes.forEach((node) => node.classList.add('reveal-active'));
-        contactObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  const contactTarget = document.getElementById('contact-observer');
-  if (contactTarget) {
-    contactObserver.observe(contactTarget);
-  }
+    /* ---------- Init ---------- */
+    setStep(1);
+  })();
 </script>
