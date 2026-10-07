@@ -7,6 +7,20 @@ import ChatWidget from '../components/ChatWidget.astro';
 <!doctype html>
 <html lang="fr" prefix="og: https://ogp.me">
   <head>
+        <!-- ✅ Force le retour en haut de page au refresh (sans # dans l'URL) -->
+    <script is:inline>
+      (function () {
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+        // Si on arrive avec un hash vide (#), on nettoie
+        if (window.location.hash === '#' || window.location.hash === '') {
+          window.addEventListener('load', function () {
+            window.scrollTo(0, 0);
+          });
+        }
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

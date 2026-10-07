@@ -1,5 +1,6 @@
 ---
 // Section Contact & Réservation — FoodHouse · Premium Booking Wizard
+// Layout 1 colonne — formulaire parfaitement centré
 ---
 
 <!-- ============================================================
@@ -107,25 +108,36 @@
     line-height: 1.7;
   }
 
-  /* ---------- LAYOUT ---------- */
+  /* ---------- LAYOUT PRINCIPAL — 1 COLONNE CENTRÉE ---------- */
   .rsv-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-    gap: 3rem;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5rem;
+    width: 100%;
     position: relative;
     z-index: 3;
+  }
+
+  /* ---------- WRAPPER FORMULAIRE (centré) ---------- */
+  .rsv-form-wrap {
+    width: 100%;
+    max-width: 36rem;
+    margin: 0 auto;
+    display: block;
   }
 
   /* ---------- CARROUSEL ---------- */
   .rsv-carousel {
     position: relative;
+    width: 100%;
     background: rgba(9, 9, 9, .32);
     border: 1px solid rgba(249,246,240,.1);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     padding: 1.75rem 2rem;
     box-shadow: 0 40px 100px rgba(0,0,0,.35);
+    box-sizing: border-box;
   }
 
   /* ---------- PROGRESSION ---------- */
@@ -207,6 +219,7 @@
     width: 33.3333%;
     flex-shrink: 0;
     padding-right: 2px;
+    box-sizing: border-box;
   }
 
   /* ---------- SLIDE INTERNE ---------- */
@@ -280,6 +293,7 @@
     font-size: .9rem;
     font-weight: 300;
     outline: none;
+    box-sizing: border-box;
     transition:
       border-color .5s var(--rsv-ease),
       background-color .5s var(--rsv-ease);
@@ -318,6 +332,7 @@
       background .4s var(--rsv-ease),
       border-color .4s var(--rsv-ease),
       color .4s var(--rsv-ease);
+    box-sizing: border-box;
   }
 
   .rsv-segmented-btn:hover {
@@ -337,6 +352,16 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.25rem;
+    min-width: 0;
+  }
+
+  .rsv-row-2 > .rsv-field {
+    min-width: 0;
+  }
+
+  .rsv-input {
+    min-width: 0;
+    max-width: 100%;
   }
 
   .rsv-input::-webkit-calendar-picker-indicator {
@@ -350,6 +375,7 @@
     background: rgba(9,9,9,.28);
     padding: .85rem 1.1rem;
     margin: .9rem 0 .5rem;
+    box-sizing: border-box;
   }
 
   .rsv-recap-row {
@@ -394,6 +420,7 @@
   .rsv-submit {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: .5rem;
     padding: .7rem 1.2rem;
     border: 1px solid transparent;
@@ -468,23 +495,30 @@
 
   .rsv-submit svg { color: var(--rsv-vin); }
 
-  /* ---------- INFOS ---------- */
+  /* ---------- INFOS — 2×2 SOUS LE FORMULAIRE ---------- */
   .rsv-infos {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 3rem;
+    width: 100%;
+    max-width: 44rem;
+    margin: 0 auto;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(249,246,240,.12);
+    box-sizing: border-box;
   }
 
   .rsv-info-card {
     display: flex;
     align-items: flex-start;
     gap: 1.1rem;
-    padding: 1.1rem 0;
-    border-bottom: 1px solid rgba(249,246,240,.12);
-    transition: padding-left .5s var(--rsv-ease);
+    padding: 0;
+    transition: transform .5s var(--rsv-ease);
   }
 
-  .rsv-info-card:hover { padding-left: .4rem; }
+  .rsv-info-card:hover {
+    transform: translateX(4px);
+  }
 
   .rsv-info-icon {
     display: flex;
@@ -555,6 +589,7 @@
   .rsv-hours-row {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
     font-size: .78rem;
     color: rgba(249,246,240,.55);
     padding: .15rem 0;
@@ -563,6 +598,7 @@
   .rsv-hours-row strong {
     color: rgba(249,246,240,.85);
     font-weight: 400;
+    text-align: right;
   }
 
   /* ---------- RÉVÉLATION ---------- */
@@ -583,68 +619,189 @@
     filter: blur(0);
   }
 
-  /* ---------- RESPONSIVE ---------- */
+  /* ---------- RESPONSIVE — TABLETTE ---------- */
   @media (max-width: 1024px) {
-    .rsv-grid {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
+    .rsv-form-wrap { max-width: 34rem; }
+    .rsv-infos {
+      max-width: 40rem;
+      gap: 1.75rem 2.25rem;
     }
-
-    .rsv-carousel { padding: 1.5rem; }
     .rsv-ghost-1 { font-size: 140px; }
     .rsv-ghost-2 { font-size: 110px; }
   }
 
+  /* ---------- RESPONSIVE — MOBILE ---------- */
   @media (max-width: 767px) {
-    .rsv-header { margin-bottom: 2rem; }
-    .rsv-title { font-size: clamp(1.9rem, 9vw, 2.6rem); }
-    .rsv-carousel { padding: 1.25rem; }
+    /* Header */
+    .rsv-header {
+      margin-bottom: 2rem;
+      padding: 0 .25rem;
+    }
+    .rsv-title {
+      font-size: clamp(1.75rem, 8vw, 2.4rem);
+      line-height: 1.05;
+    }
+    .rsv-subtitle {
+      font-size: .76rem;
+      padding: 0 .5rem;
+    }
 
-    .rsv-progress { gap: .4rem; margin-bottom: 1.25rem; padding-bottom: .85rem; }
+    /* Formulaire : pleine largeur + centré */
+    .rsv-form-wrap {
+      max-width: 100%;
+      padding: 0;
+    }
+
+    .rsv-carousel {
+      padding: 1.25rem 1rem;
+      width: 100%;
+    }
+
+    /* Infos : 1 colonne empilée */
+    .rsv-infos {
+      grid-template-columns: 1fr;
+      gap: 0;
+      max-width: 100%;
+      padding-top: 1.75rem;
+    }
+
+    .rsv-info-card {
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(249,246,240,.1);
+    }
+
+    .rsv-info-card:last-child {
+      border-bottom: 0;
+    }
+
+    /* Progression */
+    .rsv-progress {
+      gap: .35rem;
+      margin-bottom: 1.1rem;
+      padding-bottom: .75rem;
+    }
     .rsv-progress-label { display: none; }
     .rsv-progress-num { font-size: .72rem; }
+    .rsv-progress-line { min-width: 12px; }
 
+    /* Slides */
+    .rsv-slide { padding-right: 0; }
     .rsv-slide-ghost {
       font-size: 3rem;
       top: -1rem;
+      left: -0.35rem;
+    }
+    .rsv-slide-title { font-size: 1.15rem; }
+    .rsv-slide-desc { font-size: .72rem; max-width: 100%; }
+
+    /* Date + Heure empilés */
+    .rsv-row-2 {
+      grid-template-columns: 1fr;
+      gap: .75rem;
     }
 
-    .rsv-slide-title { font-size: 1.2rem; }
-    .rsv-slide-desc { font-size: .72rem; }
+    /* Champs — 16px pour empêcher le zoom iOS */
+    .rsv-field { margin-bottom: .75rem; }
+    .rsv-input,
+    .rsv-textarea {
+      padding: .65rem 0;
+      font-size: 16px;
+      line-height: 1.4;
+      width: 100%;
+      box-sizing: border-box;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
 
-    .rsv-row-2 { gap: .9rem; }
+    .rsv-input[type="date"],
+    .rsv-input[type="time"] {
+      font-size: 16px;
+      min-height: 42px;
+      padding: .55rem 0;
+    }
 
-    .rsv-segmented { gap: .22rem; }
+    .rsv-textarea {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Segmented */
+    .rsv-segmented {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: .2rem;
+    }
     .rsv-segmented-btn {
-      padding: .45rem .1rem;
-      font-size: .72rem;
+      padding: .55rem .1rem;
+      font-size: .8rem;
+      min-width: 0;
     }
 
-    .rsv-field { margin-bottom: .8rem; }
-    .rsv-input, .rsv-textarea { padding: .55rem 0; font-size: .85rem; }
+    /* Récap compact */
+    .rsv-recap {
+      padding: .7rem .85rem;
+      margin: .75rem 0 .35rem;
+    }
+    .rsv-recap-row {
+      padding: .3rem 0;
+      font-size: .74rem;
+      gap: .5rem;
+    }
+    .rsv-recap-val {
+      max-width: 60%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
+    /* Nav empilé */
     .rsv-nav {
       flex-direction: column-reverse;
       align-items: stretch;
-      gap: .6rem;
-      margin-top: .9rem;
-      padding-top: .85rem;
+      gap: .5rem;
+      margin-top: .85rem;
+      padding-top: .75rem;
     }
-
     .rsv-back,
     .rsv-next,
     .rsv-submit {
       justify-content: center;
       width: 100%;
       margin: 0;
-      padding: .7rem 1rem;
+      padding: .85rem 1rem;
+      font-size: 8px;
+      letter-spacing: .2em;
     }
 
-    .rsv-info-card { padding: .85rem 0; }
+    /* Infos compactes */
     .rsv-info-icon { width: 34px; height: 34px; }
+    .rsv-info-title { font-size: .95rem; }
+    .rsv-info-text { font-size: .74rem; }
+    .rsv-hours-row { font-size: .74rem; }
 
+    /* Ghosts désactivés */
     .rsv-ghost-1,
     .rsv-ghost-2 { display: none; }
+  }
+
+  /* ---------- Très petits écrans (≤ 380px) ---------- */
+  @media (max-width: 380px) {
+    .rsv-carousel { padding: 1rem .75rem; }
+    .rsv-slide-title { font-size: 1.05rem; }
+    .rsv-segmented-btn { font-size: .72rem; padding: .5rem .05rem; }
+    .rsv-progress { gap: .25rem; }
+    .rsv-progress-num { font-size: .68rem; }
+    .rsv-input,
+    .rsv-textarea { font-size: 16px; }
+  }
+
+  /* ---------- Safe-area iPhone ---------- */
+  @supports (padding: max(0px)) {
+    @media (max-width: 767px) {
+      #reservation {
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+      }
+    }
   }
 
   /* ---------- REDUCED MOTION ---------- */
@@ -699,9 +856,9 @@
     <div class="rsv-grid">
 
       <!-- ============================
-           CARROUSEL FORMULAIRE
+           CARROUSEL FORMULAIRE — CENTRÉ
            ============================ -->
-      <div class="contact-reveal" style="transition-delay:.1s;">
+      <div class="rsv-form-wrap contact-reveal" style="transition-delay:.1s;">
 
         <form id="reservation-form" class="rsv-carousel">
 
@@ -727,9 +884,7 @@
           <div class="rsv-track-wrap">
             <div class="rsv-track" data-step="1">
 
-              <!-- =====================
-                   ÉTAPE 1 — LE MOMENT
-                   ===================== -->
+              <!-- ÉTAPE 1 -->
               <div class="rsv-slide" data-slide="1">
                 <div class="rsv-slide-head">
                   <span class="rsv-slide-ghost" aria-hidden="true">01</span>
@@ -780,9 +935,7 @@
                 </div>
               </div>
 
-              <!-- =====================
-                   ÉTAPE 2 — COORDONNÉES
-                   ===================== -->
+              <!-- ÉTAPE 2 -->
               <div class="rsv-slide" data-slide="2">
                 <div class="rsv-slide-head">
                   <span class="rsv-slide-ghost" aria-hidden="true">02</span>
@@ -835,9 +988,7 @@
                 </div>
               </div>
 
-              <!-- =====================
-                   ÉTAPE 3 — CONFIRMATION
-                   ===================== -->
+              <!-- ÉTAPE 3 -->
               <div class="rsv-slide" data-slide="3">
                 <div class="rsv-slide-head">
                   <span class="rsv-slide-ghost" aria-hidden="true">03</span>
@@ -912,7 +1063,7 @@
       </div>
 
       <!-- ============================
-           INFOS
+           INFOS — 2×2 SOUS LE FORMULAIRE
            ============================ -->
       <div class="rsv-infos contact-reveal" style="transition-delay:.25s;">
 
@@ -959,13 +1110,13 @@
         </div>
 
         <!-- Réseaux -->
-        <div class="rsv-info-card" style="border-bottom:0;">
+        <div class="rsv-info-card">
           <div class="rsv-info-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </div>
           <div>
             <div class="rsv-info-eyebrow">Suivez-nous</div>
-            <div style="display:flex; gap:1rem; margin-top:.4rem;">
+            <div style="display:flex; gap:1rem; margin-top:.4rem; flex-wrap:wrap;">
               <a href="#" aria-label="Instagram" class="rsv-info-link" style="border:0; padding:0;">Instagram</a>
               <a href="#" aria-label="Facebook" class="rsv-info-link" style="border:0; padding:0;">Facebook</a>
               <a href="#" aria-label="TikTok" class="rsv-info-link" style="border:0; padding:0;">TikTok</a>
@@ -998,6 +1149,7 @@
 
     let currentStep = 1;
     const totalSteps = 3;
+    let initialFocusDone = false;
 
     /* ---------- Sécurité téléphone Bénin ---------- */
     function normaliserTelBenin(tel) {
@@ -1029,7 +1181,10 @@
 
       const activeSlide = form.querySelector(`.rsv-slide[data-slide="${currentStep}"]`);
       const firstInput = activeSlide?.querySelector('input:not([type="hidden"]), textarea');
-      if (firstInput) setTimeout(() => firstInput.focus(), 350);
+
+      if (firstInput && initialFocusDone) {
+        setTimeout(() => firstInput.focus(), 350);
+      }
 
       if (currentStep === totalSteps) {
         const formData = new FormData(form);
@@ -1069,10 +1224,14 @@
 
     nextBtn.addEventListener('click', () => {
       if (!validateStep(currentStep)) return;
+      initialFocusDone = true;
       setStep(currentStep + 1);
     });
 
-    backBtn.addEventListener('click', () => setStep(currentStep - 1));
+    backBtn.addEventListener('click', () => {
+      initialFocusDone = true;
+      setStep(currentStep - 1);
+    });
 
     /* ---------- Segmented couverts ---------- */
     const segmentedBtns = form.querySelectorAll('.rsv-segmented-btn');
@@ -1158,19 +1317,44 @@ Merci de me confirmer la réservation.`;
     });
 
     /* ---------- Reveal au scroll ---------- */
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target
-            .querySelectorAll('.contact-reveal')
-            .forEach((node) => node.classList.add('reveal-active'));
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+    const revealTargets = document.querySelectorAll('.contact-reveal');
 
-    const target = document.getElementById('contact-observer');
-    if (target) observer.observe(target);
+    function revealContacts() {
+      revealTargets.forEach((node) => node.classList.add('reveal-active'));
+    }
+
+    const sectionEl = document.getElementById('reservation');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealContacts();
+    } else {
+      if (sectionEl) {
+        const r = sectionEl.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) {
+          setTimeout(revealContacts, 80);
+        }
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            revealContacts();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      const target = document.getElementById('contact-observer');
+      if (target) observer.observe(target);
+
+      setTimeout(() => {
+        if (!sectionEl) return;
+        const r = sectionEl.getBoundingClientRect();
+        const visible = r.top < window.innerHeight && r.bottom > 0;
+        if (visible) revealContacts();
+      }, 800);
+    }
 
     /* ---------- Init ---------- */
     setStep(1);
