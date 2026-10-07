@@ -1,254 +1,902 @@
 ---
-// Section Galerie Haute Couture - FoodHouse Ultra Premium
+// Section Galerie — FoodHouse · Premium 3D (architecture safe-first)
 ---
 
-<section id="galerie" class="relative bg-[#0B0B0B] py-32 overflow-hidden border-t border-b border-creme/5">
-  <!-- Lignes de fond subtiles style architecture de luxe -->
-  <div class="absolute inset-0 grid grid-cols-4 pointer-events-none opacity-5">
-    <div class="border-r border-creme"></div>
-    <div class="border-r border-creme"></div>
-    <div class="border-r border-creme"></div>
-    <div></div>
-  </div>
-
-  <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-    
-    <!-- En-tête Haute Couture -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-24 galerie-reveal-header opacity-0 transform translate-y-8 transition-all duration-[1200ms] cubic-bezier(0.16, 1, 0.3, 1)">
-      <div>
-        <span class="text-creme/40 uppercase tracking-[0.3em] text-[10px] block mb-4 font-sans">Esthétique Culinaire</span>
-        <h2 class="text-4xl md:text-6xl font-serif text-creme antialiased font-extralight tracking-tight leading-none">
-          L'Émotion <br class="hidden md:inline"/><span class="font-serif italic text-creme/70 pl-0 md:pl-12">par le Visuel</span>
-        </h2>
-      </div>
-      <div class="mt-6 md:mt-0 max-w-xs">
-        <p class="text-creme/50 text-xs font-light leading-relaxed font-sans tracking-wide">
-          Chaque détail est capturé pour transcender le goût. Une immersion brute dans l'atmosphère de notre maison.
-        </p>
-      </div>
-    </div>
-
-    <!-- Collection de pièces d'art (Grille à double rythme) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 items-start" id="galerie-observer">
-      
-      <!-- Œuvre 01 : Plat Signature -->
-      <div class="relative galerie-reveal-item group cursor-pointer" data-speed="1">
-        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
-          <img 
-            src="/images/plats/plat-4.png" 
-            alt="Plat signature aux crevettes" 
-            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
-          />
-          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
-        </div>
-        <!-- Infos minimalistes déportées -->
-        <div class="mt-4 flex justify-between items-start font-serif">
-          <div>
-            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">Le Signature</h3>
-            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Création iodée</p>
-          </div>
-          <span class="text-creme/20 text-xs font-sans tracking-widest">01 //</span>
-        </div>
-      </div>
-
-      <!-- Œuvre 02 : La Fraîcheur (Décalée et surélevée au scroll) -->
-      <div class="relative galerie-reveal-item group cursor-pointer lg:mt-16" style="transition-delay: 0.15s;" data-speed="1.1">
-        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
-          <img 
-            src="/images/plats/plat-7.png" 
-            alt="Salade fraîcheur et jus d'orange" 
-            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
-          />
-          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
-        </div>
-        <div class="mt-4 flex justify-between items-start font-serif">
-          <div>
-            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">La Fraîcheur</h3>
-            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Sélection du potager</p>
-          </div>
-          <span class="text-creme/20 text-xs font-sans tracking-widest">02 //</span>
-        </div>
-      </div>
-
-      <!-- Œuvre 03 : L'Art de la Table -->
-      <div class="relative galerie-reveal-item group cursor-pointer" style="transition-delay: 0.3s;" data-speed="0.9">
-        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
-          <img 
-            src="/images/plats/plat-8.png" 
-            alt="Ambiance de la table" 
-            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
-          />
-          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
-        </div>
-        <div class="mt-4 flex justify-between items-start font-serif">
-          <div>
-            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">L'Art de la Table</h3>
-            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Atmosphère feutrée</p>
-          </div>
-          <span class="text-creme/20 text-xs font-sans tracking-widest">03 //</span>
-        </div>
-      </div>
-
-      <!-- Œuvre 04 : L'Écrin -->
-      <div class="relative galerie-reveal-item group cursor-pointer lg:mt-16" style="transition-delay: 0.45s;" data-speed="1.15">
-        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
-          <img 
-            src="/images/plats/plat-9.png" 
-            alt="Intérieur du restaurant moderne" 
-            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
-          />
-          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
-        </div>
-        <div class="mt-4 flex justify-between items-start font-serif">
-          <div>
-            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">L'Écrin</h3>
-            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Architecture & Design</p>
-          </div>
-          <span class="text-creme/20 text-xs font-sans tracking-widest">04 //</span>
-        </div>
-      </div>
-
-      <!-- Œuvre 05 -->
-      <div class="relative galerie-reveal-item group cursor-pointer">
-        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
-          <img 
-            src="/images/plats/plat-10.png" 
-            alt="Nouvelle création culinaire" 
-            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
-          />
-          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
-        </div>
-        <div class="mt-4 flex justify-between items-start font-serif">
-          <div>
-            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">L'Éveil</h3>
-            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Expérience</p>
-          </div>
-          <span class="text-creme/20 text-xs font-sans tracking-widest">05 //</span>
-        </div>
-      </div>
-
-      <!-- Œuvre 06 (Décalée) -->
-      <div class="relative galerie-reveal-item group cursor-pointer lg:mt-16" style="transition-delay: 0.1s;">
-        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
-          <img 
-            src="/images/plats/plat-11.png" 
-            alt="Détail culinaire" 
-            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
-          />
-          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
-        </div>
-        <div class="mt-4 flex justify-between items-start font-serif">
-          <div>
-            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">La Nuance</h3>
-            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Textures</p>
-          </div>
-          <span class="text-creme/20 text-xs font-sans tracking-widest">06 //</span>
-        </div>
-      </div>
-
-      <!-- Œuvre 07 -->
-      <div class="relative galerie-reveal-item group cursor-pointer" style="transition-delay: 0.2s;">
-        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
-          <img 
-            src="/images/plats/plat-12.png" 
-            alt="Plat d'exception" 
-            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
-          />
-          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
-        </div>
-        <div class="mt-4 flex justify-between items-start font-serif">
-          <div>
-            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">L'Héritage</h3>
-            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Savoir-faire</p>
-          </div>
-          <span class="text-creme/20 text-xs font-sans tracking-widest">07 //</span>
-        </div>
-      </div>
-
-      <!-- Œuvre 08 (Décalée) -->
-      <div class="relative galerie-reveal-item group cursor-pointer lg:mt-16" style="transition-delay: 0.3s;">
-        <div class="relative overflow-hidden rounded-none aspect-[2/3] w-full border border-creme/5 bg-neutral-900">
-          <img 
-            src="/images/plats/plat-13.png" 
-            alt="Atmosphère" 
-            class="w-full h-full object-cover filter grayscale contrast-115 scale-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1500ms] cubic-bezier(0.16, 1, 0.3, 1)"
-          />
-          <div class="absolute inset-0 bg-noir/20 group-hover:bg-transparent transition-colors duration-700"></div>
-        </div>
-        <div class="mt-4 flex justify-between items-start font-serif">
-          <div>
-            <h3 class="text-creme text-base font-light tracking-wide group-hover:text-creme/80 transition-colors">L'Équilibre</h3>
-            <p class="text-creme/40 text-[11px] font-sans tracking-widest uppercase mt-1">Maison</p>
-          </div>
-          <span class="text-creme/20 text-xs font-sans tracking-widest">08 //</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<script is:inline>
-  const ultraGalerieObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Apparition douce de l'en-tête
-        const header = document.querySelector('.galerie-reveal-header');
-        if (header) header.classList.remove('opacity-0', 'translate-y-8');
-
-        // Apparition rythmée des images
-        const items = entry.target.querySelectorAll('.galerie-reveal-item');
-        items.forEach((item) => item.classList.add('galerie-reveal-active'));
-        ultraGalerieObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.02 });
-
-  const galerieContainer = document.getElementById('galerie-observer');
-  if (galerieContainer) {
-    ultraGalerieObserver.observe(galerieContainer);
-  }
-</script>
-
 <style is:global>
-  /* Base d'apparition */
-  .galerie-reveal-item {
-    opacity: 0;
-    transform: translateY(60px);
-    transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, opacity;
-  }
+  /* Priorité au-dessus de Tailwind v4 */
+  @layer galerie;
 
-  .galerie-reveal-item.galerie-reveal-active {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  @layer galerie {
+    #galerie {
+      position: relative;
+      background:
+        radial-gradient(circle at 15% 30%, rgba(99,15,37,.14), transparent 45%),
+        radial-gradient(circle at 85% 70%, rgba(99,15,37,.10), transparent 40%),
+        #0B0B0B;
+      overflow: hidden;
+      isolation: isolate;
+    }
 
-  /* Préservation des structures de décalage premium sur grands écrans */
-  @media (min-width: 1024px) {
-    .galerie-reveal-item:nth-child(2).galerie-reveal-active,
-    .galerie-reveal-item:nth-child(4).galerie-reveal-active,
-    .galerie-reveal-item:nth-child(6).galerie-reveal-active,
-    .galerie-reveal-item:nth-child(8).galerie-reveal-active,
-    .galerie-reveal-item:nth-child(10).galerie-reveal-active,
-    .galerie-reveal-item:nth-child(12).galerie-reveal-active {
-      transform: translateY(64px);
+    /* --- Décorations --- */
+    #galerie .gal-hairline {
+      position: absolute;
+      left: 6%; right: 6%;
+      height: 1px;
+      pointer-events: none;
+      z-index: 2;
     }
-  }
+    #galerie .gal-hairline-top {
+      top: 0;
+      background: linear-gradient(to right, transparent, rgba(99,15,37,.7), transparent);
+    }
+    #galerie .gal-hairline-bottom {
+      bottom: 0;
+      background: linear-gradient(to right, transparent, rgba(249,246,240,.2), transparent);
+    }
 
-  /* Correctif mobile / tactile : pas de "hover" réel sur ces appareils,
-     donc on affiche directement les images en couleur au lieu de dépendre
-     d'un survol qui ne peut jamais se produire naturellement. */
-  @media (hover: none) {
-    .galerie-reveal-item img {
-      filter: grayscale(0) contrast(1.05) !important;
+    #galerie .gal-rules {
+      position: absolute; inset: 0;
+      z-index: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      pointer-events: none;
+      opacity: .035;
     }
-    .galerie-reveal-item .absolute.bg-noir\/20 {
-      background-color: transparent !important;
+    #galerie .gal-rules > div { border-right: 1px solid #f9f6f0; }
+    #galerie .gal-rules > div:last-child { border-right: 0; }
+
+    #galerie .gal-ghost {
+      position: absolute;
+      top: 4%; right: -3%;
+      z-index: 0;
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-weight: 200;
+      font-size: clamp(200px, 30vw, 460px);
+      line-height: 1;
+      color: rgba(249, 246, 240, .03);
+      pointer-events: none;
+      user-select: none;
     }
-    .galerie-reveal-item h3 {
-      color: rgba(var(--creme-rgb, 250, 250, 250), 0.8);
+
+    #galerie .gal-marker {
+      position: absolute;
+      top: 12rem; left: 1.5rem;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      pointer-events: none;
+    }
+    #galerie .gal-marker-text {
+      writing-mode: vertical-rl;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: .55em; text-transform: uppercase;
+      color: rgba(249,246,240,.35);
+    }
+    #galerie .gal-marker-line {
+      width: 1px; height: 5rem;
+      background: linear-gradient(to bottom, rgba(249,246,240,.4), transparent);
+    }
+
+    /* --- Header --- */
+    #galerie .gal-header {
+      position: relative; z-index: 3;
+      margin-bottom: 5rem;
+    }
+    #galerie .gal-header-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: end;
+    }
+    #galerie .gal-eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: .55em; text-transform: uppercase;
+      color: rgba(249,246,240,.5);
+      margin-bottom: 1.5rem;
+    }
+    #galerie .gal-eyebrow-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #630f25;
+      box-shadow: 0 0 14px rgba(99,15,37,.95);
+    }
+    #galerie .gal-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(2.6rem, 6.5vw, 5.5rem);
+      font-weight: 200; line-height: .95;
+      letter-spacing: -.035em;
+      color: #f9f6f0;
+      margin: 0;
+    }
+    #galerie .gal-title em {
+      display: block;
+      font-style: italic; font-weight: 300;
+      color: rgba(249,246,240,.65);
+      padding-left: 1.5em;
+    }
+    #galerie .gal-lede {
+      max-width: 20rem;
+      padding-left: 1.5rem;
+      border-left: 1px solid rgba(249,246,240,.15);
+      font-size: .78rem; font-weight: 300;
+      line-height: 1.85;
+      color: rgba(249,246,240,.5);
+    }
+
+    /* --- Grille --- */
+    #galerie .gal-grid {
+      position: relative; z-index: 3;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 1.75rem;
+      row-gap: 4rem;
+      align-items: start;
+      perspective: 2200px;
+      perspective-origin: 50% 35%;
+    }
+
+    #galerie .gal-card-1 { grid-column: 1 / span 5; }
+    #galerie .gal-card-2 { grid-column: 7 / span 3; margin-top: 5rem; }
+    #galerie .gal-card-3 { grid-column: 11 / span 2; margin-top: 10rem; }
+    #galerie .gal-card-4 { grid-column: 1 / span 3; margin-top: 1rem; }
+    #galerie .gal-card-5 { grid-column: 5 / span 4; margin-top: 4rem; }
+    #galerie .gal-card-6 { grid-column: 10 / span 3; margin-top: 7rem; }
+    #galerie .gal-card-7 { grid-column: 2 / span 5; margin-top: 3rem; }
+    #galerie .gal-card-8 { grid-column: 8 / span 4; margin-top: 6rem; }
+
+    /* --- Cell wrapper --- */
+    #galerie .gal-cell {
+      display: block;
+      width: 100%;
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      #galerie .gal-cell {
+        animation: gal-fade 0.9s cubic-bezier(0.19,1,0.22,1) backwards;
+      }
+      #galerie .gal-cell-1 { animation-delay: .05s; }
+      #galerie .gal-cell-2 { animation-delay: .12s; }
+      #galerie .gal-cell-3 { animation-delay: .19s; }
+      #galerie .gal-cell-4 { animation-delay: .12s; }
+      #galerie .gal-cell-5 { animation-delay: .19s; }
+      #galerie .gal-cell-6 { animation-delay: .26s; }
+      #galerie .gal-cell-7 { animation-delay: .16s; }
+      #galerie .gal-cell-8 { animation-delay: .23s; }
+    }
+
+    @keyframes gal-fade {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* --- Carte --- */
+    #galerie .gal-card {
+      position: relative;
+      display: block;
+      width: 100%;
+      cursor: pointer;
+      background: transparent;
+      border: 0; padding: 0;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+      outline: none;
+      transform:
+        rotateX(var(--rx, 0deg))
+        rotateY(var(--ry, 0deg))
+        translate3d(0, var(--ty, 0px), 0);
+      transition: transform .9s cubic-bezier(0.19,1,0.22,1);
+    }
+    #galerie .gal-card:focus-visible .gal-frame {
+      outline: 2px solid #630f25;
+      outline-offset: 6px;
+    }
+
+    /* --- Frame --- */
+    #galerie .gal-frame {
+      position: relative;
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      background: #0f0f0f;
+      border: 1px solid rgba(249,246,240,.07);
+      box-shadow:
+        0 1px 0 rgba(249,246,240,.06) inset,
+        0 40px 80px -20px rgba(0,0,0,.85),
+        0 20px 40px -20px rgba(0,0,0,.55);
+      transition:
+        box-shadow 1s cubic-bezier(0.19,1,0.22,1),
+        border-color .8s cubic-bezier(0.19,1,0.22,1);
+    }
+    #galerie .gal-card:hover .gal-frame {
+      border-color: rgba(99,15,37,.55);
+      box-shadow:
+        0 1px 0 rgba(249,246,240,.1) inset,
+        0 60px 120px -20px rgba(0,0,0,.9),
+        0 30px 60px -20px rgba(99,15,37,.35),
+        0 0 60px -10px rgba(99,15,37,.25);
+    }
+    #galerie .gal-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(249,246,240,.35), transparent);
+      z-index: 6;
+      pointer-events: none;
+    }
+    #galerie .gal-frame::after {
+      content: '';
+      position: absolute; inset: 0;
+      border: 1px solid rgba(99,15,37,0);
+      transition: border-color .8s cubic-bezier(0.19,1,0.22,1);
+      pointer-events: none;
+      z-index: 5;
+    }
+    #galerie .gal-card:hover .gal-frame::after {
+      border-color: rgba(99,15,37,.75);
+    }
+
+    #galerie .gal-r-1 { aspect-ratio: 4 / 5; }
+    #galerie .gal-r-2 { aspect-ratio: 3 / 4; }
+    #galerie .gal-r-3 { aspect-ratio: 2 / 3; }
+    #galerie .gal-r-4 { aspect-ratio: 3 / 4; }
+    #galerie .gal-r-5 { aspect-ratio: 1 / 1; }
+    #galerie .gal-r-6 { aspect-ratio: 4 / 5; }
+    #galerie .gal-r-7 { aspect-ratio: 16 / 10; }
+    #galerie .gal-r-8 { aspect-ratio: 4 / 5; }
+
+    /* --- Image --- */
+    #galerie .gal-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: grayscale(1) contrast(1.08) brightness(.78);
+      transform: scale(1.02);
+      transition:
+        filter 1.4s cubic-bezier(0.19,1,0.22,1),
+        transform 1.6s cubic-bezier(0.19,1,0.22,1);
+    }
+    #galerie .gal-card:hover .gal-img {
+      filter: grayscale(0) contrast(1.05) brightness(.98) saturate(1.05);
+      transform: scale(1.06);
+    }
+
+    /* --- Veil + Halo --- */
+    #galerie .gal-veil {
+      position: absolute; inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(to top, rgba(11,11,11,.92) 0%, rgba(11,11,11,.3) 42%, transparent 78%);
+      opacity: .95;
+      transition: opacity .9s cubic-bezier(0.19,1,0.22,1);
+    }
+    #galerie .gal-card:hover .gal-veil { opacity: .55; }
+
+    #galerie .gal-halo {
+      position: absolute; inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      background: radial-gradient(circle 220px at var(--hx, 50%) var(--hy, 50%), rgba(99,15,37,.4), transparent 70%);
+      opacity: 0;
+      transition: opacity .6s cubic-bezier(0.19,1,0.22,1);
+    }
+    #galerie .gal-card:hover .gal-halo { opacity: .55; }
+
+    /* --- Num / Chip / Caption --- */
+    #galerie .gal-num {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      z-index: 4;
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: .78rem;
+      letter-spacing: .12em;
+      color: rgba(249,246,240,.85);
+      padding: .35rem .7rem;
+      border: 1px solid rgba(249,246,240,.2);
+      background: rgba(11,11,11,.45);
+      transition:
+        border-color .6s cubic-bezier(0.19,1,0.22,1),
+        color .6s cubic-bezier(0.19,1,0.22,1),
+        background .6s cubic-bezier(0.19,1,0.22,1);
+    }
+    #galerie .gal-card:hover .gal-num {
+      border-color: rgba(99,15,37,.85);
+      color: #f9f6f0;
+      background: rgba(99,15,37,.35);
+    }
+
+    #galerie .gal-chip {
+      position: absolute;
+      right: 1rem; bottom: 5rem;
+      z-index: 4;
+      font-size: 8px; font-weight: 700;
+      letter-spacing: .3em; text-transform: uppercase;
+      color: #f9f6f0;
+      padding: .5rem .85rem;
+      border: 1px solid rgba(99,15,37,.7);
+      background: rgba(11,11,11,.6);
+      opacity: 0;
+      transform: translateY(10px);
+      transition:
+        opacity .7s cubic-bezier(0.19,1,0.22,1),
+        transform .7s cubic-bezier(0.19,1,0.22,1);
+    }
+    #galerie .gal-card:hover .gal-chip {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #galerie .gal-caption {
+      position: absolute;
+      left: 1.15rem; right: 1.15rem; bottom: 1.15rem;
+      z-index: 4;
+      transition: transform .9s cubic-bezier(0.19,1,0.22,1);
+    }
+    #galerie .gal-card:hover .gal-caption { transform: translateY(-4px); }
+
+    #galerie .gal-caption-rule {
+      display: flex; align-items: center;
+      gap: .65rem;
+      margin-bottom: .7rem;
+    }
+    #galerie .gal-caption-rule span {
+      display: block;
+      width: 1.75rem; height: 1px;
+      background: linear-gradient(to right, rgba(99,15,37,.95), rgba(99,15,37,.2));
+    }
+    #galerie .gal-caption-rule em {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: .72rem;
+      color: rgba(249,246,240,.55);
+    }
+    #galerie .gal-caption-title {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.1;
+      color: #f9f6f0;
+      margin: 0 0 .35rem;
+    }
+    #galerie .gal-caption-sub {
+      display: block;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: rgba(249,246,240,.55);
+    }
+
+    /* --- Quote --- */
+    #galerie .gal-quote {
+      position: relative;
+      z-index: 3;
+      margin-top: 9rem;
+      padding-top: 3.5rem;
+      border-top: 1px solid rgba(249,246,240,.08);
+      text-align: center;
+    }
+    #galerie .gal-quote-mark {
+      display: inline-block;
+      font-family: Georgia, serif;
+      font-size: 3.5rem;
+      font-style: italic;
+      color: rgba(99,15,37,.85);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    #galerie .gal-quote-text {
+      font-family: Georgia, serif;
+      font-size: clamp(1.15rem, 2vw, 1.6rem);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.5;
+      color: rgba(249,246,240,.75);
+      max-width: 32rem;
+      margin: 0 auto;
+    }
+    #galerie .gal-quote-author {
+      display: block;
+      margin-top: 1.5rem;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .45em;
+      text-transform: uppercase;
+      color: rgba(249,246,240,.4);
+    }
+
+    /* --- Lightbox --- */
+    .gal-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(6,6,6,.94);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .5s cubic-bezier(0.19,1,0.22,1), visibility 0s .5s;
+      padding: 2rem;
+    }
+    .gal-lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .5s cubic-bezier(0.19,1,0.22,1), visibility 0s;
+    }
+    .gal-lightbox-inner {
+      position: relative;
+      width: 100%;
+      max-width: 68rem;
+      transform: scale(.96);
+      transition: transform .6s cubic-bezier(0.19,1,0.22,1);
+    }
+    .gal-lightbox.is-open .gal-lightbox-inner { transform: scale(1); }
+    .gal-lightbox-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 78vh;
+      object-fit: contain;
+      filter: none;
+    }
+    .gal-lightbox-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(249,246,240,.12);
+      margin-top: 1.5rem;
+    }
+    .gal-lightbox-title {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #f9f6f0;
+      margin: 0;
+    }
+    .gal-lightbox-sub {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: rgba(249,246,240,.55);
+    }
+    .gal-lightbox-close {
+      position: absolute;
+      top: -3rem;
+      right: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(249,246,240,.3);
+      border-radius: 50%;
+      background: transparent;
+      color: rgba(249,246,240,.85);
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background .4s ease, color .4s ease, transform .4s ease;
+    }
+    .gal-lightbox-close:hover {
+      background: #f9f6f0;
+      color: #0B0B0B;
+      transform: rotate(90deg);
+    }
+
+    body.gal-locked { overflow: hidden; }
+
+    /* --- Tablette --- */
+    @media (max-width: 1024px) {
+      #galerie .gal-header-grid { grid-template-columns: 1fr; gap: 2rem; }
+      #galerie .gal-lede { padding-left: 0; border-left: 0; max-width: 26rem; }
+      #galerie .gal-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        column-gap: 1.25rem;
+        row-gap: 3rem;
+        perspective: 1400px;
+      }
+      #galerie .gal-card-1 { grid-column: 1 / span 3; margin-top: 0; }
+      #galerie .gal-card-2 { grid-column: 4 / span 3; margin-top: 3rem; }
+      #galerie .gal-card-3 { grid-column: 1 / span 2; margin-top: 0; }
+      #galerie .gal-card-4 { grid-column: 3 / span 2; margin-top: 3rem; }
+      #galerie .gal-card-5 { grid-column: 5 / span 2; margin-top: 0; }
+      #galerie .gal-card-6 { grid-column: 1 / span 3; margin-top: 2rem; }
+      #galerie .gal-card-7 { grid-column: 4 / span 3; margin-top: 4rem; }
+      #galerie .gal-card-8 { grid-column: 1 / span 3; margin-top: 0; }
+      #galerie .gal-marker { display: none; }
+    }
+
+    /* --- Mobile --- */
+    @media (max-width: 767px) {
+      #galerie { padding-top: 4rem; padding-bottom: 4rem; }
+      #galerie .gal-header { margin-bottom: 2.5rem; }
+      #galerie .gal-title em { padding-left: .5em; }
+      #galerie .gal-lede { font-size: .75rem; }
+
+      #galerie .gal-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        perspective: none;
+      }
+
+      #galerie .gal-cell { animation: none; opacity: 1; }
+
+      #galerie .gal-card {
+        margin-top: 0 !important;
+        transform: none !important;
+      }
+
+      #galerie .gal-img {
+        filter: grayscale(0) contrast(1.02) brightness(.95);
+        transform: none;
+      }
+
+      #galerie .gal-veil { opacity: .55; }
+      #galerie .gal-halo { display: none; }
+
+      #galerie .gal-chip {
+        display: block;
+        right: 1rem; top: 1rem; bottom: auto;
+        opacity: .9;
+        transform: none;
+        font-size: 7px;
+        background: rgba(99,15,37,.55);
+        border-color: rgba(99,15,37,.8);
+      }
+
+      #galerie .gal-r-7 { aspect-ratio: 4 / 3; }
+      #galerie .gal-caption-title { font-size: 1rem; }
+      #galerie .gal-quote { margin-top: 4rem; }
+      #galerie .gal-quote-text { font-size: 1rem; }
+      #galerie .gal-ghost { display: none; }
+
+      .gal-lightbox { padding: 1rem; }
+      .gal-lightbox-close { top: -2.75rem; }
+      .gal-lightbox-meta { flex-direction: column; gap: .5rem; align-items: flex-start; }
+    }
+
+    /* --- Reduced motion --- */
+    @media (prefers-reduced-motion: reduce) {
+      #galerie .gal-cell { animation: none; opacity: 1; }
+      #galerie .gal-card { transform: none; transition: none; }
+      #galerie .gal-img,
+      #galerie .gal-veil,
+      #galerie .gal-halo,
+      #galerie .gal-chip,
+      #galerie .gal-caption,
+      #galerie .gal-frame,
+      #galerie .gal-num { transition: none; }
     }
   }
 </style>
+
+<section id="galerie" class="relative py-32 overflow-hidden">
+
+  <div class="gal-hairline gal-hairline-top" aria-hidden="true"></div>
+  <div class="gal-hairline gal-hairline-bottom" aria-hidden="true"></div>
+  <span class="gal-ghost" aria-hidden="true">03</span>
+  <div class="gal-rules" aria-hidden="true"><div></div><div></div><div></div><div></div></div>
+  <div class="gal-grain" aria-hidden="true"></div>
+
+  <div class="gal-marker" aria-hidden="true">
+    <span class="gal-marker-text">Chapitre 03 — Le Visuel</span>
+    <span class="gal-marker-line"></span>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+
+    <header class="gal-header">
+      <div class="gal-header-grid">
+        <div>
+          <span class="gal-eyebrow">
+            <span class="gal-eyebrow-dot" aria-hidden="true"></span>
+            Esthétique Culinaire
+          </span>
+          <h2 class="gal-title">
+            L'Émotion
+            <em>par le Visuel</em>
+          </h2>
+        </div>
+        <p class="gal-lede">
+          Chaque détail est capturé pour transcender le goût.
+          Une immersion brute dans l'atmosphère de notre maison.
+        </p>
+      </div>
+    </header>
+
+    <div class="gal-grid" id="galerie-grid">
+
+      <!-- 01 -->
+      <div class="gal-cell gal-cell-1 gal-card-1">
+        <div role="button" tabindex="0" class="gal-card" data-img="/images/plats/plat-4.png" data-title="Le Signature" data-sub="Création iodée" aria-label="Voir Le Signature">
+          <span class="gal-frame gal-r-1">
+            <img src="/images/plats/plat-4.png" alt="Le Signature — création iodée" class="gal-img" loading="lazy" decoding="async" />
+            <span class="gal-veil" aria-hidden="true"></span>
+            <span class="gal-halo" aria-hidden="true"></span>
+            <span class="gal-num">N°01</span>
+            <span class="gal-chip">Signature</span>
+            <span class="gal-caption">
+              <span class="gal-caption-rule"><span></span><em>01</em></span>
+              <span class="gal-caption-title">Le Signature</span>
+              <span class="gal-caption-sub">Création iodée</span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="gal-cell gal-cell-2 gal-card-2">
+        <div role="button" tabindex="0" class="gal-card" data-img="/images/plats/plat-7.png" data-title="La Fraîcheur" data-sub="Sélection du potager" aria-label="Voir La Fraîcheur">
+          <span class="gal-frame gal-r-2">
+            <img src="/images/plats/plat-7.png" alt="La Fraîcheur — sélection du potager" class="gal-img" loading="lazy" decoding="async" />
+            <span class="gal-veil" aria-hidden="true"></span>
+            <span class="gal-halo" aria-hidden="true"></span>
+            <span class="gal-num">N°02</span>
+            <span class="gal-chip">Potager</span>
+            <span class="gal-caption">
+              <span class="gal-caption-rule"><span></span><em>02</em></span>
+              <span class="gal-caption-title">La Fraîcheur</span>
+              <span class="gal-caption-sub">Sélection du potager</span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="gal-cell gal-cell-3 gal-card-3">
+        <div role="button" tabindex="0" class="gal-card" data-img="/images/plats/plat-8.png" data-title="L'Art de la Table" data-sub="Atmosphère feutrée" aria-label="Voir L'Art de la Table">
+          <span class="gal-frame gal-r-3">
+            <img src="/images/plats/plat-8.png" alt="L'Art de la Table" class="gal-img" loading="lazy" decoding="async" />
+            <span class="gal-veil" aria-hidden="true"></span>
+            <span class="gal-halo" aria-hidden="true"></span>
+            <span class="gal-num">N°03</span>
+            <span class="gal-chip">Atmosphère</span>
+            <span class="gal-caption">
+              <span class="gal-caption-rule"><span></span><em>03</em></span>
+              <span class="gal-caption-title">L'Art de la Table</span>
+              <span class="gal-caption-sub">Atmosphère feutrée</span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="gal-cell gal-cell-4 gal-card-4">
+        <div role="button" tabindex="0" class="gal-card" data-img="/images/plats/plat-9.png" data-title="L'Écrin" data-sub="Architecture & Design" aria-label="Voir L'Écrin">
+          <span class="gal-frame gal-r-4">
+            <img src="/images/plats/plat-9.png" alt="L'Écrin — architecture et design" class="gal-img" loading="lazy" decoding="async" />
+            <span class="gal-veil" aria-hidden="true"></span>
+            <span class="gal-halo" aria-hidden="true"></span>
+            <span class="gal-num">N°04</span>
+            <span class="gal-chip">Design</span>
+            <span class="gal-caption">
+              <span class="gal-caption-rule"><span></span><em>04</em></span>
+              <span class="gal-caption-title">L'Écrin</span>
+              <span class="gal-caption-sub">Architecture &amp; Design</span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="gal-cell gal-cell-5 gal-card-5">
+        <div role="button" tabindex="0" class="gal-card" data-img="/images/plats/plat-10.png" data-title="L'Éveil" data-sub="Expérience" aria-label="Voir L'Éveil">
+          <span class="gal-frame gal-r-5">
+            <img src="/images/plats/plat-10.png" alt="L'Éveil — expérience" class="gal-img" loading="lazy" decoding="async" />
+            <span class="gal-veil" aria-hidden="true"></span>
+            <span class="gal-halo" aria-hidden="true"></span>
+            <span class="gal-num">N°05</span>
+            <span class="gal-chip">Expérience</span>
+            <span class="gal-caption">
+              <span class="gal-caption-rule"><span></span><em>05</em></span>
+              <span class="gal-caption-title">L'Éveil</span>
+              <span class="gal-caption-sub">Expérience</span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="gal-cell gal-cell-6 gal-card-6">
+        <div role="button" tabindex="0" class="gal-card" data-img="/images/plats/plat-11.png" data-title="La Nuance" data-sub="Textures" aria-label="Voir La Nuance">
+          <span class="gal-frame gal-r-6">
+            <img src="/images/plats/plat-11.png" alt="La Nuance — textures" class="gal-img" loading="lazy" decoding="async" />
+            <span class="gal-veil" aria-hidden="true"></span>
+            <span class="gal-halo" aria-hidden="true"></span>
+            <span class="gal-num">N°06</span>
+            <span class="gal-chip">Textures</span>
+            <span class="gal-caption">
+              <span class="gal-caption-rule"><span></span><em>06</em></span>
+              <span class="gal-caption-title">La Nuance</span>
+              <span class="gal-caption-sub">Textures</span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 07 -->
+      <div class="gal-cell gal-cell-7 gal-card-7">
+        <div role="button" tabindex="0" class="gal-card" data-img="/images/plats/plat-12.png" data-title="L'Héritage" data-sub="Savoir-faire" aria-label="Voir L'Héritage">
+          <span class="gal-frame gal-r-7">
+            <img src="/images/plats/plat-12.png" alt="L'Héritage — savoir-faire" class="gal-img" loading="lazy" decoding="async" />
+            <span class="gal-veil" aria-hidden="true"></span>
+            <span class="gal-halo" aria-hidden="true"></span>
+            <span class="gal-num">N°07</span>
+            <span class="gal-chip">Savoir-faire</span>
+            <span class="gal-caption">
+              <span class="gal-caption-rule"><span></span><em>07</em></span>
+              <span class="gal-caption-title">L'Héritage</span>
+              <span class="gal-caption-sub">Savoir-faire</span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 08 -->
+      <div class="gal-cell gal-cell-8 gal-card-8">
+        <div role="button" tabindex="0" class="gal-card" data-img="/images/plats/plat-13.png" data-title="L'Équilibre" data-sub="Maison" aria-label="Voir L'Équilibre">
+          <span class="gal-frame gal-r-8">
+            <img src="/images/plats/plat-13.png" alt="L'Équilibre — maison" class="gal-img" loading="lazy" decoding="async" />
+            <span class="gal-veil" aria-hidden="true"></span>
+            <span class="gal-halo" aria-hidden="true"></span>
+            <span class="gal-num">N°08</span>
+            <span class="gal-chip">Maison</span>
+            <span class="gal-caption">
+              <span class="gal-caption-rule"><span></span><em>08</em></span>
+              <span class="gal-caption-title">L'Équilibre</span>
+              <span class="gal-caption-sub">Maison</span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="gal-quote">
+      <span class="gal-quote-mark" aria-hidden="true">“</span>
+      <p class="gal-quote-text">Le goût se souvient de ce que l'œil a vu.</p>
+      <span class="gal-quote-author">Maison FoodHouse</span>
+    </div>
+
+  </div>
+</section>
+
+<div id="gal-lightbox" class="gal-lightbox" role="dialog" aria-modal="true" aria-labelledby="gal-lb-title">
+  <div class="gal-lightbox-inner">
+    <button type="button" class="gal-lightbox-close" id="gal-lb-close" aria-label="Fermer">×</button>
+    <img src="" alt="" id="gal-lb-img" class="gal-lightbox-img" />
+    <div class="gal-lightbox-meta">
+      <h3 id="gal-lb-title" class="gal-lightbox-title"></h3>
+      <span id="gal-lb-sub" class="gal-lightbox-sub"></span>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    'use strict';
+
+    const section = document.getElementById('galerie');
+    if (!section) return;
+
+    const cards    = section.querySelectorAll('.gal-card');
+    const lightbox = document.getElementById('gal-lightbox');
+    const lbImg    = document.getElementById('gal-lb-img');
+    const lbTitle  = document.getElementById('gal-lb-title');
+    const lbSub    = document.getElementById('gal-lb-sub');
+    const lbClose  = document.getElementById('gal-lb-close');
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer  = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const isDesktop    = window.innerWidth > 767;
+
+    /* TILT 3D — desktop uniquement, halos séparés */
+    if (finePointer && !reduceMotion && isDesktop) {
+      cards.forEach((card) => {
+        const frame = card.querySelector('.gal-frame');
+        const halo  = card.querySelector('.gal-halo');
+        if (!frame) return;
+
+        let rafId = null;
+        let tRX = 0, tRY = 0, tTY = 0;
+        let cRX = 0, cRY = 0, cTY = 0;
+        let tHX = 50, tHY = 50;
+        let cHX = 50, cHY = 50;
+
+        const onMove = (e) => {
+          const r = frame.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width;
+          const y = (e.clientY - r.top) / r.height;
+          tRY = (x - 0.5) * 8;
+          tRX = (0.5 - y) * 8;
+          tTY = -6;
+          tHX = x * 100; tHY = y * 100;
+          if (rafId === null) rafId = requestAnimationFrame(tick);
+        };
+
+        const onLeave = () => {
+          tRX = 0; tRY = 0; tTY = 0; tHX = 50; tHY = 50;
+          if (rafId === null) rafId = requestAnimationFrame(tick);
+        };
+
+        const tick = () => {
+          cRX += (tRX - cRX) * 0.12;
+          cRY += (tRY - cRY) * 0.12;
+          cTY += (tTY - cTY) * 0.12;
+          cHX += (tHX - cHX) * 0.12;
+          cHY += (tHY - cHY) * 0.12;
+
+          card.style.setProperty('--rx', cRX.toFixed(3) + 'deg');
+          card.style.setProperty('--ry', cRY.toFixed(3) + 'deg');
+          card.style.setProperty('--ty', cTY.toFixed(2) + 'px');
+          if (halo) {
+            halo.style.setProperty('--hx', cHX.toFixed(2) + '%');
+            halo.style.setProperty('--hy', cHY.toFixed(2) + '%');
+          }
+
+          const done =
+            Math.abs(tRX - cRX) < 0.02 && Math.abs(tRY - cRY) < 0.02 &&
+            Math.abs(tTY - cTY) < 0.1 && Math.abs(tHX - cHX) < 0.1 && Math.abs(tHY - cHY) < 0.1;
+          if (done) { rafId = null; return; }
+          rafId = requestAnimationFrame(tick);
+        };
+
+        card.addEventListener('pointermove', onMove);
+        card.addEventListener('pointerleave', onLeave);
+      });
+    }
+
+    /* LIGHTBOX */
+    function openLightbox(src, title, sub, alt) {
+      if (!lightbox || !lbImg) return;
+      lbImg.src = src; lbImg.alt = alt || title || '';
+      if (lbTitle) lbTitle.textContent = title || '';
+      if (lbSub) lbSub.textContent = sub || '';
+      lightbox.classList.add('is-open');
+      document.body.classList.add('gal-locked');
+      if (lbClose) setTimeout(() => lbClose.focus(), 100);
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      lightbox.classList.remove('is-open');
+      document.body.classList.remove('gal-locked');
+      if (lbImg) lbImg.src = '';
+    }
+
+    cards.forEach((card) => {
+      const open = () => {
+        const img = card.querySelector('.gal-img');
+        const src = card.getAttribute('data-img') || img?.getAttribute('src') || '';
+        const tit = card.getAttribute('data-title') || '';
+        const sub = card.getAttribute('data-sub') || '';
+        const alt = img?.getAttribute('alt') || tit;
+        if (src) openLightbox(src, tit, sub, alt);
+      };
+      card.addEventListener('click', open);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+      });
+    });
+
+    if (lbClose) lbClose.addEventListener('click', closeLightbox);
+    if (lightbox) lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox?.classList.contains('is-open')) closeLightbox();
+    });
+  })();
+</script>

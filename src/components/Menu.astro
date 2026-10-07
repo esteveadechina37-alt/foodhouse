@@ -604,12 +604,71 @@
       transform: none !important;
     }
   }
+    /* ============================================
+     NUMÉROTATION ÉDITORIALE — Chapitre 02
+     ============================================ */
+  .mnu-ghost {
+    position: absolute;
+    top: 5%;
+    right: -4%;
+    z-index: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 200;
+    font-size: clamp(180px, 26vw, 400px);
+    line-height: 1;
+    color: rgba(249, 246, 240, .028);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .mnu-marker {
+    position: absolute;
+    top: 10rem;
+    left: 1.5rem;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    pointer-events: none;
+  }
+
+  .mnu-marker-text {
+    writing-mode: vertical-rl;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .55em;
+    text-transform: uppercase;
+    color: rgba(249, 246, 240, .35);
+  }
+
+  .mnu-marker-line {
+    width: 1px;
+    height: 5rem;
+    background: linear-gradient(to bottom, rgba(249, 246, 240, .4), transparent);
+  }
+
+  @media (max-width: 1024px) {
+    .mnu-marker { display: none; }
+  }
+
+  @media (max-width: 767px) {
+    .mnu-ghost { display: none; }
+  }
 </style>
 
 <!-- ============================================================
      SECTION
      ============================================================ -->
 <section id="menu" class="fh-menu relative overflow-hidden bg-noir text-creme">
+    <!-- Chapitre 02 -->
+  <span class="mnu-ghost" aria-hidden="true">02</span>
+
+  <div class="mnu-marker" aria-hidden="true">
+    <span class="mnu-marker-text">Chapitre 02 — La Carte</span>
+    <span class="mnu-marker-line"></span>
+  </div>
 
   <div class="fh-menu-glow fh-menu-glow-a" aria-hidden="true"></div>
   <div class="fh-menu-glow fh-menu-glow-b" aria-hidden="true"></div>

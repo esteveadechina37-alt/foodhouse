@@ -10,6 +10,13 @@
   id="experience"
   class="experience-section relative overflow-hidden bg-creme text-noir"
 >
+  <!-- Chapitre 01 -->
+  <span class="exp-ghost" aria-hidden="true">01</span>
+
+  <div class="exp-marker" aria-hidden="true">
+    <span class="exp-marker-text">Chapitre 01 — L'Esprit</span>
+    <span class="exp-marker-line"></span>
+  </div>
   <!-- Décorations organiques -->
   <div
     class="experience-decoration decoration-leaf decoration-leaf-one"
@@ -362,6 +369,10 @@
       radial-gradient(circle at 8% 15%, rgba(99, 15, 37, 0.07), transparent 25%),
       radial-gradient(circle at 92% 85%, rgba(99, 15, 37, 0.05), transparent 24%),
       var(--foodhouse-creme);
+          /* ✅ Fix mobile Safari : clip-path est plus fiable qu'overflow: hidden
+        pour les enfants absolus animés en `top` */
+      clip-path: inset(0);
+      contain: paint;
   }
 
   .experience-section { isolation: isolate; }
@@ -567,11 +578,12 @@
   .spice           { background: rgba(99, 15, 37, 0.5); }
   .seed            { border-color: rgba(99, 15, 37, 0.6); }
 
-  @keyframes fall {
+    @keyframes fall {
     0%   { top: -15%; opacity: 0; }
     10%  { opacity: var(--deco-opacity); }
-    90%  { opacity: var(--deco-opacity); }
-    100% { top: 115%; opacity: 0; }
+    85%  { top: 90%;  opacity: var(--deco-opacity); }
+    95%  { top: 100%; opacity: 0; }   /* ← fade TERMINÉ à la frontière */
+    100% { top: 100%; opacity: 0; }   /* ← ne bouge plus, invisible */
   }
 
   /* Feuille 1 */
@@ -756,5 +768,57 @@
     .experience-decoration {
       animation-duration: 40s !important;
     }
+  }
+    /* ============================================
+     NUMÉROTATION ÉDITORIALE — Chapitre 01
+     ============================================ */
+  .exp-ghost {
+    position: absolute;
+    top: 6%;
+    right: -4%;
+    z-index: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 200;
+    font-size: clamp(180px, 26vw, 400px);
+    line-height: 1;
+    color: rgba(99, 15, 37, .05);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .exp-marker {
+    position: absolute;
+    top: 10rem;
+    left: 1.5rem;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    pointer-events: none;
+  }
+
+  .exp-marker-text {
+    writing-mode: vertical-rl;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .55em;
+    text-transform: uppercase;
+    color: rgba(9, 9, 9, .32);
+  }
+
+  .exp-marker-line {
+    width: 1px;
+    height: 5rem;
+    background: linear-gradient(to bottom, rgba(9, 9, 9, .35), transparent);
+  }
+
+  @media (max-width: 1024px) {
+    .exp-marker { display: none; }
+  }
+
+  @media (max-width: 767px) {
+    .exp-ghost { display: none; }
   }
 </style>
