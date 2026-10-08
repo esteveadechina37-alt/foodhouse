@@ -130,7 +130,7 @@ Le site applique les codes des magazines haut de gamme (Kinfolk, Cereal, Vogue L
 
 ```bash
 # 1. Cloner le repo
-git clone https://github.com/[ton-username]/foodhouse.git
+git clone https://github.com/esteveadechina37-alt/foodhouse.git
 cd foodhouse
 
 # 2. Installer les dépendances
