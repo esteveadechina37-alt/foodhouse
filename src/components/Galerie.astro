@@ -1,5 +1,6 @@
 ---
 // Section Galerie — FoodHouse · Premium 3D (architecture safe-first)
+// Mobile : 2 colonnes avec décalage alterné
 ---
 
 <style is:global>
@@ -519,25 +520,57 @@
       #galerie .gal-marker { display: none; }
     }
 
-    /* --- Mobile --- */
+    /* ============================================================
+       MOBILE — 2 colonnes + zigzag + hauteurs réduites
+       ============================================================ */
     @media (max-width: 767px) {
       #galerie { padding-top: 4rem; padding-bottom: 4rem; }
-      #galerie .gal-header { margin-bottom: 2.5rem; }
+      #galerie .gal-header { margin-bottom: 2rem; }
       #galerie .gal-title em { padding-left: .5em; }
       #galerie .gal-lede { font-size: .75rem; }
 
+      /* --- Grille 2 colonnes --- */
       #galerie .gal-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        column-gap: .7rem;
+        row-gap: 1.25rem;
+        align-items: start;
         perspective: none;
+        transform-style: flat;
+      }
+
+      /* --- Reset du positionnement desktop 12 colonnes --- */
+      #galerie .gal-card-1,
+      #galerie .gal-card-2,
+      #galerie .gal-card-3,
+      #galerie .gal-card-4,
+      #galerie .gal-card-5,
+      #galerie .gal-card-6,
+      #galerie .gal-card-7,
+      #galerie .gal-card-8 {
+        grid-column: auto / auto !important;
+        margin-top: 0;
+      }
+
+      /* --- Zigzag : cellules paires impaires en alternance ---
+         Row 1 (01,02) : 02 descend
+         Row 2 (03,04) : 03 descend  ← inverse
+         Row 3 (05,06) : 06 descend
+         Row 4 (07,08) : 07 descend  ← inverse
+      */
+      #galerie .gal-cell-2,
+      #galerie .gal-cell-3,
+      #galerie .gal-cell-6,
+      #galerie .gal-cell-7 {
+        margin-top: 2.25rem;
       }
 
       #galerie .gal-cell { animation: none; opacity: 1; }
 
       #galerie .gal-card {
-        margin-top: 0 !important;
         transform: none !important;
+        transform-style: flat !important;
       }
 
       #galerie .gal-img {
@@ -545,28 +578,77 @@
         transform: none;
       }
 
-      #galerie .gal-veil { opacity: .55; }
+      #galerie .gal-veil { opacity: .5; }
       #galerie .gal-halo { display: none; }
+
+      /* --- Hauteurs réduites --- */
+      #galerie .gal-r-1 { aspect-ratio: 4 / 5; }
+      #galerie .gal-r-2 { aspect-ratio: 4 / 5; }      /* était 3/4 */
+      #galerie .gal-r-3 { aspect-ratio: 4 / 5; }      /* était 2/3 → réduction majeure */
+      #galerie .gal-r-4 { aspect-ratio: 4 / 5; }      /* était 3/4 */
+      #galerie .gal-r-5 { aspect-ratio: 1 / 1; }
+      #galerie .gal-r-6 { aspect-ratio: 4 / 5; }
+      #galerie .gal-r-7 { aspect-ratio: 4 / 3; }      /* format paysage conservé */
+      #galerie .gal-r-8 { aspect-ratio: 4 / 5; }
+
+      /* --- Badges + captions réduits --- */
+      #galerie .gal-num {
+        font-size: .58rem;
+        padding: .2rem .45rem;
+        top: .5rem;
+        left: .5rem;
+        letter-spacing: .08em;
+      }
 
       #galerie .gal-chip {
         display: block;
-        right: 1rem; top: 1rem; bottom: auto;
-        opacity: .9;
+        right: .5rem;
+        top: .5rem;
+        bottom: auto;
+        opacity: .92;
         transform: none;
-        font-size: 7px;
-        background: rgba(99,15,37,.55);
-        border-color: rgba(99,15,37,.8);
+        font-size: 6px;
+        letter-spacing: .18em;
+        padding: .28rem .5rem;
+        background: rgba(99,15,37,.6);
+        border-color: rgba(99,15,37,.85);
       }
 
-      #galerie .gal-r-7 { aspect-ratio: 4 / 3; }
-      #galerie .gal-caption-title { font-size: 1rem; }
-      #galerie .gal-quote { margin-top: 4rem; }
-      #galerie .gal-quote-text { font-size: 1rem; }
-      #galerie .gal-ghost { display: none; }
+      #galerie .gal-caption {
+        left: .6rem;
+        right: .6rem;
+        bottom: .6rem;
+      }
+      #galerie .gal-caption-rule {
+        gap: .4rem;
+        margin-bottom: .3rem;
+      }
+      #galerie .gal-caption-rule span { width: 1rem; }
+      #galerie .gal-caption-rule em { font-size: .58rem; }
+      #galerie .gal-caption-title {
+        font-size: .82rem;
+        margin-bottom: .15rem;
+      }
+      #galerie .gal-caption-sub {
+        font-size: 6px;
+        letter-spacing: .2em;
+      }
 
+      /* --- Quote + Ghost --- */
+      #galerie .gal-quote { margin-top: 4rem; padding-top: 2.5rem; }
+      #galerie .gal-quote-text { font-size: 1rem; }
+      #galerie .gal-quote-mark { font-size: 2.5rem; }
+      #galerie .gal-ghost { display: none; }
+      #galerie .gal-marker { display: none; }
+
+      /* --- Lightbox --- */
       .gal-lightbox { padding: 1rem; }
       .gal-lightbox-close { top: -2.75rem; }
-      .gal-lightbox-meta { flex-direction: column; gap: .5rem; align-items: flex-start; }
+      .gal-lightbox-meta {
+        flex-direction: column;
+        gap: .5rem;
+        align-items: flex-start;
+      }
     }
 
     /* --- Reduced motion --- */
@@ -804,7 +886,7 @@
     const finePointer  = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     const isDesktop    = window.innerWidth > 767;
 
-    /* TILT 3D — desktop uniquement, halos séparés */
+    /* TILT 3D — desktop uniquement */
     if (finePointer && !reduceMotion && isDesktop) {
       cards.forEach((card) => {
         const frame = card.querySelector('.gal-frame');
